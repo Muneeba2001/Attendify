@@ -1,10 +1,31 @@
 import { Formik, Form, Field } from "formik";
 import React from "react";
+import axios from "axios";
 import Button from "@mui/material/Button";
-import { NavLink } from "react-router-dom";
+import LoginSchema from "../../schema/form/Login";
+import { useNavigate, NavLink } from "react-router-dom";
 import Header from "../../Component/Header";
-
+const initialValues = {
+  email: "",
+  password: "",
+  rememberMe: false,
+};
 const Login = () => {
+  const navigate = useNavigate();
+
+  const onSubmit = (values) => {
+    axios
+      .post("http://localhost:3000/Login", {
+        email: values.email,
+        password: values.password,
+      })
+      .then((result) => {
+        console.log(result);
+        navigate("/Home");
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
       <Header />
@@ -27,10 +48,9 @@ const Login = () => {
         <div className="m-6 flex items-center justify-center md:m-24">
           <div className="w-full max-w-md rounded-sm bg-white p-6 shadow-md md:max-w-2xl md:p-10">
             <Formik
-              initialValues={{ username: "", password: "", rememberMe: false }}
-              onSubmit={(values) => {
-                console.log("Form is submitted", values);
-              }}
+              validationSchema={LoginSchema}
+              onSubmit={onSubmit}
+              initialValues={initialValues}
             >
               {({ handleSubmit }) => (
                 <Form
@@ -39,15 +59,15 @@ const Login = () => {
                 >
                   <div>
                     <label
-                      htmlFor="username"
+                      htmlFor="email"
                       className="mb-2 block text-sm font-medium text-gray-700 md:mb-4"
                     >
                       Username
                     </label>
                     <Field
-                      type="text"
-                      id="username"
-                      name="username"
+                      type="email"
+                      id="email"
+                      name="email"
                       className="w-full rounded-sm border p-2"
                     />
                   </div>

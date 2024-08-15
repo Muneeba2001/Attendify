@@ -118,6 +118,7 @@ const Register = () => {
                   <div className="relative mt-5">
                     <label>Password</label>
                     <Field
+                      id="password"
                       type="password"
                       name="password"
                       className={`w-full rounded-sm border p-2 text-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 ${
