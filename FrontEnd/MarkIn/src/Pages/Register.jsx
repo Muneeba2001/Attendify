@@ -1,121 +1,128 @@
+import { Formik, Form, Field } from "formik";
 import React from "react";
-import { useFormik } from "formik";
-import registerSchema from "../schema/form";
-import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
+import Button from "@mui/material/Button";
+import { NavLink } from "react-router-dom";
+import Header from "../Component/Header";
 
-const initialValues = {
-  name: "",
-  email: "",
-  password: "",
-  confirm_password: "",
-};
-
-const Register = () => {
-  const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
-    useFormik({
-      initialValues,
-      validationSchema: registerSchema,
-      onSubmit: (values) => {
-        console.log(values);
-      },
-    });
-
+const Login = () => {
   return (
-    <div className="Register flex min-h-screen items-center justify-center bg-slate-200 p-6">
-      <form
-        onSubmit={handleSubmit}
-        action=""
-        className="container flex w-full max-w-md flex-col rounded-sm border border-gray-300 bg-white p-8 shadow-lg"
-      >
-        <div>
-          <h2 className="mb-8 text-center text-3xl font-bold text-gray-800">
-            Register
-          </h2>
+    <>
+      <Header />
+      <div className="container grid h-screen grid-cols-1 md:grid-cols-2">
+        {/* Left Column: Text */}
+        <div className="flex flex-col flex-wrap items-start justify-center p-6 md:p-[100px]">
+          <h1 className="text-4xl text-gray-800 md:text-6xl">Attendance</h1>
+          <h1 className="text-4xl text-blue-900 md:text-6xl">
+            for your business
+          </h1>
+          <p className="mt-6 text-sm text-gray-600 md:mt-8 md:text-base">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
+            eveniet cum doloremque, cumque sint expedita placeat magnam vero
+            nulla iure corporis, amet a repellat nisi facere pariatur. Quaerat,
+            nihil fugiat? Excepturi consequatur debitis nostr...
+          </p>
+        </div>
 
-          <div className="relative mt-5">
-            <FaUser className="absolute left-3 top-1/2 -translate-y-1/2 transform text-gray-500" />
-            <input
-              type="text"
-              placeholder="Name"
-              name="name"
-              value={values.name}
-              className={`w-full rounded-sm border p-3 pl-10 text-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 ${
-                errors.name && touched.name
-                  ? "border-red-500"
-                  : "border-gray-300"
-              }`}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </div>
-
-          <div className="relative mt-5">
-            <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 transform text-gray-500" />
-            <input
-              type="email"
-              placeholder="Email"
-              name="email"
-              value={values.email}
-              className={`w-full rounded-sm border p-3 pl-10 text-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 ${
-                errors.email && touched.email
-                  ? "border-red-500"
-                  : "border-gray-300"
-              }`}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </div>
-
-          <div className="relative mt-5">
-            <FaLock className="absolute left-3 top-1/2 -translate-y-1/2 transform text-gray-500" />
-            <input
-              type="password"
-              placeholder="Password"
-              name="password"
-              value={values.password}
-              className={`w-full rounded-sm border p-3 pl-10 text-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 ${
-                errors.password && touched.password
-                  ? "border-red-500"
-                  : "border-gray-300"
-              }`}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </div>
-
-          <div className="relative mt-5">
-            <FaLock className="absolute left-3 top-1/2 -translate-y-1/2 transform text-gray-500" />
-            <input
-              type="password"
-              placeholder="Confirm Password"
-              name="confirm_password"
-              value={values.confirm_password}
-              className={`w-full rounded-sm border p-3 pl-10 text-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 ${
-                errors.confirm_password && touched.confirm_password
-                  ? "border-red-500"
-                  : "border-gray-300"
-              }`}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </div>
-
-          <div className="checkbox mt-5 flex gap-2 text-gray-600">
-            <input type="checkbox" name="keep_signin" id="keep_signin" />
-            <label htmlFor="keep_signin">Keep me signed in</label>
-          </div>
-          <div className="btn flex items-center justify-center">
-            <button
-              type="submit"
-              className="mt-8 w-1/2 rounded-sm bg-black py-3 text-lg font-semibold text-white transition-transform duration-300 ease-in-out hover:scale-90 hover:bg-zinc-800"
+        {/* Right Column: Form */}
+        <div className="m-6 flex items-center justify-center md:m-24">
+          <div className="w-full max-w-md rounded-sm bg-white p-6 shadow-md md:max-w-2xl md:p-10">
+            <Formik
+              initialValues={{ username: "", password: "", rememberMe: false }}
+              onSubmit={(values) => {
+                console.log("Form is submitted", values);
+              }}
             >
-              Register
-            </button>
+              {({ handleSubmit }) => (
+                <Form
+                  onSubmit={handleSubmit}
+                  className="space-y-4 md:space-y-6"
+                >
+                  <div>
+                    <label
+                      htmlFor="username"
+                      className="mb-2 block text-sm font-medium text-gray-700 md:mb-4"
+                    >
+                      Username
+                    </label>
+                    <Field
+                      type="text"
+                      id="username"
+                      name="username"
+                      className="w-full rounded-sm border p-2"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="password"
+                      className="mb-2 block text-sm font-medium text-gray-700 md:mb-4"
+                    >
+                      Password
+                    </label>
+                    <Field
+                      id="password"
+                      type="password"
+                      name="password"
+                      className="w-full rounded-sm border p-2"
+                    />
+                  </div>
+
+                  <div className="flex items-center">
+                    <Field
+                      type="checkbox"
+                      id="rememberMe"
+                      name="rememberMe"
+                      className="mr-2"
+                    />
+                    <label
+                      htmlFor="rememberMe"
+                      className="text-sm text-gray-700"
+                    >
+                      Remember me
+                    </label>
+                  </div>
+
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "rgb(63, 81, 181)",
+                      color: "white",
+                      // textTransform: "none",
+                      padding: "10px 20px",
+                      borderRadius: "4px",
+                      // width: "100%",
+                    }}
+                  >
+                    Sign in
+                  </Button>
+
+                  <div className="mt-4 text-sm text-gray-700">
+                    {/* <p className="text-gray-600">Forget Password</p> */}
+                    <NavLink
+                      to="/UserAuth/ForgetPassword"
+                      className="text-gray-600"
+                    >
+                      Forget Password?
+                    </NavLink>
+                  </div>
+
+                  <div className="mt-2 text-sm">
+                    <p>
+                      Don't have an account?{" "}
+                      <NavLink to="/Register" className="text-cyan-500">
+                        Register Here
+                      </NavLink>
+                    </p>
+                  </div>
+                </Form>
+              )}
+            </Formik>
           </div>
         </div>
-      </form>
-    </div>
+      </div>
+    </>
   );
 };
 
-export default Register;
+export default Login;

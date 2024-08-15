@@ -1,7 +1,19 @@
 import express from "express";
-const appData = express();
+import mongoose from "mongoose";
+import appRouter from "./routes/index.js"; // Ensure this path is correct
+import cors from "cors";
 
-appData.listen("3000", () => {
-  console.log("Server Started!");
+const app = express();
+
+app.use(express.json());
+app.use(cors());
+app.use(appRouter);
+
+mongoose
+  .connect("mongodb://127.0.0.1:27017/Attendance")
+  .then(() => console.log("DB connected"))
+  .catch((err) => console.error("DB connection error: ", err));
+
+app.listen(3000, () => {
+  console.log("Server Started on port 3000");
 });
-
