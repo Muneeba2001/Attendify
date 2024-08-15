@@ -1,0 +1,85 @@
+  import { useFormik } from "formik";
+  import React from "react";
+  import { FaEnvelope, FaLock } from "react-icons/fa";   Import the icons you want to use
+
+  import { LoginSchema } from "../schema/form/Login";
+
+    Initial values for the form
+  const initialValues = {
+    email: "",
+    password: "",
+  };
+
+  const LogIn = () => {
+      Using Formik to handle form state and submission
+    const { values, handleChange, handleSubmit, errors, touched } = useFormik({
+      initialValues: initialValues,
+      validationSchema: LoginSchema,
+      onSubmit: (values) => {
+        console.log("Form is submitted: ", values, errors);
+      },
+    });
+
+    return (
+      <>
+        <div className="container min-h-screen flex justify-center items-center p-4">
+          <div className="form flex flex-col justify-center items-center min-h-[450px] bg-white shadow-2xl rounded-lg w-96 max-w-md p-4">
+            <h1 className="text-2xl text-center p-2 font-bold hover:underline mb-5">
+              Welcome back!
+            </h1>
+
+            <form onSubmit={handleSubmit} className="w-full">
+              <div className="relative mb-4">
+                <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  value={values.email}
+                  onChange={handleChange}
+                  placeholder="Enter your email"
+                  className={`pl-10 text-center border-b-2 rounded-sm p-2 w-full ${
+                    errors.email && touched.email ? "border-red-800" : "border-gray-300"
+                  }`}
+                />
+                {/* Optional: Hide error text */}
+              </div>
+
+              <div className="relative mb-6">
+                <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  value={values.password}
+                  onChange={handleChange}
+                  placeholder="Enter your password"
+                  className={`pl-10 text-center border-b-2 rounded-sm p-2 w-full ${
+                    errors.password && touched.password ? "border-red-800" : "border-gray-300"
+                  }`}
+                />
+                {/* Optional: Hide error text */}
+              </div>
+
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center">
+                  <input type="checkbox" id="remember" className="mr-2" />
+                  <span className="text-sm text-gray-700">Remember me</span>
+                </div>
+                <span className="text-[13px] text-gray-700 cursor-pointer">Forget Password?</span>
+              </div>
+              <br />
+              <button
+                type="submit"
+                className="bg-black text-white w-52 h-10 rounded-3xl hover:scale-105 transition-transform duration-300"
+              >
+                Login
+              </button>
+            </form>
+          </div>
+        </div>
+      </>
+  );
+};
+
+ export default LogIn;
