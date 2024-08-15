@@ -16,10 +16,10 @@ const Login = () => {
             for your business
           </h1>
           <p className="mt-6 text-sm text-gray-600 md:mt-8 md:text-base">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
-            eveniet cum doloremque, cumque sint expedita placeat magnam vero
-            nulla iure corporis, amet a repellat nisi facere pariatur. Quaerat,
-            nihil fugiat? Excepturi consequatur debitis nostr...
+            Efficient attendance management is crucial for maintaining
+            productivity and accountability in any business. By accurately
+            tracking employee presence, you can ensure streamlined operations
+            and better decision-making.
           </p>
         </div>
 
