@@ -5,11 +5,11 @@ const registerController = {
   // Register a new user
   register: async (req, res) => {
     try {
-      const { name, email, password } = req.body;
+      const { name, email, password, phone_number } = req.body;
 
       console.log(req.body);
 
-      // Check if the user already exists
+      // Check if the user already exist
       const userCheck = await userModel.findOne({ email });
       if (userCheck) {
         return res.status(409).json({ message: "User already exists!" });
@@ -25,7 +25,7 @@ const registerController = {
         phone_number,
         password: hashedPassword,
       });
-
+      await userRegister.save();
       res
         .status(201)
         .json({ message: "User registered successfully", userRegister });
