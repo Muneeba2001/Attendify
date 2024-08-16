@@ -19,7 +19,7 @@ const SideBar = () => {
           <div className="mb-2 flex w-full items-center ">
             <HiOutlineClipboardList className="mr-0 text-lg" />
             <NavLink
-              to="/attendance-sheet"
+              to="/AttendanceSheet"
               className="block rounded px-4 py-2 hover:bg-gray-100"
               activeClassName="bg-blue-50 text-blue-700"
             >

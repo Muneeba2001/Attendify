@@ -10,6 +10,7 @@ import StudentLogin from "./Pages/StudentProtoType/student-login";
 import StudentForgetPassword from "./Pages/StudentProtoType/StudentForgetPassword";
 import AdminLogin from "./Pages/AdminProtoType/AdminLogin";
 import AdminForgetPassword from "./Pages/AdminProtoType/AdminForgetPassword";
+import AttendanceSheet from "./Pages/AdminProtoType/AttendanceSheet";
 
 
 //import DefaultLayout from "./DefaultLayout/DefaultLayout";
@@ -38,6 +39,7 @@ function App() {
           <Route path="AdminLogin" element = {<AdminLogin/>}/>
           <Route path="AdminForgetPassword" element = {<AdminForgetPassword/>} />
         </Route>
+        <Route path="/AttendanceSheet" element={<DefaultLayout><AttendanceSheet/></DefaultLayout>}/>
       </Routes>
     </>
   );
