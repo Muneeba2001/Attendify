@@ -34,73 +34,94 @@ const AttendanceSheet = () => {
   return (
     <>
       {/* selection */}
-      <Formik
-        initialValues={{ subject: '', section: '', date: '' }}
-        onSubmit={(values, { setSubmitting }) => {
-          console.log('Form values:', values); // Debugging
-          filterData(values);
-          setSubmitting(false); // Stop submitting
-        }}
-      >
-        {({ isSubmitting }) => (
-          <Form>
-            <label htmlFor="subject">Subject</label>
-            <Field as="select" name="subject" id="subject">
-              <option value="" disabled>
-                Select Subject
-              </option>
-              <option value="Maths">Maths</option>
-              <option value="English">English</option>
-              <option value="Urdu">Urdu</option>
-            </Field>
+      <div className="container bg-white p-6 flex flex-col space-y-4 w-full">
+        <Formik
+          initialValues={{ subject: '', section: '', date: '' }}
+          onSubmit={(values, { setSubmitting }) => {
+            console.log('Form values:', values); // Debugging
+            filterData(values);
+            setSubmitting(false); // Stop submitting
+          }}
+        >
+          {({ isSubmitting }) => (
+            <Form className="flex flex-wrap gap-4 items-center">
+              <div className="flex flex-col">
+               
+                <Field
+                  as="select"
+                  name="subject"
+                  id="subject"
+                  className="ml-2 border border-gray-400 rounded-md px-2 py-1 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                >
+                  <option value="" disabled>
+                    Select Subject
+                  </option>
+                  <option value="Maths">Maths</option>
+                  <option value="English">English</option>
+                  <option value="Urdu">Urdu</option>
+                </Field>
+              </div>
 
-            <label htmlFor="section">Section</label>
-            <Field as="select" name="section" id="section">
-              <option value="" disabled>
-                Select Section
-              </option>
-              <option value="A">A</option>
-              <option value="B">B</option>
-              <option value="C">C</option>
-            </Field>
+              <div className="flex flex-col">
+              
+                <Field
+                  as="select"
+                  name="section"
+                  id="section"
+                  className="ml-2 border border-gray-400 rounded-md px-2 py-1 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                >
+                  <option value="" disabled>
+                    Select Section
+                  </option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                </Field>
+              </div>
 
-            <label htmlFor="date">Date</label>
-            <Field type="date" name="date" id="date" />
+              <div className="flex flex-col">
+              
+                <Field
+                  type="date"
+                  name="date"
+                  id="date"
+                  className="ml-2 border border-gray-400 rounded-md px-2 py-1 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                />
+              </div>
 
-            <Button
-              type="submit"
-              variant="contained"
-            //   rgb(96,80,220)
-            // rgb(82,24,250)
-              sx={{ backgroundColor: 'rgb(96,80,220)', color: 'white' }}
-              disabled={isSubmitting}
-            >
-              Generate Sheet
-            </Button>
-          </Form>
-        )}
-      </Formik>
-
+              <Button
+                type="submit"
+                variant="contained"
+                sx={{ backgroundColor: 'rgb(96,80,220)', color: 'white' }}
+                disabled={isSubmitting}
+                className="self-start"
+              >
+                Generate Sheet
+              </Button>
+            </Form>
+          )}
+        </Formik>
+      </div>
       {/* display */}
       {filteredData.length > 0 ? (
-        <table>
+        <table className="w-full mt-6 border-collapse border border-gray-200">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Subject</th>
-              <th>Section</th>
-              <th>Date</th>
-              <th>Status</th>
+              <th className="border border-gray-300 p-2">Name</th>
+              <th className="border border-gray-300 p-2">Subject</th>
+              <th className="border border-gray-300 p-2">Section</th>
+              <th className="border border-gray-300 p-2">Date</th>
+              <th className="border border-gray-300 p-2">Status</th>
             </tr>
           </thead>
           <tbody>
             {filteredData.map((student, index) => (
               <tr key={index}>
-                <td>{student.name}</td>
-                <td>{student.subject}</td>
-                <td>{student.section}</td>
-                <td>{student.date}</td>
-                <td>{student.status}</td>
+                <td className="border border-gray-300 p-2">{student.name}</td>
+                <td className="border border-gray-300 p-2">{student.subject}</td>
+                <td className="border border-gray-300 p-2">{student.section}</td>
+                <td className="border border-gray-300 p-2">{student.date}</td>
+                <td className="border border-gray-300 p-2">{student.status}</td>
               </tr>
             ))}
           </tbody>
