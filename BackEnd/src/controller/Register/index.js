@@ -39,12 +39,12 @@ const registerController = {
   login: async (req, res) => {
     try {
       const { email, password } = req.body;
-      console.log(req.body);
+      console.log("body:", req.body);
 
       // Find the user by email
       const userCheck = await userModel.findOne({ email });
 
-      console.log(userCheck);
+      console.log("UserCheck", userCheck);
       if (!userCheck) {
         return res.status(404).json({ message: "Invalid Credentials!" });
       }
