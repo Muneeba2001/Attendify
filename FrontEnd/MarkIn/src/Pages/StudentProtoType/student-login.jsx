@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import { NavLink } from "react-router-dom";
 import Header from "../../Component/Header";
 
-const Login = () => {
+const StudentLogin = () => {
   return (
     <>
       <Header />
@@ -39,15 +39,15 @@ const Login = () => {
                 >
                   <div>
                     <label
-                      htmlFor="username"
+                      htmlFor="matrix-number"
                       className="mb-2 block text-sm font-medium text-gray-700 md:mb-4"
                     >
-                      Username
+                      Matrix Number
                     </label>
                     <Field
                       type="text"
-                      id="username"
-                      name="username"
+                      id="matrix-number"
+                      name="matrix-number"
                       className="w-full rounded-sm border p-2"
                     />
                   </div>
@@ -100,7 +100,7 @@ const Login = () => {
                   <div className="mt-4 text-sm text-gray-700">
                     {/* <p className="text-gray-600">Forget Password</p> */}
                     <NavLink
-                      to="/UserAuth/ForgetPassword"
+                      to="/UserAuth/StudentForgetPassword"
                       className="text-gray-600"
                     >
                       Forget Password?
@@ -125,4 +125,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default StudentLogin;
