@@ -1,9 +1,6 @@
-import { Router } from "express";
-import registerController from "../controller/Register/index.js";
+import attendanceRouter from "./Attendance-Sheet/index.js";
+import userRouter from "./userRoutes/index.js";
 
-const appRouter = Router();
-
-appRouter.post("/Register", registerController.register);
-appRouter.post("/Login", registerController.login);
+const appRouter = [userRouter, attendanceRouter];
 
 export default appRouter;
