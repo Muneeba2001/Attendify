@@ -1,4 +1,4 @@
-import "./App.css";
+
 import Login from "./Pages/TeacherProtoType/Login";
 import { Route, Routes } from "react-router-dom";
 import UserAuthPage from "./Pages/UserAuthPage";
@@ -12,20 +12,21 @@ import AdminLogin from "./Pages/AdminProtoType/AdminLogin";
 import AdminForgetPassword from "./Pages/AdminProtoType/AdminForgetPassword";
 import AttendanceSheet from "./Pages/AdminProtoType/AttendanceSheet";
 
-
 //import DefaultLayout from "./DefaultLayout/DefaultLayout";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/DashBoard" element={<DashBoard />}></Route>
+        <Route path="/DashBoard" element={<DashBoard />}>
+        </Route>
+        <Route path="AttendanceSheet" element={<DefaultLayout><AttendanceSheet/></DefaultLayout>}/>
         <Route
           path="/UserAuth"
           element={
-            <DefaultLayout>
+            // <DefaultLayout>
               <UserAuthPage />
-            </DefaultLayout>
+            // </DefaultLayout> 
           }
         >
           <Route path="Register" element={<Register />} />
@@ -39,7 +40,7 @@ function App() {
           <Route path="AdminLogin" element = {<AdminLogin/>}/>
           <Route path="AdminForgetPassword" element = {<AdminForgetPassword/>} />
         </Route>
-        <Route path="/AttendanceSheet" element={<DefaultLayout><AttendanceSheet/></DefaultLayout>}/>
+    
       </Routes>
     </>
   );
