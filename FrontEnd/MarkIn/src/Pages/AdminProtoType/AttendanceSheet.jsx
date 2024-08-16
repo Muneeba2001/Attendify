@@ -70,7 +70,9 @@ const AttendanceSheet = () => {
             <Button
               type="submit"
               variant="contained"
-              sx={{ backgroundColor: 'red', color: 'white' }}
+            //   rgb(96,80,220)
+            // rgb(82,24,250)
+              sx={{ backgroundColor: 'rgb(96,80,220)', color: 'white' }}
               disabled={isSubmitting}
             >
               Generate Sheet
