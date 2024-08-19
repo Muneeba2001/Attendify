@@ -1,4 +1,3 @@
-
 import Login from "./Pages/TeacherProtoType/Login";
 import { Route, Routes } from "react-router-dom";
 import UserAuthPage from "./Pages/UserAuthPage";
@@ -10,7 +9,7 @@ import StudentLogin from "./Pages/StudentProtoType/student-login";
 import StudentForgetPassword from "./Pages/StudentProtoType/StudentForgetPassword";
 import AdminLogin from "./Pages/AdminProtoType/AdminLogin";
 import AdminForgetPassword from "./Pages/AdminProtoType/AdminForgetPassword";
-import AttendanceSheet from "./Pages/AdminProtoType/AttendanceSheet";
+import AttendanceSheet from "./Pages/Admin/Employee-list/AttendanceSheet";
 
 //import DefaultLayout from "./DefaultLayout/DefaultLayout";
 
@@ -18,15 +17,14 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/DashBoard" element={<DashBoard />}>
-        </Route>
-        <Route path="AttendanceSheet" element={<DefaultLayout><AttendanceSheet/></DefaultLayout>}/>
+        <Route path="/DashBoard" element={<DashBoard />}></Route>
+        <Route path="/AttendanceSheet" element={<AttendanceSheet />} />
         <Route
           path="/UserAuth"
           element={
             // <DefaultLayout>
-              <UserAuthPage />
-            // </DefaultLayout> 
+            <UserAuthPage />
+            // </DefaultLayout>
           }
         >
           <Route path="Register" element={<Register />} />
@@ -34,13 +32,15 @@ function App() {
           <Route path="Login" element={<Login />} />
           <Route path="ForgetPassword" element={<ForgetPassword />} />
           {/* StudentLogin */}
-          <Route path="StudentLogin" element={<StudentLogin/>}/>
-          <Route path="StudentForgetPassword" element = {<StudentForgetPassword/>} />
+          <Route path="StudentLogin" element={<StudentLogin />} />
+          <Route
+            path="StudentForgetPassword"
+            element={<StudentForgetPassword />}
+          />
           {/* AdminLogin */}
-          <Route path="AdminLogin" element = {<AdminLogin/>}/>
-          <Route path="AdminForgetPassword" element = {<AdminForgetPassword/>} />
+          <Route path="AdminLogin" element={<AdminLogin />} />
+          <Route path="AdminForgetPassword" element={<AdminForgetPassword />} />
         </Route>
-    
       </Routes>
     </>
   );

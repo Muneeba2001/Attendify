@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import appRouter from "./routes/index.js"; // Ensure this path is correct
+import appRouter from "./routes/index.js";
 import cors from "cors";
 
 const app = express();

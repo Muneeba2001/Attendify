@@ -5,11 +5,11 @@ const attendanceController = {
     try {
       const { Subject, Section, Date } = req.query;
       const attendanceSheet = await attendanceModel.find({
-        where: {
+       
           Subject,
           Section,
           Date,
-        },
+      
         populate: {
           path: "StudentID",
           select: "Name StudentID",
