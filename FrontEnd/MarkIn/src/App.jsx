@@ -1,4 +1,3 @@
-
 import Login from "./Pages/TeacherProtoType/Login";
 import { Route, Routes } from "react-router-dom";
 import UserAuthPage from "./Pages/UserAuthPage";
@@ -10,12 +9,16 @@ import StudentLogin from "./Pages/StudentProtoType/student-login";
 import StudentForgetPassword from "./Pages/StudentProtoType/StudentForgetPassword";
 import AdminLogin from "./Pages/AdminProtoType/AdminLogin";
 import AdminForgetPassword from "./Pages/AdminProtoType/AdminForgetPassword";
+<<<<<<< HEAD
+import AttendanceSheet from "./Pages/Admin/Employee-list/AttendanceSheet";
+=======
 import AttendanceSheet from "./Pages/AdminProtoType/AttendanceSheet";
 import Track from "./Pages/AdminDashBoard/Track";
 import Analyze from "./Pages/AdminDashBoard/Analyze";
 import Manage from "./Pages/AdminDashBoard/Manage";
 import LoggingOut from "./Pages/AdminDashBoard/LoggingOut";
 import Student from "./Pages/AdminDashBoard/Student";
+>>>>>>> main
 
 //import DefaultLayout from "./DefaultLayout/DefaultLayout";
 
@@ -23,6 +26,10 @@ function App() {
   return (
     <>
       <Routes>
+<<<<<<< HEAD
+        <Route path="/DashBoard" element={<DashBoard />}></Route>
+        <Route path="/AttendanceSheet" element={<AttendanceSheet />} />
+=======
         <Route path="/AdminDashBoard" element={<DashBoard />}>
          {/* Manage */}
          <Route path="Manage" element = {<Manage/>}>
@@ -34,12 +41,13 @@ function App() {
         
         </Route>
         <Route path="AttendanceSheet" element={<DefaultLayout><AttendanceSheet/></DefaultLayout>}/>
+>>>>>>> main
         <Route
           path="/UserAuth"
           element={
             // <DefaultLayout>
-              <UserAuthPage />
-            // </DefaultLayout> 
+            <UserAuthPage />
+            // </DefaultLayout>
           }
         >
           <Route path="Register" element={<Register />} />
@@ -47,17 +55,23 @@ function App() {
           <Route path="Login" element={<Login />} />
           <Route path="ForgetPassword" element={<ForgetPassword />} />
           {/* StudentLogin */}
-          <Route path="StudentLogin" element={<StudentLogin/>}/>
-          <Route path="StudentForgetPassword" element = {<StudentForgetPassword/>} />
+          <Route path="StudentLogin" element={<StudentLogin />} />
+          <Route
+            path="StudentForgetPassword"
+            element={<StudentForgetPassword />}
+          />
           {/* AdminLogin */}
-          <Route path="AdminLogin" element = {<AdminLogin/>}/>
-          <Route path="AdminForgetPassword" element = {<AdminForgetPassword/>} />
+          <Route path="AdminLogin" element={<AdminLogin />} />
+          <Route path="AdminForgetPassword" element={<AdminForgetPassword />} />
         </Route>
+<<<<<<< HEAD
+=======
        
         <Route path="/AdminDashBoard/Analyze" element = {<Analyze/>}/>
     
         <Route path="/AdminDashBoard/LoggingOut" element = {<LoggingOut/>}/>
         
+>>>>>>> main
       </Routes>
     </>
   );
