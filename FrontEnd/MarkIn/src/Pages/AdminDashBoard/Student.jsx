@@ -4,6 +4,7 @@ import { FaEdit, FaTrash } from 'react-icons/fa'
 const Student = () => {
     const [search, setSearch] = useState();
   return (
+    
     <div className='bg-white rounded-md w-full' >
         <div className="heading p-5">
             <nav className='flex justify-between'>
