@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 import AddSubjectModal from '../../../Component/AddSubjectModal';
 // student model for adding subject and searching data throughout the page 
 const Student = () => {
-    //const [search, setSearch] = useState();
+  
     const [subjectModal, setSubjectModal] = useState(false);
   return (
     <>
