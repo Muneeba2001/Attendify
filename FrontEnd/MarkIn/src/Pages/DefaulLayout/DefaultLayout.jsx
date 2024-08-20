@@ -8,8 +8,8 @@ const DefaultLayout = (props) => {
       <Header />
       <div className="flex flex-1">
         <SideBar />
-        <div className="flex flex-1 justify-center items-center">
-          <div className="relative top-[-250px]">{props.children}</div>
+        <div className="flex flex-1 justify-center items-center w-full">
+          <div className="relative top-[-250px] w-full m-20">{props.children}</div>
         </div>
       </div>
     </div>
