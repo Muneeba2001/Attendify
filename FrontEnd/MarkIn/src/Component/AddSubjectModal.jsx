@@ -4,6 +4,7 @@ import { Button } from '@mui/material'
 const AddSubjectModal = ({onClose}) => {
   return (
    <>
+   {/* create pop up modal -> in order to get data at spot */}
    <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
     <div className="formBody bg-white h-96 w-96 relative rounded-md">
     <div className="crossButton  absolute top-2 right-2">

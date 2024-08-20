@@ -4,6 +4,7 @@ import Link from '@mui/material/Link';
 import { useLocation } from 'react-router-dom';
 
 export default function ManageBreadCrumb() {
+  // navigation aid
   /* 
     BreadCrumbs
     BreadCrumbs are basically navigation aids that help you understand on which page you are standing/locating...
