@@ -1,10 +1,35 @@
 import React, { useState } from 'react'
 import { FaEdit, FaTrash } from 'react-icons/fa'
+import ManageBreadCrumb from '../../../Component/ManageBreadCrumb';
+import { Button } from '@mui/material';
+import AddSubjectModal from '../../../Component/AddSubjectModal';
 
 const Student = () => {
     const [search, setSearch] = useState();
+    const [subjectModal, setSubjectModal] = useState(false);
   return (
-    
+    <>
+    <div className="container mt-44">
+      <h1 className='text-4xl text-blue-700 font-bold'>Student</h1>
+      <nav className='flex justify-between'>
+        <div>
+          <ManageBreadCrumb/>
+        </div>
+        <div>
+          <Button
+          variant='contained'
+          sx={{backgroundColor:'#2962ff',
+            color: 'white'
+          }}
+          onClick={()=> {setSubjectModal (true)}}
+          >
+            Add Subject 
+          </Button>
+          {subjectModal && <AddSubjectModal onClose = {()=> {setSubjectModal(false)}}/>}
+        </div>
+      </nav>
+    </div>
+    <br /> <br />
     <div className='bg-white rounded-md w-full' >
         <div className="heading p-5">
             <nav className='flex justify-between'>
@@ -45,6 +70,7 @@ const Student = () => {
         </table>
       </div>
     </div>
+    </>
   )
 }
 
