@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import UserAuthPage from "./Pages/UserAuthPage";
 import ForgetPassword from "./Pages/TeacherProtoType/ForgetPassword";
 import DefaultLayout from "./Pages/DefaulLayout/DefaultLayout";
-//import DashBoard from "./Pages/AdminDashBoard/DashBoard";
 import Register from "./Pages/Register";
 import StudentLogin from "./Pages/StudentProtoType/student-login";
 import StudentForgetPassword from "./Pages/StudentProtoType/StudentForgetPassword";
