@@ -16,7 +16,7 @@ import Manage from "./Pages/AdminDashBoard/Manage/Manage";
 import LoggingOut from "./Pages/AdminDashBoard/LoggingOut";
 import Student from "./Pages/AdminDashBoard/Manage/Student";
 import DashBoard from "./Pages/AdminDashBoard/DashBoard";
-import ManageBreadCrumb from "./Component/ManageBreadCrumb";
+
 
 
 
