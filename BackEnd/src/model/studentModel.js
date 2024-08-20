@@ -1,25 +1,29 @@
 import mongoose from "mongoose";
 
 const studentSchema = new mongoose.Schema({
+  StudentID: {
+    type: String,
+    unique: true,
+  },
   Student_name: {
     type: String,
-    require: true,
+    required: true,
   },
   course: {
     type: String,
-    require: true,
+    required: true,
   },
   email: {
     type: String,
-    require: true,
+    required: true,
   },
   username: {
     type: String,
-    require: true,
+    required: true,
   },
   password: {
     type: String,
-    require: true,
+    required: true,
   },
 });
 
