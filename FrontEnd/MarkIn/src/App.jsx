@@ -15,24 +15,21 @@ import Manage from "./Pages/AdminDashBoard/Manage/Manage";
 import LoggingOut from "./Pages/AdminDashBoard/LoggingOut";
 import Student from "./Pages/AdminDashBoard/Manage/Student";
 import DashBoard from "./Pages/AdminDashBoard/DashBoard";
-
-
-
-
-//import DefaultLayout from "./DefaultLayout/DefaultLayout";
+import AdminRoutes from "./Pages/AdminDashBoard/Routes/AdminRoutes";
 
 function App() {
   return (
     <>
+     <AdminRoutes />
       <Routes>
      
-        <Route path="/AdminDashBoard" element={<DashBoard/>} />
+        {/* <Route path="/AdminDashBoard" element={<DashBoard/>} /> */}
         
          {/* Manage */}
-         <Route path="/AdminDashBoard/Manage" element = {<DefaultLayout><Manage/></DefaultLayout>}>
+         {/* <Route path="/AdminDashBoard/Manage" element = {<DefaultLayout><Manage/></DefaultLayout>}>
          </Route>
-         <Route path = "/AdminDashBoard/Manage/Student" element = {<DefaultLayout><Student/></DefaultLayout>}/>
-       
+         <Route path = "/AdminDashBoard/Manage/Student" element = {<DefaultLayout><Student/></DefaultLayout>}/> */}
+      
         {/* Track */}
          {/* Admin DashBoard */}
          <Route  path="Track" element = {<Track/>}/>
