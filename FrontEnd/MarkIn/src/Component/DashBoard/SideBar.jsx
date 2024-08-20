@@ -18,12 +18,12 @@ const SideBar = () => {
               TRACK
             </NavLink>
           </div>
-          <div className="mb-2 flex items-center">
-            <HiOutlineClipboardList className="mr-2 text-lg" />
+          <div className="mb-2 flex w-full items-center ">
+            <HiOutlineClipboardList className="mr-0 text-lg" />
             <NavLink
               to="/AttendanceSheet"
               className="block rounded px-4 py-2 hover:bg-gray-100"
-              activeClassName="bg-blue-50 text-blue-700"
+              activeclassname="bg-blue-50 text-blue-700"
             >
               Attendance Sheet
             </NavLink>
@@ -38,7 +38,7 @@ const SideBar = () => {
             <NavLink
               to="/AdminDashBoard"
               className="block rounded px-4 py-2 hover:bg-gray-100"
-              activeClassName="bg-blue-50 text-blue-700"
+              activeclassname="bg-blue-50 text-blue-700"
             >
               Dashboard
             </NavLink>
@@ -48,7 +48,7 @@ const SideBar = () => {
             <NavLink
               to="/report"
               className="block rounded px-4 py-2 hover:bg-gray-100"
-              activeClassName="bg-blue-50 text-blue-700"
+              activeclassname="bg-blue-50 text-blue-700"
             >
               Report
             </NavLink>
@@ -63,7 +63,7 @@ const SideBar = () => {
             <NavLink
               to="/AdminDashBoard/Manage/Student"
               className="block rounded px-4 py-2 hover:bg-gray-100"
-              activeClassName="bg-blue-50 text-blue-700"
+              activeclassname="bg-blue-50 text-blue-700"
             >
               Student
             </NavLink>
@@ -78,7 +78,7 @@ const SideBar = () => {
             <NavLink
               to="/logout"
               className="block rounded px-4 py-2 hover:bg-gray-100"
-              activeClassName="bg-blue-50 text-blue-700"
+              activeclassname="bg-blue-50 text-blue-700"
             >
               Logout
             </NavLink>
