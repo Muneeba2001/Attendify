@@ -3,10 +3,8 @@ import { Outlet } from 'react-router-dom'
 
 const Manage = () => {
   return (
-    <div>
-      Manage 
-      <Outlet/>
-    </div>
+    
+     <Outlet/>
   )
 }
 

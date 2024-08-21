@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 
 const DashBoard = (props) => {
   return (
-    <div className="flex flex-col h-screen">
+    <div className="">
       
       {/* <div className="flex flex-1 justify-center items-center">
         <Outlet />
