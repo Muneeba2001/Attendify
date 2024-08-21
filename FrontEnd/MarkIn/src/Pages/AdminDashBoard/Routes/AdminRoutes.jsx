@@ -17,6 +17,9 @@ const AdminRoutes = () => {
      <Route path="Student" element = {<Student/>}/>
      <Route path="Employee" element = {<Employee/>} />
      </Route>
+     <Route path="/AdminDashBoard/Track" element = {<Track/>}>
+    <Route path="AttendanceSheet" element = {<AttendanceSheet/>} />
+     </Route>
     </Routes>
   );
 };
