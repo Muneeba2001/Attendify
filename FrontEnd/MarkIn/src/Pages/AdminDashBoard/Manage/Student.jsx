@@ -9,7 +9,8 @@ const Student = () => {
     const [subjectModal, setSubjectModal] = useState(false);
   return (
     <>
-    <div className="container mt-44">
+    <div className="main flex flex-col h-screen w-full p-10">
+    <div className="container mt-44 ">
       <h1 className='text-4xl text-blue-700 font-bold'>Student</h1>
       <nav className='flex justify-between'>
         <div>
@@ -69,6 +70,7 @@ const Student = () => {
           </tbody>
         </table>
       </div>
+    </div>
     </div>
     </>
   )
