@@ -9,10 +9,25 @@ import DashBoard from '../DashBoard';
 const AdminRoutes = () => {
   return (
     <Routes>
-      <Route path='/AdminDashBoard' element= {<DefaultLayout><DashBoard/></DefaultLayout>}/>
-      <Route path='/AdminDashBoard/Manage' element = {<DefaultLayout><Manage/></DefaultLayout>}/>
+      <Route path='/AdminDashBoard' element= {<DefaultLayout><DashBoard/></DefaultLayout>}>
+      <Route path='Manage' element = {<Manage/>}/>
+      </Route>
+     
       <Route path='/AdminDashBoard/Manage/Student' element = {<DefaultLayout><Student/></DefaultLayout>}/>
     </Routes>
+//     <Routes>
+//     {/* Admin Dashboard Route */}
+//     <Route path="/AdminDashBoard" element={<DefaultLayout />}>
+//       {/* Dashboard is the default route */}
+//       <Route index element={<DashBoard />} />
+
+//       {/* Manage Page nested under Admin Dashboard */}
+//       <Route path="Manage" element={<Manage />}>
+//         {/* Student Page nested under Manage */}
+//         <Route path="Student" element={<Student />} />
+//       </Route>
+//     </Route>
+//   </Routes>
   );
 };
 
