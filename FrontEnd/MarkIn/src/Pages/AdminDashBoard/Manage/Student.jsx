@@ -67,11 +67,11 @@ const Student = () => {
           sx={{backgroundColor:'#2962ff',
             color: 'white'
           }}
-          onClick={()=> {setSubjectModal (true)}}
+          // onClick={()=> {setSubjectModal (true)}}
           >
             Add Subject 
           </Button>
-          {subjectModal && <AddSubjectModal onClose = {()=> {setSubjectModal(false)}}/>}
+          {/* {subjectModal && <AddSubjectModal onClose = {()=> {setSubjectModal(false)}}/>} */}
         </div>
       </nav>
     </div>

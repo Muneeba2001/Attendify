@@ -9,35 +9,35 @@ import Student from "../Manage/Student";
 
 const AdminRoutes = () => {
   return (
-    <Routes>
-      <Route
-        path="/AdminDashBoard"
-        element={
-          <DefaultLayout>
-            <DashBoard />
-          </DefaultLayout>
-        }
-      >
-        <Route path="Manage" element={<Manage />} />
-      </Route>
+    // <Routes>
+    //   <Route
+    //     path="/AdminDashBoard"
+    //     element={
+    //       <DefaultLayout>
+    //         <DashBoard />
+    //       </DefaultLayout>
+    //     }
+    //   >
+    //     <Route path="Manage" element={<Manage />} />
+    //   </Route>
 
-      <Route
-        path="/AdminDashBoard/Manage/Student"
-        element={
-          <DefaultLayout>
-            <Student />
-          </DefaultLayout>
-        }
-      />
-      <Route
-        path="/AdminDashBoard/Manage/Employee"
-        element={
-          <DefaultLayout>
-            <Employee />
-          </DefaultLayout>
-        }
-      />
-    </Routes>
+    //   <Route
+    //     path="/AdminDashBoard/Manage/Student"
+    //     element={
+    //       <DefaultLayout>
+    //         <Student />
+    //       </DefaultLayout>
+    //     }
+    //   />
+    //   <Route
+    //     path="/AdminDashBoard/Manage/Employee"
+    //     element={
+    //       <DefaultLayout>
+    //         <Employee />
+    //       </DefaultLayout>
+    //     }
+    //   />
+    // </Routes>
     //     <Routes>
     //     {/* Admin Dashboard Route */}
     //     <Route path="/AdminDashBoard" element={<DefaultLayout />}>
@@ -51,6 +51,13 @@ const AdminRoutes = () => {
     //       </Route>
     //     </Route>
     //   </Routes>
+    <Routes>
+     <Route path="/AdminDashBoard" element = {<DefaultLayout><DashBoard/></DefaultLayout>}/>
+     <Route path="/AdminDashBoard/Manage" element = {<DefaultLayout><Manage/></DefaultLayout>} >
+     <Route path="Student" element = {<Student/>}/>
+     <Route path="Employee" element = {<Employee/>} />
+     </Route>
+    </Routes>
   );
 };
 
