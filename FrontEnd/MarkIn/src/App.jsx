@@ -45,20 +45,20 @@ function App() {
         {/* <Route  path="Track" element = {<Track/>}/> */}
 
         {/* </Route> */}
-        <Route
+        {/* <Route
           path="AttendanceSheet"
           element={
             <DefaultLayout>
               <AttendanceSheet />
             </DefaultLayout>
           }
-        />
+        /> */}
         <Route
           path="/UserAuth"
           element={
-            // <DefaultLayout>
-            <UserAuthPage />
-            // </DefaultLayout>
+            <DefaultLayout>
+              <UserAuthPage />
+            </DefaultLayout>
           }
         >
           <Route path="Register" element={<Register />} />
