@@ -14,11 +14,11 @@ import Analyze from "./Pages/AdminDashBoard/Analyze";
 
 import LoggingOut from "./Pages/AdminDashBoard/LoggingOut";
 
-//import Student from "./Pages/AdminDashBoard/Manage/Student";
-//import DashBoard from "./Pages/AdminDashBoard/DashBoard";
+import Student from "./Pages/AdminDashBoard/Manage/Student";
+import DashBoard from "./Pages/AdminDashBoard/DashBoard";
 import AdminRoutes from "./Pages/AdminDashBoard/Routes/AdminRoutes";
 
-//import Student from "./Pages/AdminDashBoard/Student";
+import Student from "./Pages/AdminDashBoard/Student";
 
 //import DefaultLayout from "./DefaultLayout/DefaultLayout";
 
@@ -26,7 +26,7 @@ import AdminRoutes from "./Pages/AdminDashBoard/Routes/AdminRoutes";
 function App() {
   return (
     <>
-     <AdminRoutes />
+      <AdminRoutes />
       <Routes>
 
      
@@ -38,17 +38,17 @@ function App() {
          <Route path = "/AdminDashBoard/Manage/Student" element = {<DefaultLayout><Student/></DefaultLayout>}/> */}
       
 
-        {/* <Route path="/AdminDashBoard" element={<DashBoard />}> /*}
+        <Route path="/AdminDashBoard" element={<DashBoard />}>
          {/* Manage */}
-         {/* <Route path="Manage" element = {<Manage/>}>
+         <Route path="Manage" element = {<Manage/>}>
         <Route path = "Student" element = {<DefaultLayout><Student/></DefaultLayout>}/>
          </Route>
-        </Route>  */}
+        </Route>
         {/* Track */}
          {/* Admin DashBoard */}
-         {/* <Route  path="Track" element = {<Track/>}/> */}
+         <Route  path="Track" element = {<Track/>}/>
         
-        {/* </Route> */}
+        </Route>
         <Route path="AttendanceSheet" element={<DefaultLayout><AttendanceSheet/></DefaultLayout>}/>
         <Route
           path="/UserAuth"
