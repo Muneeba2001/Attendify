@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Manage from "../../AdminDashBoard/Manage/Manage";
 import DefaultLayout from "../../DefaulLayout/DefaultLayout";
+import Manage from "../Manage/Manage";
 import DashBoard from "../DashBoard";
 import Employee from "../Manage/Employee";
 import Student from "../Manage/Student";
@@ -17,9 +17,8 @@ const AdminRoutes = () => {
             <DashBoard />
           </DefaultLayout>
         }
-      >
-        <Route path="Manage" element={<Manage />} />
-      </Route>
+      ></Route>
+      <Route path="Manage" element={<Manage />} />
 
       <Route
         path="/AdminDashBoard/Manage/Student"

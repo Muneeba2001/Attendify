@@ -1,4 +1,4 @@
-import Login from "./Pages/TeacherProtoType/Login";
+import Login from "./Pages/Login";
 import { Route, Routes } from "react-router-dom";
 import UserAuthPage from "./Pages/UserAuthPage";
 import ForgetPassword from "./Pages/TeacherProtoType/ForgetPassword";
@@ -14,41 +14,45 @@ import Analyze from "./Pages/AdminDashBoard/Analyze";
 
 import LoggingOut from "./Pages/AdminDashBoard/LoggingOut";
 
-import Student from "./Pages/AdminDashBoard/Manage/Student";
-import DashBoard from "./Pages/AdminDashBoard/DashBoard";
-//import AdminRoutes from "./Pages/AdminDashBoard/Routes/AdminRoutes";
+//import Student from "./Pages/AdminDashBoard/Manage/Student";
+//import DashBoard from "./Pages/AdminDashBoard/DashBoard";
+import AdminRoutes from "./Pages/AdminDashBoard/Routes/AdminRoutes";
+
+//import Student from "./Pages/AdminDashBoard/Student";
+
+//import DefaultLayout from "./DefaultLayout/DefaultLayout";
 
 function App() {
   return (
     <>
       <AdminRoutes />
       <Routes>
-        <Route path="/AdminDashBoard" element={<DashBoard />} />
+        {/* <Route path="/AdminDashBoard" element={<DashBoard/>} /> */}
 
         {/* Manage */}
+        {/* <Route path="/AdminDashBoard/Manage" element = {<DefaultLayout><Manage/></DefaultLayout>}>
+         </Route>
+         <Route path = "/AdminDashBoard/Manage/Student" element = {<DefaultLayout><Student/></DefaultLayout>}/> */}
+
+        {/* <Route path="/AdminDashBoard" element={<DashBoard />}> */}
+        {/* Manage */}
+        {/* <Route path="Manage" element = {<Manage/>}>
+        <Route path = "Student" element = {<DefaultLayout><Student/></DefaultLayout>}/>
+         </Route>  */}
+
+        {/* Track */}
+        {/* Admin DashBoard */}
+        {/* <Route  path="Track" element = {<Track/>}/> */}
+
+        {/* </Route> */}
         <Route
-          path="/AdminDashBoard/Manage"
+          path="AttendanceSheet"
           element={
             <DefaultLayout>
-              <Manage />
-            </DefaultLayout>
-          }
-        ></Route>
-        <Route
-          path="/AdminDashBoard/Manage/Student"
-          element={
-            <DefaultLayout>
-              <Student />
+              <AttendanceSheet />
             </DefaultLayout>
           }
         />
-
-        {/* Track */}
-         {/* Admin DashBoard */}
-         <Route  path="Track" element = {<Track/>}/>
-        
-        </Route>
-        <Route path="AttendanceSheet" element={<DefaultLayout><AttendanceSheet/></DefaultLayout>}/>
         <Route
           path="/UserAuth"
           element={
