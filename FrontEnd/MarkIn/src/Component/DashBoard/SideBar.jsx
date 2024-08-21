@@ -15,7 +15,9 @@ const SideBar = () => {
         <nav className="flex w-full flex-col justify-between font-bold text-sky-900">
           <div className="mb-4 mt-2 text-gray-400">
             {/* <h3 className="text-sm">TRACK</h3> */}
-            <NavLink className="text-sm" to="/AdminDasBoard/Track">TRACK</NavLink>
+            <NavLink className="text-sm" to="/AdminDasBoard/Track">
+              TRACK
+            </NavLink>
           </div>
           <div className="mb-2 flex w-full items-center">
             <HiOutlineClipboardList className="mr-0 text-lg" />
@@ -29,12 +31,14 @@ const SideBar = () => {
           </div>
           <div className="mb-4 mt-4 text-gray-400">
             {/* <h3 className="text-sm">ANALYZE</h3> */}
-            <NavLink to = "/AdminDashBoard/Analyze" className="text-sm">ANALYZE</NavLink>
+            <NavLink to="/AdminDashBoard/Analyze" className="text-sm">
+              ANALYZE
+            </NavLink>
           </div>
           <div className="mb-2 flex w-full items-center">
             <FaChartBar className="mr-0 text-lg" />
             <NavLink
-              to="DashBoard"
+              to="/AdminDashBoard"
               className="block rounded px-4 py-2 hover:bg-gray-100"
               activeclassname="bg-blue-50 text-blue-700"
             >
@@ -53,7 +57,9 @@ const SideBar = () => {
           </div>
           <div className="mb-4 mt-4 text-gray-400">
             {/* <h3 className="text-sm">MANAGE</h3> */}
-            <NavLink to="/AdminDashBoard/Manage" className="text-sm">MANAGE</NavLink>
+            <NavLink to="/AdminDashBoard/Manage" className="text-sm">
+              MANAGE
+            </NavLink>
           </div>
           <div className="mb-2 flex w-full items-center">
             <FaUserGraduate className="mr-0 text-lg" />
@@ -65,9 +71,21 @@ const SideBar = () => {
               Student
             </NavLink>
           </div>
+          <div className="mb-2 flex w-full items-center">
+            <FaUserGraduate className="mr-0 text-lg" />
+            <NavLink
+              to="/AdminDashBoard/Manage/Employee"
+              className="block rounded px-4 py-2 hover:bg-gray-100"
+              activeclassname="bg-blue-50 text-blue-700"
+            >
+              Employee
+            </NavLink>
+          </div>
           <div className="mb-4 mt-4 text-gray-400">
             {/* <h3 className="text-sm">LOGGING OUT</h3> */}
-            <NavLink to="/AdminDashBoard/LoggingOut" className="text-sm">LOGGING OUT</NavLink>
+            <NavLink to="/AdminDashBoard/LoggingOut" className="text-sm">
+              LOGGING OUT
+            </NavLink>
           </div>
 
           <div className="mb-2 flex w-full items-center">
