@@ -43,7 +43,7 @@ function App() {
          <Route path="Manage" element = {<Manage/>}>
         <Route path = "Student" element = {<DefaultLayout><Student/></DefaultLayout>}/>
          </Route>
-
+        </Route>
         {/* Track */}
          {/* Admin DashBoard */}
          {/* <Route  path="Track" element = {<Track/>}/> */}
