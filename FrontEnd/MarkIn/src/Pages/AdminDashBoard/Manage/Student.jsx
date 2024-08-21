@@ -4,6 +4,7 @@ import { FaEdit, FaTrash, FaTimes } from "react-icons/fa";
 import ManageBreadCrumb from "../../../Component/ManageBreadCrumb";
 import { Button } from "@mui/material";
 
+
 const Student = () => {
   const [students, setStudents] = useState([]);
   const [newStudent, setNewStudent] = useState({
@@ -70,7 +71,7 @@ const Student = () => {
           >
             Add Subject 
           </Button>
-          {subjectModal && <AddSubjectModal onClose = {()=> {setSubjectModal(false)}}/>}
+          {/* {subjectModal && <AddSubjectModal onClose = {()=> {setSubjectModal(false)}}/>} */}
         </div>
       </nav>
     </div>
