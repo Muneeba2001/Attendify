@@ -6,33 +6,20 @@ import Manage from "../Manage/Manage";
 import DashBoard from "../DashBoard";
 import Employee from "../Manage/Employee";
 import Student from "../Manage/Student";
+import Track from "../Track";
+import AttendanceSheet from "../../AdminProtoType/AttendanceSheet";
 
 const AdminRoutes = () => {
   return (
     <Routes>
-      {/* Admin Dashboard Route */}
-      <Route
-        path="/AdminDashBoard"
-        element={
-          <DefaultLayout>
-            <DashBoard />
-          </DefaultLayout>
-        }
-      />
-
-      {/* Manage Route Nested under Admin Dashboard */}
-      <Route
-        path="/AdminDashBoard/Manage"
-        element={
-          <DefaultLayout>
-            <Manage />
-          </DefaultLayout>
-        }
-      >
-        {/* Nested Routes under Manage */}
-        <Route path="Student" element={<Student />} />
-        <Route path="Employee" element={<Employee />} />
-      </Route>
+     <Route path="/AdminDashBoard" element = {<DefaultLayout><DashBoard/></DefaultLayout>}/>
+     <Route path="/AdminDashBoard/Manage" element = {<DefaultLayout><Manage/></DefaultLayout>} >
+     <Route path="Student" element = {<Student/>}/>
+     <Route path="Employee" element = {<Employee/>} />
+     </Route>
+     <Route path="/AdminDashBoard/Track" element = {<Track/>}>
+    <Route path="AttendanceSheet" element = {<AttendanceSheet/>} />
+     </Route>
     </Routes>
   );
 };
