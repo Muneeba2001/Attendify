@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import UserAuthPage from "./Pages/UserAuthPage";
 import ForgetPassword from "./Pages/TeacherProtoType/ForgetPassword";
 import DefaultLayout from "./Pages/DefaulLayout/DefaultLayout";
-import DashBoard from "./Pages/AdminDashBoard/DashBoard";
 import Register from "./Pages/Register";
 import StudentLogin from "./Pages/StudentProtoType/student-login";
 import StudentForgetPassword from "./Pages/StudentProtoType/StudentForgetPassword";
@@ -14,43 +13,47 @@ import Track from "./Pages/AdminDashBoard/Track";
 import Analyze from "./Pages/AdminDashBoard/Analyze";
 import Manage from "./Pages/AdminDashBoard/Manage/Manage";
 import LoggingOut from "./Pages/AdminDashBoard/LoggingOut";
-<<<<<<< HEAD
 import Student from "./Pages/AdminDashBoard/Manage/Student";
 import DashBoard from "./Pages/AdminDashBoard/DashBoard";
-import AdminRoutes from "./Pages/AdminDashBoard/Routes/AdminRoutes";
-=======
-import Student from "./Pages/AdminDashBoard/Student";
-
-//import DefaultLayout from "./DefaultLayout/DefaultLayout";
->>>>>>> ad50dbe89a2470098deb8409e01a03b7cd9eed57
+//import AdminRoutes from "./Pages/AdminDashBoard/Routes/AdminRoutes";
 
 function App() {
   return (
     <>
-     <AdminRoutes />
+      {/* <AdminRoutes />*/}
       <Routes>
-<<<<<<< HEAD
-     
-        {/* <Route path="/AdminDashBoard" element={<DashBoard/>} /> */}
-        
-         {/* Manage */}
-         {/* <Route path="/AdminDashBoard/Manage" element = {<DefaultLayout><Manage/></DefaultLayout>}>
-         </Route>
-         <Route path = "/AdminDashBoard/Manage/Student" element = {<DefaultLayout><Student/></DefaultLayout>}/> */}
-      
-=======
-        <Route path="/AdminDashBoard" element={<DashBoard />}>
-         {/* Manage */}
-         <Route path="Manage" element = {<Manage/>}>
-        <Route path = "Student" element = {<DefaultLayout><Student/></DefaultLayout>}/>
-         </Route>
->>>>>>> ad50dbe89a2470098deb8409e01a03b7cd9eed57
+        <Route path="/AdminDashBoard" element={<DashBoard />} />
+
+        {/* Manage */}
+        <Route
+          path="/AdminDashBoard/Manage"
+          element={
+            <DefaultLayout>
+              <Manage />
+            </DefaultLayout>
+          }
+        ></Route>
+        <Route
+          path="/AdminDashBoard/Manage/Student"
+          element={
+            <DefaultLayout>
+              <Student />
+            </DefaultLayout>
+          }
+        />
+
         {/* Track */}
-         {/* Admin DashBoard */}
-         <Route  path="Track" element = {<Track/>}/>
-        
-        </Route>
-        <Route path="AttendanceSheet" element={<DefaultLayout><AttendanceSheet/></DefaultLayout>}/>
+        {/* Admin DashBoard */}
+        <Route path="Track" element={<Track />} />
+
+        <Route
+          path="AttendanceSheet"
+          element={
+            <DefaultLayout>
+              <AttendanceSheet />
+            </DefaultLayout>
+          }
+        />
         <Route
           path="/UserAuth"
           element={
