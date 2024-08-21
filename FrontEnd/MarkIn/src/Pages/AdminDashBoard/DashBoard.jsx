@@ -1,10 +1,17 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import Header from "../../Component/DashBoard/Header";
+import SideBar from "../../Component/DashBoard/SideBar";
 import Body from "../../Component/DashBoard/Body";
+import { Outlet } from "react-router-dom";
 
-const DashBoard = () => {
+const DashBoard = (props) => {
   return (
     <div className="flex flex-col h-screen">
+      
+      {/* <div className="flex flex-1 justify-center items-center">
+        <Outlet />
+        <Body/>
+      </div> */}
       <Body/>
       <Outlet/>
     </div>

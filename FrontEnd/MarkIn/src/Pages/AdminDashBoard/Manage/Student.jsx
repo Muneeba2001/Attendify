@@ -1,16 +1,60 @@
-import React, { useState } from 'react'
-import { FaEdit, FaTrash } from 'react-icons/fa'
-import ManageBreadCrumb from '../../../Component/ManageBreadCrumb';
-import { Button } from '@mui/material';
-import AddSubjectModal from '../../../Component/AddSubjectModal';
-// student model for adding subject and searching data throughout the page 
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { FaEdit, FaTrash, FaTimes } from "react-icons/fa";
+import ManageBreadCrumb from "../../../Component/ManageBreadCrumb";
+import { Button } from "@mui/material";
+
 const Student = () => {
-  
-    const [subjectModal, setSubjectModal] = useState(false);
+  const [students, setStudents] = useState([]);
+  const [newStudent, setNewStudent] = useState({
+    Student_name: "",
+    course: "",
+    email: "",
+    username: "",
+    password: "",
+  });
+  const [popupodel, setpopupodel] = useState(false);
+
+  useEffect(() => {
+    fetchStudent();
+  }, []);
+
+  const fetchStudent = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/student");
+      setStudents(response.data.students);
+    } catch (error) {
+      console.log("Error fetching: ", error);
+    }
+  };
+
+  const handleStudent = async () => {
+    console.log("New student data:", newStudent);
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/student",
+        newStudent,
+      );
+
+      setStudents([...students, response.data.students]);
+      console.log("response data:", response.data.students);
+      setpopupodel(false);
+    } catch (error) {
+      console.log("Error adding data: ", error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setNewStudent({ ...newStudent, [e.target.name]: e.target.value });
+  };
+
+  const onClose = () => {
+    setpopupodel(false);
+  };
+
   return (
     <>
-    <div className="main flex flex-col h-screen w-full p-10">
-    <div className="container mt-44 ">
+    <div className="container mt-44">
       <h1 className='text-4xl text-blue-700 font-bold'>Student</h1>
       <nav className='flex justify-between'>
         <div>
@@ -33,10 +77,16 @@ const Student = () => {
     <br /> <br />
     <div className='bg-white rounded-md w-full' >
         <div className="heading p-5">
-            <nav className='flex justify-between'>
-                <h1 className='text-blue-900 font-bold text-2xl'>Current Student</h1>
-                <input type="text" name="" id="" placeholder='Search' className='border-b-2 border-black'/>
-            </nav>
+          <nav className="flex justify-between">
+            <h1 className="text-2xl font-bold text-blue-900">
+              Current Student
+            </h1>
+            <input
+              type="text"
+              placeholder="Search"
+              className="border-b-2 border-black"
+            />
+          </nav>
         </div>
         <div className="table w-full p-4">
         <table className='w-full text-left border-collapse'>
@@ -71,9 +121,8 @@ const Student = () => {
         </table>
       </div>
     </div>
-    </div>
     </>
-  )
-}
+  );
+};
 
-export default Student
+export default Student;

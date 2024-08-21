@@ -1,15 +1,11 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React from 'react'
 
 const Manage = () => {
   return (
     <div>
       Manage
-      <div>
-        <Outlet />
-      </div>
     </div>
-  );
-};
+  )
+}
 
-export default Manage;
+export default Manage

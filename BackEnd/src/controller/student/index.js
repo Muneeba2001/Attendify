@@ -46,6 +46,9 @@ const studentController = {
       res
         .status(200)
         .json({ message: "Student created successfully", student: data });
+    //   if (students) {
+    //     res.status(200).json({ message: "Student exist" });
+    //   }
     } catch (error) {
       console.error("Error saving student:", error); // Log the actual error
       res.status(500).json({ message: "Internal Server Error", error });
