@@ -76,7 +76,7 @@ const Student = () => {
       </nav>
     </div>
     <br /> <br />
-    <div className='bg-white rounded-md w-full' >
+    <div className='bg-white rounded-md w-full mt-0' >
         <div className="heading p-5">
           <nav className="flex justify-between">
             <h1 className="text-2xl font-bold text-blue-900">
