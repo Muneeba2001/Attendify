@@ -4,7 +4,8 @@ import { NavLink } from "react-router-dom";
 
 const Body = () => {
   return (
-    <div className="container min-h-screen px-2">
+    // min-h-screen px-2 -> container
+    <div className="container">
       <div className="heading px-10 py-4">
         <h1 className="text-2xl font-bold text-blue-700">Dashboard</h1>
         <div className="cursor-pointer text-gray-500">

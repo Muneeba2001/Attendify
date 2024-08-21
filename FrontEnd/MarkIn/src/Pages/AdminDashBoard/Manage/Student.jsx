@@ -4,7 +4,6 @@ import { FaEdit, FaTrash, FaTimes } from "react-icons/fa";
 import ManageBreadCrumb from "../../../Component/ManageBreadCrumb";
 import { Button } from "@mui/material";
 
-
 const Student = () => {
   const [students, setStudents] = useState([]);
   const [newStudent, setNewStudent] = useState({
@@ -55,28 +54,25 @@ const Student = () => {
 
   return (
     <>
-    <div className="container mt-44">
-      <h1 className='text-4xl text-blue-700 font-bold'>Student</h1>
-      <nav className='flex justify-between'>
-        <div>
-          <ManageBreadCrumb/>
-        </div>
-        <div>
-          <Button
-          variant='contained'
-          sx={{backgroundColor:'#2962ff',
-            color: 'white'
-          }}
-          onClick={()=> {setSubjectModal (true)}}
-          >
-            Add Subject 
-          </Button>
-          {subjectModal && <AddSubjectModal onClose = {()=> {setSubjectModal(false)}}/>}
-        </div>
-      </nav>
-    </div>
-    <br /> <br />
-    <div className='bg-white rounded-md w-full mt-0' >
+      <div className="container mt-44">
+        <h1 className='text-4xl text-blue-700 font-bold'>Student</h1>
+        <nav className='flex justify-between'>
+          <div>
+            <ManageBreadCrumb/>
+          </div>
+          <div>
+            <Button
+              variant='contained'
+              sx={{backgroundColor:'#2962ff', color: 'white'}}
+              onClick={() => setpopupodel(true)}  // Update this line
+            >
+              Add Subject 
+            </Button>
+          </div>
+        </nav>
+      </div>
+      <br /> <br />
+      <div className='bg-white rounded-md w-full mt-0' >
         <div className="heading p-5">
           <nav className="flex justify-between">
             <h1 className="text-2xl font-bold text-blue-900">
