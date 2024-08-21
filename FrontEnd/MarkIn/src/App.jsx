@@ -15,6 +15,7 @@ import Manage from "./Pages/AdminDashBoard/Manage/Manage";
 import LoggingOut from "./Pages/AdminDashBoard/LoggingOut";
 import Student from "./Pages/AdminDashBoard/Manage/Student";
 import DashBoard from "./Pages/AdminDashBoard/DashBoard";
+import Employee from "./Pages/AdminDashBoard/Manage/Employee";
 //import AdminRoutes from "./Pages/AdminDashBoard/Routes/AdminRoutes";
 
 function App() {
@@ -38,6 +39,14 @@ function App() {
           element={
             <DefaultLayout>
               <Student />
+            </DefaultLayout>
+          }
+        />
+        <Route
+          path="/AdminDashBoard/Manage/Employee"
+          element={
+            <DefaultLayout>
+              <Employee />
             </DefaultLayout>
           }
         />
