@@ -6,16 +6,14 @@ import { Outlet } from "react-router-dom";
 
 const DashBoard = (props) => {
   return (
-    <div>
-      <div className="bg-blue-300"></div>
-      <Header />
-      {props.children}
-      <div className="class flex">
-        <SideBar />
-        <Outlet/>
-        <Body />
-       
-      </div>
+    <div className="flex flex-col h-screen">
+      
+      {/* <div className="flex flex-1 justify-center items-center">
+        <Outlet />
+        <Body/>
+      </div> */}
+      <Body/>
+      <Outlet/>
     </div>
   );
 };
