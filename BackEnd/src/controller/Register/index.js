@@ -34,6 +34,14 @@ const registerController = {
       res.status(500).json({ message: "Internal Server Error" });
     }
   },
+  getAllUser: async (req, res) => {
+    try {
+      const employees = await userModel.find();
+      res.json(employees);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  },
 
   // User login
   login: async (req, res) => {
