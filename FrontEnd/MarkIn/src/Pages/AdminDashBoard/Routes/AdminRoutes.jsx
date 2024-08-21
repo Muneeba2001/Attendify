@@ -6,6 +6,8 @@ import DefaultLayout from "../../DefaulLayout/DefaultLayout";
 import DashBoard from "../DashBoard";
 import Employee from "../Manage/Employee";
 import Student from "../Manage/Student";
+import Track from "../Track";
+import AttendanceSheet from "../../AdminProtoType/AttendanceSheet";
 
 const AdminRoutes = () => {
   return (
@@ -55,8 +57,11 @@ const AdminRoutes = () => {
      <Route path="/AdminDashBoard" element = {<DefaultLayout><DashBoard/></DefaultLayout>}/>
      <Route path="/AdminDashBoard/Manage" element = {<DefaultLayout><Manage/></DefaultLayout>} >
      <Route path="Student" element = {<Student/>}/>
-     <Route path="Employee" element = {<Employee/>} />
+     <Route path="Employee" element = {<Employee/>} />  </Route>
+     <Route path="/AdminDashBoard/Track" element  = {<DefaultLayout><Track/></DefaultLayout>} >
+      <Route path="AttendanceSheet" element = {<AttendanceSheet/>}/>
      </Route>
+    
     </Routes>
   );
 };
