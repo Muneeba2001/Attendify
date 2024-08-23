@@ -2,9 +2,9 @@ import { Formik, Form, Field } from "formik";
 import React from "react";
 import axios from "axios";
 import Button from "@mui/material/Button";
-import LoginSchema from "../../schema/form/Login";
+import LoginSchema from "../schema/form/Login";
 import { useNavigate, NavLink } from "react-router-dom";
-import Header from "../../Component/Header";
+import Header from "../Component/Header";
 const initialValues = {
   email: "",
   password: "",
@@ -21,7 +21,7 @@ const Login = () => {
       })
       .then((result) => {
         console.log(result);
-        navigate("/Home");
+        navigate("/AdminDashboard");
       })
       .catch((err) => console.log(err));
   };

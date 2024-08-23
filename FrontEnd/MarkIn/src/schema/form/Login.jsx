@@ -1,5 +1,4 @@
 import * as yup from "yup";
-import Login from "../../Pages/TeacherProtoType/Login";
 
 export const LoginSchema = yup.object({
   email: yup

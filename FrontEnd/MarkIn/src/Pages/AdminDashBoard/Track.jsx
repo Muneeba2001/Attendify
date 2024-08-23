@@ -1,9 +1,10 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 
 const Track = () => {
   return (
     <div>
-      Tracking
+      <Outlet/>
     </div>
   )
 }
