@@ -36,7 +36,7 @@ const AttendanceSheet = () => {
     <>
     <TrackBreadCrumb />
       {/* selection */}
-      <div className="container bg-white p-6 flex flex-col space-y-4 w-full">
+      <div className="container bg-white p-6  space-y-4 w-full">
         <Formik
           initialValues={{ subject: '', section: '', date: '' }}
           onSubmit={(values, { setSubmitting }) => {
