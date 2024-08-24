@@ -12,6 +12,7 @@ const Report = () => {
   return (
     <>
      <div>
+      <h1 className='text-blue-800 font-bold text-3xl mb-5'>Employee Report</h1>
       <ReportBreadCrumb />
      </div>
       <Formik
