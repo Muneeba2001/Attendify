@@ -8,6 +8,9 @@ import Employee from "../Manage/Employee";
 import Student from "../Manage/Student";
 import Track from "../Track";
 import AttendanceSheet from "../../AdminProtoType/AttendanceSheet";
+import Analyze from "../../AdminDashBoard/Analyze/Analyze";
+import Report from "../Analyze/Report";
+
 
 const AdminRoutes = () => {
   return (
@@ -19,7 +22,11 @@ const AdminRoutes = () => {
      </Route>
      <Route path="/AdminDashBoard/Track" element = {<DefaultLayout><Track/></DefaultLayout>}>
     <Route path="AttendanceSheet" element = {<AttendanceSheet/>} />
-     </Route>
+    </Route>
+    <Route path="/AdminDashBoard/Analyze" element = {<DefaultLayout><Analyze/></DefaultLayout>}>
+     <Route path="Report" element = {<Report/>}/>
+    </Route>
+   
     </Routes>
   );
 };
