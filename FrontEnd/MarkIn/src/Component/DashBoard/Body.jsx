@@ -1,7 +1,7 @@
 import React from "react";
 
 import { NavLink } from "react-router-dom";
-import AdminDashBoardCrumb from "../AdminDashBoardCrumb";
+import AdminDashBoardCrumb from "../BreadCrumbs/AdminDashBoardCrumb";
 
 const Body = () => {
   return (

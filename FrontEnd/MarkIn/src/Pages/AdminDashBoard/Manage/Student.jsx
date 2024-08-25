@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaEdit, FaTrash, FaTimes } from "react-icons/fa";
-import ManageBreadCrumb from "../../../Component/ManageBreadCrumb";
+import ManageBreadCrumb from "../../../Component/BreadCrumbs/ManageBreadCrumb";
 import { Button } from "@mui/material";
 
 const Student = () => {
