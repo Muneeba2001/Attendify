@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import { Field, Formik, Form } from 'formik';
 import { useState } from 'react';
 import React from 'react';
-import ReportBreadCrumb from '../../../Component/ReportBreadCrumb';
+import ReportBreadCrumb from '../../../Component/BreadCrumbs/ReportBreadCrumb';
 
 
 const Report = () => {
