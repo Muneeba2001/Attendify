@@ -33,7 +33,7 @@ const registerController = {
       console.error(error);
       res.status(500).json({ message: "Internal Server Error" });
     }
-  },
+  }, // get all register users
   getAllUser: async (req, res) => {
     try {
       const employees = await userModel.find();
@@ -42,7 +42,38 @@ const registerController = {
       res.status(500).json({ message: error.message });
     }
   },
-
+  // update register usesrs
+  update: async (req, res) => {
+    try {
+      let { id } = req.params;
+      //   console.log(req.params);
+      const payload = req.body;
+      console.log(req.body);
+      const users = await userModel.findByIdAndUpdate(id, payload, {
+        new: true,
+        runValidator: true,
+      });
+      if (!users) {
+        res.status(404).json({ message: "User not found. " });
+      }
+      res.status(200).json({ message: "User: ", users });
+    } catch (error) {
+      res.status(500).json({ message: "Internal Server Error", error });
+    }
+  },
+  // delete register user
+  delete: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const users = await userModel.findByIdAndDelete(id);
+      if (!users) {
+        res.status(404).json({ message: "User not found. " });
+      }
+      res.status(200).json({ message: "User: ", users });
+    } catch (error) {
+      res.status(500).json({ message: "Internal Server Error", error });
+    }
+  },
   // User login
   login: async (req, res) => {
     try {
@@ -67,7 +98,6 @@ const registerController = {
       const data = {
         id: userCheck._id,
         email: userCheck.email,
-        // Do not send the password back in the response
       };
 
       res.status(200).json({ message: "Login successful", data });
