@@ -7,6 +7,7 @@ import { Button } from "@mui/material";
 const Student = () => {
   const [students, setStudents] = useState([]);
   const [newStudent, setNewStudent] = useState({
+    _id: "",
     Student_name: "",
     course: "",
     email: "",
@@ -22,7 +23,11 @@ const Student = () => {
   const fetchStudent = async () => {
     try {
       const response = await axios.get("http://localhost:3000/student");
-      setStudents(response.data.students);
+      if (response.data.students) {
+        setStudents(response.data.students);
+      } else {
+        setStudents([]);
+      }
     } catch (error) {
       console.log("Error fetching: ", error);
     }
@@ -31,16 +36,62 @@ const Student = () => {
   const handleStudent = async () => {
     console.log("New student data:", newStudent);
     try {
-      const response = await axios.post(
-        "http://localhost:3000/student",
-        newStudent,
-      );
-
-      setStudents([...students, response.data.students]);
-      console.log("response data:", response.data.students);
+      let response;
+      if (newStudent._id) {
+        response = await handleEdit(newStudent._id);
+      } else {
+        response = await axios.post(
+          "http://localhost:3000/student",
+          newStudent,
+        );
+        setStudents([...students, response.data.students]);
+        console.log("response data:", response.data.students);
+      }
+      setNewStudent({
+        _id: "",
+        Student_name: "",
+        course: "",
+        email: "",
+        username: "",
+        password: "",
+      });
       setpopupodel(false);
     } catch (error) {
       console.log("Error adding data: ", error);
+    }
+  };
+
+  const handleEdit = async (id) => {
+    try {
+      const response = await axios.put(
+        ` http://localhost:3000/student/${id}`,
+        newStudent,
+      );
+      setStudents(
+        students.map((students) =>
+          students._id === id ? response.data.students : students,
+        ),
+      );
+      setNewStudent({
+        _id: "",
+        Student_name: "",
+        course: "",
+        email: "",
+        username: "",
+        password: "",
+      });
+      setpopupodel(false);
+    } catch (error) {
+      console.log("Error in editing: ", error);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3000/student/${id}`);
+      setStudents(students.filter((student) => student._id !== id));
+    } catch (error) {
+      console.log("Error in deleting: ", error);
     }
   };
 
@@ -68,7 +119,7 @@ const Student = () => {
                 setpopupodel(true);
               }}
             >
-              Add Subject
+              Add Student
             </Button>
           </div>
         </nav>
@@ -90,37 +141,44 @@ const Student = () => {
         <div className="table w-full p-4">
           <table className="w-full border-collapse text-left">
             <thead>
-              <tr className="bg-gray-200">
-                <th className="p-2">#</th>
-                <th className="p-2">Student Name</th>
-                <th className="p-2">Course</th>
-                <th className="p-2">Email</th>
-                <th className="p-2">Username</th>
-                <th className="p-2">Password</th>
-                <th className="p-2">Action</th>
+              <tr className="w-full bg-gray-200">
+                <th className="border-b px-4 py-2">#</th>
+                <th className="border-b px-4 py-2">Student Name</th>
+                <th className="border-b px-4 py-2">Course</th>
+                <th className="border-b px-4 py-2">Email</th>
+                <th className="border-b px-4 py-2">Username</th>
+                <th className="border-b px-4 py-2">Password</th>
+                <th className="border-b px-4 py-2">Action</th>
               </tr>
             </thead>
             <tbody>
               {students && students.length > 0 ? (
                 students.map((student, index) => (
-                  <tr key={student._id}>
-                    <td>{index + 1}</td>
-                    <td>{student.Student_name}</td>
-                    <td>{student.course}</td>
-                    <td>{student.email}</td>
-                    <td>{student.username}</td>
-                    <td>{student.password}</td>
+                  <tr key={index}>
+                    <td className="border-b px-4 py-2">{index + 1}</td>
+                    <td className="border-b px-4 py-2">
+                      {student.Student_name}
+                    </td>
+                    <td className="border-b px-4 py-2">{student.course}</td>
+                    <td className="border-b px-4 py-2">{student.email}</td>
+                    <td className="border-b px-4 py-2">{student.username}</td>
+                    <td className="border-b px-4 py-2">{student.password}</td>
                     <td>
                       <div className="icons flex space-x-3">
                         <button>
                           <FaEdit
                             title="edit"
+                            onClick={() => {
+                              setNewStudent(student);
+                              setpopupodel(true);
+                            }}
                             className="text-lg text-blue-700"
                           />
                         </button>
                         <button>
                           <FaTrash
                             title="delete"
+                            onClick={() => handleDelete(student._id)}
                             className="text-lg text-red-900"
                           />
                         </button>
@@ -128,6 +186,12 @@ const Student = () => {
                     </td>
                   </tr>
                 ))
+              ) : students.length === 0 ? (
+                <tr>
+                  <td colSpan="7" className="p-4 text-center">
+                    Loading students...
+                  </td>
+                </tr>
               ) : (
                 <tr>
                   <td colSpan="7" className="p-4 text-center">

@@ -1,84 +1,58 @@
-import Login from "./Pages/Login";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
+import DefaultLayout from "./Pages/DefaulLayout/DefaultLayout";
 import UserAuthPage from "./Pages/UserAuthPage";
 import ForgetPassword from "./Pages/TeacherProtoType/ForgetPassword";
-import DefaultLayout from "./Pages/DefaulLayout/DefaultLayout";
 import Register from "./Pages/Register";
+import Login from "./Pages/Login";
 import StudentLogin from "./Pages/StudentProtoType/student-login";
 import StudentForgetPassword from "./Pages/StudentProtoType/StudentForgetPassword";
 import AdminLogin from "./Pages/AdminProtoType/AdminLogin";
 import AdminForgetPassword from "./Pages/AdminProtoType/AdminForgetPassword";
+<<<<<<< HEAD
+import Analyze from "./Pages/AdminDashBoard/Analyze";
+=======
 
 
+>>>>>>> ce68278d35a9a8a313d67217c3408296a25e92de
 import LoggingOut from "./Pages/AdminDashBoard/LoggingOut";
-
-//import Student from "./Pages/AdminDashBoard/Manage/Student";
-//import DashBoard from "./Pages/AdminDashBoard/DashBoard";
 import AdminRoutes from "./Pages/AdminDashBoard/Routes/AdminRoutes";
-
-//import Student from "./Pages/AdminDashBoard/Student";
-
-//import DefaultLayout from "./DefaultLayout/DefaultLayout";
 
 function App() {
   return (
-    <>
-      <AdminRoutes />
-      <Routes>
-        {/* <Route path="/AdminDashBoard" element={<DashBoard/>} /> */}
-
-        {/* Manage */}
-        {/* <Route path="/AdminDashBoard/Manage" element = {<DefaultLayout><Manage/></DefaultLayout>}>
-         </Route>
-         <Route path = "/AdminDashBoard/Manage/Student" element = {<DefaultLayout><Student/></DefaultLayout>}/> */}
-
-        {/* <Route path="/AdminDashBoard" element={<DashBoard />}> */}
-        {/* Manage */}
-        {/* <Route path="Manage" element = {<Manage/>}>
-        <Route path = "Student" element = {<DefaultLayout><Student/></DefaultLayout>}/>
-         </Route>  */}
-
-        {/* Track */}
-        {/* Admin DashBoard */}
-        {/* <Route  path="Track" element = {<Track/>}/> */}
-
-        {/* </Route> */}
-        {/* <Route
-          path="AttendanceSheet"
-          element={
-            <DefaultLayout>
-              <AttendanceSheet />
-            </DefaultLayout>
-          }
-        /> */}
+    <Routes>
+      {/* User Authentication Routes */}
+      <Route
+        path="/UserAuth"
+        element={
+          <DefaultLayout>
+            <UserAuthPage />
+          </DefaultLayout>
+        }
+      >
+        <Route path="Register" element={<Register />} />
+        <Route path="Login" element={<Login />} />
+        <Route path="ForgetPassword" element={<ForgetPassword />} />
+        <Route path="StudentLogin" element={<StudentLogin />} />
         <Route
-          path="/UserAuth"
-          element={
-            <DefaultLayout>
-              <UserAuthPage />
-            </DefaultLayout>
-          }
-        >
-          <Route path="Register" element={<Register />} />
-          {/* TeacherLogin */}
-          <Route path="Login" element={<Login />} />
-          <Route path="ForgetPassword" element={<ForgetPassword />} />
-          {/* StudentLogin */}
-          <Route path="StudentLogin" element={<StudentLogin />} />
-          <Route
-            path="StudentForgetPassword"
-            element={<StudentForgetPassword />}
-          />
-          {/* AdminLogin */}
-          <Route path="AdminLogin" element={<AdminLogin />} />
-          <Route path="AdminForgetPassword" element={<AdminForgetPassword />} />
-        </Route>
+          path="StudentForgetPassword"
+          element={<StudentForgetPassword />}
+        />
+        <Route path="AdminLogin" element={<AdminLogin />} />
+        <Route path="AdminForgetPassword" element={<AdminForgetPassword />} />
+      </Route>
 
+<<<<<<< HEAD
+      {/* Admin Dashboard Routes */}
+      <Route path="/*" element={<AdminRoutes />} />
+=======
     
+>>>>>>> ce68278d35a9a8a313d67217c3408296a25e92de
 
-        <Route path="/AdminDashBoard/LoggingOut" element={<LoggingOut />} />
-      </Routes>
-    </>
+      {/* Additional Admin Routes */}
+      <Route path="/AdminDashBoard/Analyze" element={<Analyze />} />
+      <Route path="/AdminDashBoard/LoggingOut" element={<LoggingOut />} />
+    </Routes>
   );
 }
 

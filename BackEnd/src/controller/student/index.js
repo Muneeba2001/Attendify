@@ -46,9 +46,9 @@ const studentController = {
       res
         .status(200)
         .json({ message: "Student created successfully", student: data });
-    //   if (students) {
-    //     res.status(200).json({ message: "Student exist" });
-    //   }
+      //   if (students) {
+      //     res.status(200).json({ message: "Student exist" });
+      //   }
     } catch (error) {
       console.error("Error saving student:", error); // Log the actual error
       res.status(500).json({ message: "Internal Server Error", error });
@@ -63,7 +63,7 @@ const studentController = {
       //   console.log(req.body);
       const student = await studentModel.findByIdAndUpdate(id, payload, {
         new: true,
-        runvalidator: true,
+        runValidator: true,
       });
       if (!student) {
         res.status(404).json({ message: "Student not found. " });
