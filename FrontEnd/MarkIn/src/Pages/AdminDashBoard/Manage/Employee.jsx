@@ -47,16 +47,17 @@ const Employee = () => {
 
   return (
     <>
-      <div className="container mx-auto p-4">
-        <EmployeeBreadCrumb />
+      <EmployeeBreadCrumb />
+      <div className="container mx-auto mt-5 bg-white p-4">
         <h1 className="mb-4 text-2xl font-bold">Employee List</h1>
-        <table className="min-w-full border border-gray-200 bg-white">
+        <table className="w-full border-collapse text-left">
           <thead>
             <tr className="bg-gray-200">
               <th className="border-b px-4 py-2">#</th>
               <th className="border-b px-4 py-2">Name</th>
               <th className="border-b px-4 py-2">Email</th>
               <th className="border-b px-4 py-2">Phone Number</th>
+              {/* <th className="border-b px-4 py-2">Password</th> */}
               <th className="border-b px-4 py-2">Actions</th>
             </tr>
           </thead>
@@ -71,6 +72,7 @@ const Employee = () => {
                   <td className="border-b px-4 py-2">
                     {employee.phone_number}
                   </td>
+                  {/* <td className="border-b px-4 py-2">{employee.password}</td> */}
                   <td className="border-b px-4 py-2">
                     {/* <button
                       className="text-blue-500 hover:underline"

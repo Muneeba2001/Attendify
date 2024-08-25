@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   FaRegFileAlt,
   FaChartBar,
@@ -9,9 +9,15 @@ import {
 import { HiOutlineClipboardList } from "react-icons/hi";
 
 const SideBar = () => {
+  const history = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    history.push("/UserAuth/Login");
+  };
   return (
-    <div className="min-h-full w-80 bg-white shadow-lg flex flex-col">
-      <nav className="flex flex-col flex-1 p-6 font-bold text-sky-900">
+    <div className="flex min-h-full w-80 flex-col bg-white shadow-lg">
+      <nav className="flex flex-1 flex-col p-6 font-bold text-sky-900">
         <div className="mb-4 mt-2 text-gray-400">
           <NavLink className="text-sm" to="/AdminDashBoard/Track">
             TRACK
@@ -82,12 +88,13 @@ const SideBar = () => {
             SESSION OUT
           </NavLink>
         </div>
-        <div className=" mb-2 flex items-center">
+        <div className="mb-2 flex items-center">
           <FaSignOutAlt className="mr-2 text-lg" />
           <NavLink
-            to="/logout"
+            to="/UserAuth/Login"
             className="block w-full rounded px-4 py-2 hover:bg-gray-100"
             activeClassName="bg-blue-50 text-blue-700"
+            onClick={handleLogout}
           >
             Logout
           </NavLink>
