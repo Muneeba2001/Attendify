@@ -14,7 +14,7 @@ import Report from "../Analyze/Report";
 const AdminRoutes = () => {
   return (
     <Routes>
-<<<<<<< HEAD
+
       {/* Admin Dashboard */}
       <Route
         path="/AdminDashBoard"
@@ -49,7 +49,7 @@ const AdminRoutes = () => {
       >
         <Route path="AttendanceSheet" element={<AttendanceSheet />} />
       </Route>
-=======
+
      <Route path="/AdminDashBoard" element = {<DefaultLayout><DashBoard/></DefaultLayout>}/>
      <Route path="/AdminDashBoard/Manage" element = {<DefaultLayout><Manage/></DefaultLayout>} >
      <Route path="Student" element = {<Student/>}/>
@@ -61,8 +61,7 @@ const AdminRoutes = () => {
     <Route path="/AdminDashBoard/Analyze" element = {<DefaultLayout><Analyze/></DefaultLayout>}>
      <Route path="Report" element = {<Report/>}/>
     </Route>
-   
->>>>>>> ce68278d35a9a8a313d67217c3408296a25e92de
+
     </Routes>
   );
 };
