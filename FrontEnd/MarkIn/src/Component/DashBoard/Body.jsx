@@ -1,18 +1,17 @@
 import React from "react";
 
 import { NavLink } from "react-router-dom";
+import AdminDashBoardCrumb from "../AdminDashBoardCrumb";
 
 const Body = () => {
   return (
     // min-h-screen px-2 -> container
     <div className="container">
+     
       <div className="heading px-10 py-4">
         <h1 className="text-2xl font-bold text-blue-700">Dashboard</h1>
         <div className="cursor-pointer text-gray-500">
-          <NavLink to="/Home">
-            <span>Home / </span>
-          </NavLink>
-          <span className="text-neutral-800">Dashboard</span>
+        <AdminDashBoardCrumb/>
         </div>
       </div>
 
