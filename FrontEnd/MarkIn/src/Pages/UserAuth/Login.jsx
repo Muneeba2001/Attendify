@@ -2,7 +2,7 @@ import { Formik, Form, Field } from "formik";
 import React from "react";
 import axios from "axios";
 import Button from "@mui/material/Button";
-import LoginSchema from "../schema/form/Login";
+import LoginSchema from "../../schema/form/Login"; // Renamed import for clarity
 import { useNavigate, NavLink } from "react-router-dom";
 
 const initialValues = {
@@ -11,7 +11,7 @@ const initialValues = {
   rememberMe: false,
 };
 
-const Login = () => {
+const LoginPage = () => { // Renamed component
   const navigate = useNavigate();
 
   const onSubmit = (values) => {
@@ -143,4 +143,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage; // Updated export
