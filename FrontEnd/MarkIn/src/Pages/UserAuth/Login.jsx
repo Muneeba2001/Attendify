@@ -2,7 +2,7 @@ import { Formik, Form, Field } from "formik";
 import React from "react";
 import axios from "axios";
 import Button from "@mui/material/Button";
-import LoginSchema from "../schema/form/Login";
+import LoginSchema from "../../schema/form/Login";
 import { useNavigate, NavLink } from "react-router-dom";
 
 const initialValues = {
@@ -11,7 +11,7 @@ const initialValues = {
   rememberMe: false,
 };
 
-const Login = () => {
+const LoginPage = () => { // Renamed component
   const navigate = useNavigate();
 
   const onSubmit = (values) => {
@@ -28,8 +28,8 @@ const Login = () => {
   };
 
   return (
-    <div className="container mx-auto h-screen flex items-center justify-center">
-      <div className="grid grid-cols-1 md:grid-cols-2 w-full">
+    <div className="container mx-auto flex h-screen items-center justify-center">
+      <div className="grid w-full grid-cols-1 md:grid-cols-2">
         {/* Left Column: Text */}
         <div className="flex flex-col justify-center p-6 md:p-[100px]">
           <h1 className="text-4xl text-gray-800 md:text-6xl">Attendance</h1>
@@ -143,4 +143,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage; // Updated export
