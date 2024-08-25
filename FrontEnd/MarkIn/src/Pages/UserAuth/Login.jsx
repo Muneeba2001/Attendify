@@ -2,7 +2,7 @@ import { Formik, Form, Field } from "formik";
 import React from "react";
 import axios from "axios";
 import Button from "@mui/material/Button";
-import LoginSchema from "../schema/form/Login";
+import LoginSchema from "../../schema/form/Login";
 import { useNavigate, NavLink } from "react-router-dom";
 
 const initialValues = {
