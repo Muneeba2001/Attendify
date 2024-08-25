@@ -14,7 +14,12 @@ import Report from "../Analyze/Report";
 const AdminRoutes = () => {
   return (
     <Routes>
+<<<<<<< HEAD
+
+      {/* Admin Dashboard */}
+=======
       {/* Admin Dashboard
+>>>>>>> 1622cfb947e543cfa0988e27f9915f70ce019e50
       <Route
         path="/AdminDashBoard"
         element={
@@ -78,6 +83,21 @@ const AdminRoutes = () => {
       >
         <Route path="AttendanceSheet" element={<AttendanceSheet />} />
       </Route>
+<<<<<<< HEAD
+
+     <Route path="/AdminDashBoard" element = {<DefaultLayout><DashBoard/></DefaultLayout>}/>
+     <Route path="/AdminDashBoard/Manage" element = {<DefaultLayout><Manage/></DefaultLayout>} >
+     <Route path="Student" element = {<Student/>}/>
+     <Route path="Employee" element = {<Employee/>} />
+     </Route>
+     <Route path="/AdminDashBoard/Track" element = {<DefaultLayout><Track/></DefaultLayout>}>
+    <Route path="AttendanceSheet" element = {<AttendanceSheet/>} />
+    </Route>
+    <Route path="/AdminDashBoard/Analyze" element = {<DefaultLayout><Analyze/></DefaultLayout>}>
+     <Route path="Report" element = {<Report/>}/>
+    </Route>
+
+=======
       <Route
         path="/AdminDashBoard/Analyze"
         element={
@@ -88,6 +108,7 @@ const AdminRoutes = () => {
       >
         <Route path="Report" element={<Report />} />
       </Route>
+>>>>>>> 1622cfb947e543cfa0988e27f9915f70ce019e50
     </Routes>
   );
 };

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
-import EmployeeBreadCrumb from "../../../Component/BreadCrumbs/EmployeeBreadCrumb";
+import EmployeeBreadCrumb from "../../../Component/EmployeeBreadCrumb";
 
 const Employee = () => {
   const [employees, setEmployees] = useState([]);
@@ -22,9 +21,8 @@ const Employee = () => {
 
   return (
     <>
-      <h1 className="text-3xl font-bold text-blue-800">Employees</h1>
-      <EmployeeBreadCrumb />
       <div className="container mx-auto p-4">
+        <EmployeeBreadCrumb />
         <h1 className="mb-4 text-2xl font-bold">Employee List</h1>
         <table className="min-w-full border border-gray-200 bg-white">
           <thead>
@@ -43,9 +41,7 @@ const Employee = () => {
                   <td className="border-b px-4 py-2">{index + 1}</td>
                   <td className="border-b px-4 py-2">{employee.name}</td>
                   <td className="border-b px-4 py-2">{employee.email}</td>
-                  <td className="border-b px-4 py-2">
-                    {employee.phone_number}
-                  </td>
+                  <td className="border-b px-4 py-2">{employee.phone_number}</td>
                   <td className="border-b px-4 py-2">
                     <button className="text-blue-500 hover:underline">
                       Edit

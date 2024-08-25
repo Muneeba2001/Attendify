@@ -9,10 +9,11 @@ import StudentLogin from "./Pages/StudentProtoType/student-login";
 import StudentForgetPassword from "./Pages/StudentProtoType/StudentForgetPassword";
 import AdminLogin from "./Pages/AdminProtoType/AdminLogin";
 import AdminForgetPassword from "./Pages/AdminProtoType/AdminForgetPassword";
-import Analyze from "./Pages/AdminDashBoard/Analyze/Analyze";
 
-import LoggingOut from "./Pages/AdminDashBoard/AdminPage/LoggingOut";
-import AdminRoutes from "./Pages/AdminDashBoard/Routes/AdminRoutes";
+
+
+import LoggingOut from "./Pages/AdminDashBoard/LoggingOut";
+
 
 function App() {
   return (
@@ -38,11 +39,9 @@ function App() {
         <Route path="AdminForgetPassword" element={<AdminForgetPassword />} />
       </Route>
 
-      {/* Admin Dashboard Routes */}
-      <Route path="/*" element={<AdminRoutes />} />
 
       {/* Additional Admin Routes */}
-      <Route path="/AdminDashBoard/Analyze" element={<Analyze />} />
+      {/* <Route path="/AdminDashBoard/Analyze" element={<Analyze />} /> */}
       <Route path="/AdminDashBoard/LoggingOut" element={<LoggingOut />} />
     </Routes>
   );
