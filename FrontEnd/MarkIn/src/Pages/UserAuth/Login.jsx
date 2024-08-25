@@ -24,7 +24,7 @@ const LoginPage = () => {
       })
       .then((result) => {
         console.log(result);
-        navigate("/UserAuth/Register");
+        navigate("/AdminDashBoard");
       })
       .catch((err) => console.log(err));
   };
