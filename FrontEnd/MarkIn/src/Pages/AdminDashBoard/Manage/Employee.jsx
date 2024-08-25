@@ -19,7 +19,7 @@ const Employee = () => {
   }, []);
 
   return (
-    <div className="container mx-auto mt-52 p-4">
+    <div className="container mx-auto  p-4">
       <h1 className="mb-4 text-2xl font-bold">Employee List</h1>
       <table className="min-w-full border border-gray-200 bg-white">
         <thead>
