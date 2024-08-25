@@ -1,5 +1,5 @@
 import React from "react";
-import Body from "../../Component/DashBoard/Body";
+import Body from "../../../Component/DashBoard/Body";
 import { Outlet } from "react-router-dom";
 
 const DashBoard = () => {

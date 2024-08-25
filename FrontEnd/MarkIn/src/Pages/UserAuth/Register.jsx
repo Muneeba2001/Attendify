@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik, Formik, Field, Form, ErrorMessage } from "formik";
-import registerSchema from "../schema/form/Register";
+import registerSchema from "../../schema/form/Register";
 import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
 

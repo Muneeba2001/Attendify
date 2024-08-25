@@ -5,7 +5,7 @@ import DefaultLayout from "../../DefaulLayout/DefaultLayout";
 import Manage from "../Manage/Manage";
 import Employee from "../Manage/Employee";
 import Student from "../Manage/Student";
-import DashBoard from "../DashBoard";
+import DashBoard from "../AdminPage/DashBoard";
 import Track from "../AdminPage/Track";
 import AttendanceSheet from "../../AdminProtoType/AttendanceSheet";
 import Analyze from "../../AdminDashBoard/Analyze/Analyze";
