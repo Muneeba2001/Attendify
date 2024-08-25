@@ -4,12 +4,13 @@ import axios from "axios";
 import Button from "@mui/material/Button";
 import LoginSchema from "../schema/form/Login";
 import { useNavigate, NavLink } from "react-router-dom";
-import Header from "../Component/Header";
+
 const initialValues = {
   email: "",
   password: "",
   rememberMe: false,
 };
+
 const Login = () => {
   const navigate = useNavigate();
 
@@ -27,11 +28,10 @@ const Login = () => {
   };
 
   return (
-    <>
-      <Header />
-      <div className="container grid h-screen grid-cols-1 md:grid-cols-2">
+    <div className="container mx-auto h-screen flex items-center justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 w-full">
         {/* Left Column: Text */}
-        <div className="flex flex-col flex-wrap items-start justify-center p-6 md:p-[100px]">
+        <div className="flex flex-col justify-center p-6 md:p-[100px]">
           <h1 className="text-4xl text-gray-800 md:text-6xl">Attendance</h1>
           <h1 className="text-4xl text-blue-900 md:text-6xl">
             for your business
@@ -45,8 +45,8 @@ const Login = () => {
         </div>
 
         {/* Right Column: Form */}
-        <div className="m-6 flex items-center justify-center md:m-24">
-          <div className="w-full max-w-md rounded-sm bg-white p-6 shadow-md md:max-w-2xl md:p-10">
+        <div className="flex items-center justify-center p-6 md:p-12">
+          <div className="w-full max-w-md rounded-sm bg-white p-6 shadow-md md:max-w-lg">
             <Formik
               validationSchema={LoginSchema}
               onSubmit={onSubmit}
@@ -60,7 +60,7 @@ const Login = () => {
                   <div>
                     <label
                       htmlFor="email"
-                      className="mb-2 block text-sm font-medium text-gray-700 md:mb-4"
+                      className="mb-2 block text-sm font-medium text-gray-700"
                     >
                       Username
                     </label>
@@ -68,14 +68,14 @@ const Login = () => {
                       type="email"
                       id="email"
                       name="email"
-                      className="w-full rounded-sm border p-2"
+                      className="w-full rounded-sm border border-gray-300 p-2"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="password"
-                      className="mb-2 block text-sm font-medium text-gray-700 md:mb-4"
+                      className="mb-2 block text-sm font-medium text-gray-700"
                     >
                       Password
                     </label>
@@ -83,7 +83,7 @@ const Login = () => {
                       id="password"
                       type="password"
                       name="password"
-                      className="w-full rounded-sm border p-2"
+                      className="w-full rounded-sm border border-gray-300 p-2"
                     />
                   </div>
 
@@ -108,17 +108,15 @@ const Login = () => {
                     sx={{
                       backgroundColor: "rgb(63, 81, 181)",
                       color: "white",
-                      // textTransform: "none",
                       padding: "10px 20px",
                       borderRadius: "4px",
-                      // width: "100%",
                     }}
+                    fullWidth
                   >
                     Sign in
                   </Button>
 
                   <div className="mt-4 text-sm text-gray-700">
-                    {/* <p className="text-gray-600">Forget Password</p> */}
                     <NavLink
                       to="/UserAuth/ForgetPassword"
                       className="text-gray-600"
@@ -141,7 +139,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

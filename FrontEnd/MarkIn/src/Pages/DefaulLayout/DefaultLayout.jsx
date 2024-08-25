@@ -4,11 +4,11 @@ import SideBar from "../../Component/DashBoard/SideBar";
 
 const DefaultLayout = (props) => {
   return (
-    <div className="relative min-h-screen flex flex-col">
+    <div className="relative flex flex-col min-h-screen">
       <Header />
       <div className="flex flex-1">
         <SideBar />
-        <div className="flex flex-1 flex-col items-start w-full p-6">
+        <div className="flex-1 p-6">
           {props.children}
         </div>
       </div>
