@@ -14,7 +14,7 @@ import Report from "../Analyze/Report";
 const AdminRoutes = () => {
   return (
     <Routes>
-      {/* Admin Dashboard */}
+      {/* Admin Dashboard
       <Route
         path="/AdminDashBoard"
         element={
@@ -23,8 +23,9 @@ const AdminRoutes = () => {
           </DefaultLayout>
         }
       />
+
       {/* Manage Routes */}
-      <Route
+      {/* <Route
         path="/AdminDashBoard/Manage"
         element={
           <DefaultLayout>
@@ -35,8 +36,9 @@ const AdminRoutes = () => {
         <Route path="Student" element={<Student />} />
         <Route path="Employee" element={<Employee />} />
       </Route>
+
       {/* Track Routes */}
-      <Route
+      {/* <Route
         path="/AdminDashBoard/Track"
         element={
           <DefaultLayout>
@@ -45,7 +47,8 @@ const AdminRoutes = () => {
         }
       >
         <Route path="AttendanceSheet" element={<AttendanceSheet />} />
-      </Route>{" "}
+      </Route>{" "} */}
+
       <Route
         path="/AdminDashBoard"
         element={

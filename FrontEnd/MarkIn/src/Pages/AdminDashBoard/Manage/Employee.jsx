@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import EmployeeBreadCrumb from "../../../Component/EmployeeBreadCrumb";
+import EmployeeBreadCrumb from "../../../Component/BreadCrumbs/EmployeeBreadCrumb";
 
 const Employee = () => {
   const [employees, setEmployees] = useState([]);

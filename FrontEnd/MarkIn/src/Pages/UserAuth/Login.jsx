@@ -11,7 +11,7 @@ const initialValues = {
   rememberMe: false,
 };
 
-const Login = () => {
+const LoginPage = () => { // Renamed component
   const navigate = useNavigate();
 
   const onSubmit = (values) => {
@@ -143,4 +143,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage; // Updated export
