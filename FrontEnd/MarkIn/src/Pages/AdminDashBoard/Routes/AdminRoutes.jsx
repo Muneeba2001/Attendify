@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 
 import DefaultLayout from "../../DefaulLayout/DefaultLayout";
 import Manage from "../Manage/Manage";
-import DashBoard from "../DashBoard";
 import Employee from "../Manage/Employee";
 import Student from "../Manage/Student";
 import Track from "../Track";
@@ -15,6 +14,42 @@ import Report from "../Analyze/Report";
 const AdminRoutes = () => {
   return (
     <Routes>
+<<<<<<< HEAD
+      {/* Admin Dashboard */}
+      <Route
+        path="/AdminDashBoard"
+        element={
+          <DefaultLayout>
+            <AttendanceSheet />
+          </DefaultLayout>
+        }
+      />
+
+      {/* Manage Routes */}
+      <Route
+        path="/AdminDashBoard/Manage"
+        element={
+          <DefaultLayout>
+            <Manage />
+          </DefaultLayout>
+        }
+      >
+        <Route path="Student" element={<Student />} />
+        <Route path="Employee" element={<Employee />} />
+      </Route>
+
+      {/* Track Routes */}
+      <Route
+        path="/AdminDashBoard/Track"
+        element={
+          <DefaultLayout>
+            <Track />
+          </DefaultLayout>
+        }
+      >
+        <Route path="AttendanceSheet" element={<AttendanceSheet />} />
+      </Route>
+=======
      <Route path="/AdminDashBoard" element = {<DefaultLayout><DashBoard/></DefaultLayout>}/>
      <Route path="/AdminDashBoard/Manage" element = {<DefaultLayout><Manage/></DefaultLayout>} >
      <Route path="Student" element = {<Student/>}/>
@@ -27,6 +62,7 @@ const AdminRoutes = () => {
      <Route path="Report" element = {<Report/>}/>
     </Route>
    
+>>>>>>> ce68278d35a9a8a313d67217c3408296a25e92de
     </Routes>
   );
 };
