@@ -21,7 +21,7 @@ export default function ManageBreadCrumb() {
   // Breadcrumbs data with labels and hrefs
   const breadCrumbs = [
     { label: "Manage", href: "/AdminDashBoard/Manage" },
-    { label: "Student", href: "/AdminDashBoard/Manage/Student" },
+    { label: "Employee", href: "/AdminDashBoard/Manage/Employee" },
   ];
 
   return (

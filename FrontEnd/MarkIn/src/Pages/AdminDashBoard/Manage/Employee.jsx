@@ -47,6 +47,7 @@ const Employee = () => {
 
   return (
     <>
+      <h1 className="text-3xl font-bold text-blue-800">Employee</h1>
       <EmployeeBreadCrumb />
       <div className="container mx-auto mt-5 bg-white p-4">
         <h1 className="mb-4 text-2xl font-bold">Employee List</h1>
