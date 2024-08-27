@@ -65,67 +65,73 @@ const AttendanceSheet = () => {
           <Form className="space-y-6 rounded bg-white p-6 shadow">
             <div className="grid w-full grid-cols-4 gap-4">
               <div>
-                <label
+                {/* <label
                   htmlFor="subject"
                   className="block font-medium text-gray-700"
                 >
-                  Subject
-                </label>
+                  Designation
+                </label> */}
                 <Field
                   as="select"
                   name="Subject"
                   id="subject"
-                  className="mt-1 block w-full rounded-md border border-gray-300 bg-gray-50 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  className="mt-1 block w-48 rounded-md border border-gray-300 bg-gray-50 p-2 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 >
                   <option value="" disabled>
-                    Select Subject
+                    Select Designation
                   </option>
-                  <option value="Maths">Maths</option>
-                  <option value="English">English</option>
-                  <option value="Urdu">Urdu</option>
+                  <option value="A">Computer systems manager</option>
+                  <option value="B">Network architect</option>
+                  <option value="C">Systems analyst</option>
+                  <option value="C">Systems analyst</option>
+                  <option value="C">IT coordinator</option>
+                  <option value="C">Network engineer</option>
+                  <option value="C">System administrator</option>
                 </Field>
               </div>
               <div>
-                <label
+                {/* <label
                   htmlFor="section"
                   className="block font-medium text-gray-700"
                 >
                   Section
-                </label>
+                </label> */}
                 <Field
                   as="select"
                   name="Section"
                   id="section"
-                  className="mt-1 block w-full rounded-md border border-gray-300 bg-gray-50 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  className="mt-1 block w-48 rounded-md border border-gray-300 bg-gray-50 p-2 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 >
                   <option value="" disabled>
-                    Select Section
+                    Select Team
                   </option>
-                  <option value="A">A</option>
-                  <option value="B">B</option>
-                  <option value="C">C</option>
+                  <option value="BSCS">Marketing team</option>
+                  <option value="BS Maths">Technical team</option>
+                  <option value="BS Stats">Development team</option>
+                  <option value="BS Stats">Operations team</option>
+                  <option value="BS Stats">Quality Assurance team</option>
                 </Field>
               </div>
               <div>
-                <label
+                {/* <label
                   htmlFor="date"
                   className="block font-medium text-gray-700"
                 >
                   Date
-                </label>
+                </label> */}
                 <Field
                   type="date"
                   name="Date"
                   id="date"
-                  className="mt-1 block w-full rounded-md border border-gray-300 bg-gray-50 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  className="mt-1 block w-48 rounded-md border border-gray-300 bg-gray-50 p-2 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
               <div className="">
                 <Button
-                  type="submit"
                   variant="contained"
-                  sx={{ backgroundColor: "rgb(96,80,220)", color: "white" }}
-                  disabled={isSubmitting}
+                  sx={{ backgroundColor: "blueviolet", color: "white" }}
+                  type="submit"
+                  className="w-44"
                 >
                   Generate Sheet
                 </Button>
@@ -135,7 +141,7 @@ const AttendanceSheet = () => {
         )}
       </Formik>
 
-      <div className="mt-8 w-full overflow-x-auto rounded bg-white p-8 shadow">
+      {/* <div className="mt-8 w-full overflow-x-auto rounded bg-white p-8 shadow">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-100">
             <tr>
@@ -143,10 +149,10 @@ const AttendanceSheet = () => {
                 #
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                Student Name
+                Employee Name
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                Student ID
+                Employee ID
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
                 Status
@@ -172,7 +178,7 @@ const AttendanceSheet = () => {
             ))}
           </tbody>
         </table>
-      </div>
+      </div> */}
     </div>
   );
 };

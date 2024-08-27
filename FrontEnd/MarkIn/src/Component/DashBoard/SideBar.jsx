@@ -63,7 +63,7 @@ const SideBar = () => {
             MANAGE
           </NavLink>
         </div>
-        <div className="mb-2 flex items-center">
+        {/* <div className="mb-2 flex items-center">
           <FaUserGraduate className="mr-2 text-lg" />
           <NavLink
             to="/AdminDashBoard/Manage/Student"
@@ -72,7 +72,7 @@ const SideBar = () => {
           >
             Student
           </NavLink>
-        </div>
+        </div> */}
         <div className="mb-2 flex items-center">
           <FaUserGraduate className="mr-2 text-lg" />
           <NavLink
