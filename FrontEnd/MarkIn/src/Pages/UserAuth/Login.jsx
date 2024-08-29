@@ -5,6 +5,9 @@ import axios from "axios";
 import Button from "@mui/material/Button";
 import LoginSchema from "../../schema/form/Login";
 import { useNavigate, NavLink } from "react-router-dom";
+import Header from "../../Component/Header";
+import { toast} from "react-toastify"; // Updated import
+import 'react-toastify/dist/ReactToastify.css';
 
 const initialValues = {
   email: "",
@@ -16,37 +19,61 @@ const LoginPage = () => {
   // Renamed component
   const navigate = useNavigate();
 
-  const onSubmit = (values) => {
-    axios
-      .post("http://localhost:3000/Login", {
-        email: values.email,
-        password: values.password,
-      })
-      .then((result) => {
-        console.log(result);
-        navigate("/AdminDashBoard");
-      })
-      .catch((err) => console.log(err));
-  };
+  // const onSubmit = (values) => {
+  //   axios
+  //     .post("http://localhost:3000/Login", {
+  //       email: values.email,
+  //       password: values.password,
+  //     })
+  //     .then((result) => {
+  //       console.log(result);
+  //       navigate("/AdminDashboard");
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+  const onSubmit = async (values) => {
+    try {
+        const result = await axios.post("http://localhost:3000/Login", {
+            email: values.email,
+            password: values.password,
+        });
+        toast.success("Login successful!", {
+            // position: "top-right",
+            autoClose:1500
+        });
+        setTimeout(() => {
+          navigate("/AdminDashboard");
+        }, 2000); 
+        
+    }
+   
+    catch (err) {
+        toast.error("Login failed. Please try again.", {
+            // position: toast.POSITION.TOP_RIGHT,
+            // position: "top-right"
+        });
+        console.log(err);
+    }
+};
 
   return (
     <>
-      <Header />
-      <div className="container mx-auto flex h-screen items-center justify-center">
-        <div className="grid w-full grid-cols-1 md:grid-cols-2">
-          {/* Left Column: Text */}
-          <div className="flex flex-col justify-center p-6 md:p-[100px]">
-            <h1 className="text-4xl text-gray-800 md:text-6xl">Attendance</h1>
-            <h1 className="text-4xl text-blue-900 md:text-6xl">
-              for your business
-            </h1>
-            <p className="mt-6 text-sm text-gray-600 md:mt-8 md:text-base">
-              Efficient attendance management is crucial for maintaining
-              productivity and accountability in any business. By accurately
-              tracking employee presence, you can ensure streamlined operations
-              and better decision-making.
-            </p>
-          </div>
+    <Header/>
+    <div className="container mx-auto flex h-screen items-center justify-center">
+      <div className="grid w-full grid-cols-1 md:grid-cols-2">
+        {/* Left Column: Text */}
+        <div className="flex flex-col justify-center p-6 md:p-[100px]">
+          <h1 className="text-4xl text-gray-800 md:text-6xl">Attendance</h1>
+          <h1 className="text-4xl text-blue-900 md:text-6xl">
+            for your business
+          </h1>
+          <p className="mt-6 text-sm text-gray-600 md:mt-8 md:text-base">
+            Efficient attendance management is crucial for maintaining
+            productivity and accountability in any business. By accurately
+            tracking employee presence, you can ensure streamlined operations
+            and better decision-making.
+          </p>
+        </div>
 
           {/* Right Column: Form */}
           <div className="flex items-center justify-center p-6 md:p-12">
@@ -147,6 +174,7 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
+   
     </>
   );
 };

@@ -1,48 +1,39 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import EmployeeBreadCrumb from "../../../Component/BreadCrumbs/EmployeeBreadCrumb";
+import EditEmployee from "./EditEmployee";
 
 const Employee = () => {
   const [employees, setEmployees] = useState([]);
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [showEditPopup, setShowEditPopup] = useState(false);
 
   useEffect(() => {
     fetchEmployees();
     handleDelete();
   }, []);
 
-  // Fetch employee data from the server
-  const fetchEmployees = async () => {
-    try {
-      const response = await axios.get("http://localhost:3000/employees");
-      setEmployees(response.data);
-    } catch (error) {
-      console.error("Error fetching employee data:", error);
-    }
+  const handleEditClick = (employee) => {
+    setSelectedEmployee(employee);
+    setShowEditPopup(true);
   };
 
-  // Update employee details
-  // const handleUpdate = async (id, name, email, phone_number) => {
-  //   const updatedDetails = {
-  //     name, // Replace with actual data
-  //     email, // Replace with actual data
-  //     phone_number, // Replace with actual data
-  //   };
-  //   try {
-  //     await axios.put(`http://localhost:3000/employees/${id}`, updatedDetails);
-  //     fetchEmployees(); // Refresh the employee list after update
-  //   } catch (error) {
-  //     console.error("Error updating employee:", error);
-  //   }
-  // };
+  const handleClosePopup = () => {
+    setShowEditPopup(false);
+    setSelectedEmployee(null);
+  };
 
-  // Delete an employee
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(`http://localhost:3000/employees/${id}`);
-      fetchEmployees(); // Refresh the employee list after deletion
-    } catch (error) {
-      console.error("Error deleting employee:", error);
-    }
+  // Update employee data in the list
+  const handleEmployeeUpdate = (updatedEmployee) => {
+    setEmployees((prevEmployees) => {
+      // Create a new array with updated employee
+      const updatedEmployees = prevEmployees.map(employee =>
+        employee._id === updatedEmployee._id ? updatedEmployee : employee
+      );
+
+      console.log("Updated Employees Array:", updatedEmployees); // Debug
+      return updatedEmployees;
+    });
   };
 
   return (
@@ -71,16 +62,9 @@ const Employee = () => {
                   <td className="border-b px-4 py-2">{employee.email}</td>
 
                   <td className="border-b px-4 py-2">
-                    {employee.phone_number}
-                  </td>
-                  {/* <td className="border-b px-4 py-2">{employee.password}</td> */}
-                  <td className="border-b px-4 py-2">
-                    {/* <button
-                      className="text-blue-500 hover:underline"
-                      onClick={() => handleUpdate(employee._id)}
-                    >
+                    <button className="text-blue-500 hover:underline" onClick={() => handleEditClick(employee)}>
                       Edit
-                    </button> */}
+                    </button> 
                     <button
                       className="ml-4 text-red-500 hover:underline"
                       onClick={() => handleDelete(employee._id)}
@@ -99,6 +83,13 @@ const Employee = () => {
             )}
           </tbody>
         </table>
+        {showEditPopup && selectedEmployee && (
+          <EditEmployee
+            employee={selectedEmployee}
+            onClose={handleClosePopup}
+            onUpdate={handleEmployeeUpdate}
+          />
+        )}
       </div>
     </>
   );
