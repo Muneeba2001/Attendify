@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import EmployeeBreadCrumb from "../../../Component/BreadCrumbs/EmployeeBreadCrumb";
 import EditEmployee from "./EditEmployee";
+import { toast } from "react-toastify";
 
 const Employee = () => {
   const [employees, setEmployees] = useState([]);
@@ -10,8 +11,16 @@ const Employee = () => {
 
   useEffect(() => {
     fetchEmployees();
-    handleDelete();
   }, []);
+
+  const fetchEmployees = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/employees");
+      setEmployees(response.data);
+    } catch (error) {
+      console.error("Error fetching employee data:", error);
+    }
+  };
 
   const handleEditClick = (employee) => {
     setSelectedEmployee(employee);
@@ -23,24 +32,37 @@ const Employee = () => {
     setSelectedEmployee(null);
   };
 
-  // Update employee data in the list
   const handleEmployeeUpdate = (updatedEmployee) => {
-    setEmployees((prevEmployees) => {
-      // Create a new array with updated employee
-      const updatedEmployees = prevEmployees.map(employee =>
+    setEmployees((prevEmployees) =>
+      prevEmployees.map((employee) =>
         employee._id === updatedEmployee._id ? updatedEmployee : employee
-      );
-
-      console.log("Updated Employees Array:", updatedEmployees); // Debug
-      return updatedEmployees;
-    });
+      )
+    );
   };
+
+  const handleDelete = async(id) => {
+    const confirmation = window.confirm("Are you sure you want to delete this employee!");
+    if(confirmation)
+    {
+      try {
+        await axios.delete(`http://localhost:3000/DeleteEmployee/${id}`);
+      //refresh so it updates the page
+    
+      fetchEmployees();
+      toast.success("Employee data is successfully deleted",{
+        autoClose:800
+      })
+      } catch (error) {
+        console.log("Error while deleting the employee's data!")
+      }
+    }
+  }
 
   return (
     <>
       <h1 className="text-3xl font-bold text-blue-800">Employee</h1>
       <EmployeeBreadCrumb />
-      <div className="container mx-auto mt-5 bg-white p-4">
+      <div className="container mx-auto mt-5 bg-white p-4 rounded-lg shadow-md">
         <h1 className="mb-4 text-2xl font-bold">Employee List</h1>
         <table className="w-full border-collapse text-left">
           <thead>
@@ -49,7 +71,6 @@ const Employee = () => {
               <th className="border-b px-4 py-2">Name</th>
               <th className="border-b px-4 py-2">Email</th>
               <th className="border-b px-4 py-2">Phone Number</th>
-              {/* <th className="border-b px-4 py-2">Password</th> */}
               <th className="border-b px-4 py-2">Actions</th>
             </tr>
           </thead>
@@ -60,11 +81,14 @@ const Employee = () => {
                   <td className="border-b px-4 py-2">{index + 1}</td>
                   <td className="border-b px-4 py-2">{employee.name}</td>
                   <td className="border-b px-4 py-2">{employee.email}</td>
-
+                  <td className="border-b px-4 py-2">{employee.phone_number}</td>
                   <td className="border-b px-4 py-2">
-                    <button className="text-blue-500 hover:underline" onClick={() => handleEditClick(employee)}>
+                    <button
+                      className="text-blue-500 hover:underline"
+                      onClick={() => handleEditClick(employee)}
+                    >
                       Edit
-                    </button> 
+                    </button>
                     <button
                       className="ml-4 text-red-500 hover:underline"
                       onClick={() => handleDelete(employee._id)}
