@@ -9,17 +9,8 @@ const Employee = () => {
   const [showEditPopup, setShowEditPopup] = useState(false);
 
   useEffect(() => {
-    // Fetch employee data from the server
-    const fetchEmployees = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/employees");
-        setEmployees(response.data);
-      } catch (error) {
-        console.error("Error fetching employee data:", error);
-      }
-    };
-
     fetchEmployees();
+    handleDelete();
   }, []);
 
   const handleEditClick = (employee) => {
@@ -47,16 +38,18 @@ const Employee = () => {
 
   return (
     <>
-      <div className="container mx-auto p-4">
-        <EmployeeBreadCrumb />
+      <h1 className="text-3xl font-bold text-blue-800">Employee</h1>
+      <EmployeeBreadCrumb />
+      <div className="container mx-auto mt-5 bg-white p-4">
         <h1 className="mb-4 text-2xl font-bold">Employee List</h1>
-        <table className="min-w-full border border-gray-200 bg-white">
+        <table className="w-full border-collapse text-left">
           <thead>
-            <tr className="w-full bg-gray-200">
+            <tr className="bg-gray-200">
               <th className="border-b px-4 py-2">#</th>
               <th className="border-b px-4 py-2">Name</th>
               <th className="border-b px-4 py-2">Email</th>
               <th className="border-b px-4 py-2">Phone Number</th>
+              {/* <th className="border-b px-4 py-2">Password</th> */}
               <th className="border-b px-4 py-2">Actions</th>
             </tr>
           </thead>
@@ -67,12 +60,15 @@ const Employee = () => {
                   <td className="border-b px-4 py-2">{index + 1}</td>
                   <td className="border-b px-4 py-2">{employee.name}</td>
                   <td className="border-b px-4 py-2">{employee.email}</td>
-                  <td className="border-b px-4 py-2">{employee.phone_number}</td>
+
                   <td className="border-b px-4 py-2">
                     <button className="text-blue-500 hover:underline" onClick={() => handleEditClick(employee)}>
                       Edit
-                    </button>
-                    <button className="ml-4 text-red-500 hover:underline">
+                    </button> 
+                    <button
+                      className="ml-4 text-red-500 hover:underline"
+                      onClick={() => handleDelete(employee._id)}
+                    >
                       Delete
                     </button>
                   </td>

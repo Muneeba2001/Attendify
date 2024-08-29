@@ -7,29 +7,87 @@ import Employee from "../Manage/Employee";
 import Student from "../Manage/Student";
 import DashBoard from "../AdminPage/DashBoard";
 import Track from "../AdminPage/Track";
-import AttendanceSheet from "../../AdminProtoType/AttendanceSheet";
+import AttendanceSheet from "../AdminPage/AttendanceSheet";
 import Analyze from "../../AdminDashBoard/Analyze/Analyze";
 import Report from "../Analyze/Report";
 
 const AdminRoutes = () => {
   return (
     <Routes>
+      {/* Admin Dashboard
+      <Route
+        path="/AdminDashBoard"
+        element={
+          <DefaultLayout>
+            <AttendanceSheet />
+          </DefaultLayout>
+        }
+      />
 
-    
-       
+      {/* Manage Routes */}
+      {/* <Route
+        path="/AdminDashBoard/Manage"
+        element={
+          <DefaultLayout>
+            <Manage />
+          </DefaultLayout>
+        }
+      >
+        <Route path="Student" element={<Student />} />
+        <Route path="Employee" element={<Employee />} />
+      </Route>
 
-     <Route path="/AdminDashBoard" element = {<DefaultLayout><DashBoard/></DefaultLayout>}/>
-     <Route path="/AdminDashBoard/Manage" element = {<DefaultLayout><Manage/></DefaultLayout>} >
-     <Route path="Student" element = {<Student/>}/>
-     <Route path="Employee" element = {<Employee/>} />
-     </Route>
-     <Route path="/AdminDashBoard/Track" element = {<DefaultLayout><Track/></DefaultLayout>}>
-    <Route path="AttendanceSheet" element = {<AttendanceSheet/>} />
-    </Route>
-    <Route path="/AdminDashBoard/Analyze" element = {<DefaultLayout><Analyze/></DefaultLayout>}>
-     <Route path="Report" element = {<Report/>}/>
-    </Route>
+      {/* Track Routes */}
+      {/* <Route
+        path="/AdminDashBoard/Track"
+        element={
+          <DefaultLayout>
+            <Track />
+          </DefaultLayout>
+        }
+      >
+        <Route path="AttendanceSheet" element={<AttendanceSheet />} />
+      </Route>{" "} */}
 
+      <Route
+        path="/AdminDashBoard"
+        element={
+          <DefaultLayout>
+            <DashBoard />
+          </DefaultLayout>
+        }
+      />
+      <Route
+        path="/AdminDashBoard/Manage"
+        element={
+          <DefaultLayout>
+            <Manage />
+          </DefaultLayout>
+        }
+      >
+        <Route path="Student" element={<Student />} />
+        <Route path="Employee" element={<Employee />} />
+      </Route>
+      <Route
+        path="/AdminDashBoard/Track"
+        element={
+          <DefaultLayout>
+            <Track />
+          </DefaultLayout>
+        }
+      >
+        <Route path="AttendanceSheet" element={<AttendanceSheet />} />
+      </Route>
+      <Route
+        path="/AdminDashBoard/Analyze"
+        element={
+          <DefaultLayout>
+            <Analyze />
+          </DefaultLayout>
+        }
+      >
+        <Route path="Report" element={<Report />} />
+      </Route>
     </Routes>
   );
 };

@@ -4,6 +4,7 @@ import Register from "./Pages/UserAuth/Register";
 import UserAuthPage from "./Pages/UserAuth/UserAuthPage";
 import ForgetPassword from "./Pages/TeacherProtoType/ForgetPassword";
 import Login from "./Pages/UserAuth/Login";
+import Register from "./Pages/UserAuth/Register";
 import StudentLogin from "./Pages/StudentProtoType/student-login";
 import StudentForgetPassword from "./Pages/StudentProtoType/StudentForgetPassword";
 import AdminLogin from "./Pages/AdminProtoType/AdminLogin"
@@ -11,10 +12,7 @@ import AdminForgetPassword from "./Pages/AdminProtoType/AdminForgetPassword";
 import AdminRoutes from "./Pages/AdminDashBoard/Routes/AdminRoutes";
 import { ToastContainer } from "react-toastify";
 
-
-
-//import LoggingOut from "./Pages/AdminDashBoard/LoggingOut";
-
+// import LoggingOut from "./Pages/AdminDashBoard/AdminPage/LoggingOut";
 
 function App() {
   return (
