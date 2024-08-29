@@ -4,6 +4,9 @@ import axios from "axios";
 import Button from "@mui/material/Button";
 import LoginSchema from "../../schema/form/Login";
 import { useNavigate, NavLink } from "react-router-dom";
+import Header from "../../Component/Header";
+import { toast} from "react-toastify"; // Updated import
+import 'react-toastify/dist/ReactToastify.css';
 
 const initialValues = {
   email: "",
@@ -14,20 +17,46 @@ const initialValues = {
 const LoginPage = () => { // Renamed component
   const navigate = useNavigate();
 
-  const onSubmit = (values) => {
-    axios
-      .post("http://localhost:3000/Login", {
-        email: values.email,
-        password: values.password,
-      })
-      .then((result) => {
-        console.log(result);
-        navigate("/AdminDashboard");
-      })
-      .catch((err) => console.log(err));
-  };
+  // const onSubmit = (values) => {
+  //   axios
+  //     .post("http://localhost:3000/Login", {
+  //       email: values.email,
+  //       password: values.password,
+  //     })
+  //     .then((result) => {
+  //       console.log(result);
+  //       navigate("/AdminDashboard");
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+  const onSubmit = async (values) => {
+    try {
+        const result = await axios.post("http://localhost:3000/Login", {
+            email: values.email,
+            password: values.password,
+        });
+        toast.success("Login successful!", {
+            // position: "top-right",
+            autoClose:1500
+        });
+        setTimeout(() => {
+          navigate("/AdminDashboard");
+        }, 2000); 
+        
+    }
+   
+    catch (err) {
+        toast.error("Login failed. Please try again.", {
+            // position: toast.POSITION.TOP_RIGHT,
+            // position: "top-right"
+        });
+        console.log(err);
+    }
+};
 
   return (
+    <>
+    <Header/>
     <div className="container mx-auto flex h-screen items-center justify-center">
       <div className="grid w-full grid-cols-1 md:grid-cols-2">
         {/* Left Column: Text */}
@@ -140,6 +169,7 @@ const LoginPage = () => { // Renamed component
         </div>
       </div>
     </div>
+    </>
   );
 };
 

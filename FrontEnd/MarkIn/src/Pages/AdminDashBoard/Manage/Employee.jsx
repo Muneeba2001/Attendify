@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import EmployeeBreadCrumb from "../../../Component/BreadCrumbs/EmployeeBreadCrumb";
+import EditEmployee from "./EditEmployee";
 
 const Employee = () => {
   const [employees, setEmployees] = useState([]);
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [showEditPopup, setShowEditPopup] = useState(false);
 
   useEffect(() => {
     // Fetch employee data from the server
@@ -18,6 +21,29 @@ const Employee = () => {
 
     fetchEmployees();
   }, []);
+
+  const handleEditClick = (employee) => {
+    setSelectedEmployee(employee);
+    setShowEditPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowEditPopup(false);
+    setSelectedEmployee(null);
+  };
+
+  // Update employee data in the list
+  const handleEmployeeUpdate = (updatedEmployee) => {
+    setEmployees((prevEmployees) => {
+      // Create a new array with updated employee
+      const updatedEmployees = prevEmployees.map(employee =>
+        employee._id === updatedEmployee._id ? updatedEmployee : employee
+      );
+
+      console.log("Updated Employees Array:", updatedEmployees); // Debug
+      return updatedEmployees;
+    });
+  };
 
   return (
     <>
@@ -43,7 +69,7 @@ const Employee = () => {
                   <td className="border-b px-4 py-2">{employee.email}</td>
                   <td className="border-b px-4 py-2">{employee.phone_number}</td>
                   <td className="border-b px-4 py-2">
-                    <button className="text-blue-500 hover:underline">
+                    <button className="text-blue-500 hover:underline" onClick={() => handleEditClick(employee)}>
                       Edit
                     </button>
                     <button className="ml-4 text-red-500 hover:underline">
@@ -61,6 +87,13 @@ const Employee = () => {
             )}
           </tbody>
         </table>
+        {showEditPopup && selectedEmployee && (
+          <EditEmployee
+            employee={selectedEmployee}
+            onClose={handleClosePopup}
+            onUpdate={handleEmployeeUpdate}
+          />
+        )}
       </div>
     </>
   );

@@ -7,7 +7,7 @@ import Header from "../../Component/Header";
 const StudentLogin = () => {
   return (
     <>
-    
+    <Header/>
       <div className="container grid h-screen grid-cols-1 md:grid-cols-2">
         {/* Left Column: Text */}
         <div className="flex flex-col flex-wrap items-start justify-center p-6 md:p-[100px]">
