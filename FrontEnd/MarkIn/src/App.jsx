@@ -4,7 +4,6 @@ import Register from "./Pages/UserAuth/Register";
 import UserAuthPage from "./Pages/UserAuth/UserAuthPage";
 import ForgetPassword from "./Pages/TeacherProtoType/ForgetPassword";
 import Login from "./Pages/UserAuth/Login";
-import Register from "./Pages/UserAuth/Register";
 import StudentLogin from "./Pages/StudentProtoType/student-login";
 import StudentForgetPassword from "./Pages/StudentProtoType/StudentForgetPassword";
 import AdminLogin from "./Pages/AdminProtoType/AdminLogin"

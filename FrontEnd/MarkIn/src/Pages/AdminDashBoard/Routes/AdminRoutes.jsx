@@ -7,9 +7,10 @@ import Employee from "../Manage/Employee";
 import Student from "../Manage/Student";
 import DashBoard from "../AdminPage/DashBoard";
 import Track from "../AdminPage/Track";
-import AttendanceSheet from "../AdminPage/AttendanceSheet";
+
 import Analyze from "../../AdminDashBoard/Analyze/Analyze";
 import Report from "../Analyze/Report";
+import AttendanceSheet from "../Track/AttendanceSheet";
 
 const AdminRoutes = () => {
   return (
@@ -76,7 +77,7 @@ const AdminRoutes = () => {
           </DefaultLayout>
         }
       >
-        <Route path="AttendanceSheet" element={<AttendanceSheet />} />
+        <Route path="AttendanceSheet" element={<AttendanceSheet/>} />
       </Route>
       <Route
         path="/AdminDashBoard/Analyze"
