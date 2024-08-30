@@ -3,6 +3,7 @@ import axios from "axios";
 import EmployeeBreadCrumb from "../../../Component/BreadCrumbs/EmployeeBreadCrumb";
 import EditEmployee from "./EditEmployee";
 import { toast } from "react-toastify";
+import { Button } from "@mui/material";
 
 const Employee = () => {
   const [employees, setEmployees] = useState([]);
@@ -39,6 +40,7 @@ const Employee = () => {
       )
     );
   };
+  
 
   const handleDelete = async(id) => {
     const confirmation = window.confirm("Are you sure you want to delete this employee!");
@@ -57,6 +59,7 @@ const Employee = () => {
       }
     }
   }
+  
 
   return (
     <>
@@ -105,6 +108,8 @@ const Employee = () => {
                 </td>
               </tr>
             )}
+           
+          
           </tbody>
         </table>
         {showEditPopup && selectedEmployee && (
