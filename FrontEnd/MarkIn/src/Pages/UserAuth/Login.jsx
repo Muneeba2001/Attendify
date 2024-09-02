@@ -38,7 +38,7 @@ const LoginPage = () => {
         });
         toast.success("Login successful!", {
             // position: "top-right",
-            autoClose:1500
+          autoClose:1500
         });
         setTimeout(() => {
           navigate("/AdminDashboard");

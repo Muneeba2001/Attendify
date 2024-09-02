@@ -5,10 +5,14 @@ import React, { useEffect, useState } from "react";
 import moment from "moment";
 
 const AttendanceSheet = () => {
-  const [attendees, setAttendees] = useState([]);
-  const [isCheckInEnable, setIsCheckInEnable] = useState(true);
-  const [isCheckOutEnable, setIsCheckOutEnable] = useState(false);
+  const [attendees, setAttendees] = useState([]); // 1. List of all employees
+  const [selectedEmployee, setSelectedEmployee] = useState(''); // 2. ID of the selected employee
+  const [employeeStatus, setEmployeeStatus] = useState({
+    isCheckInEnable: true,
+    isCheckOutEnable: false
+  });
 
+  // 3. Fetch employees from the server
   const fetchEmployees = async () => {
     try {
       const response = await axios.get('http://localhost:3000/employees');
@@ -19,40 +23,61 @@ const AttendanceSheet = () => {
   };
 
   useEffect(() => {
-    fetchEmployees();
+    fetchEmployees(); // Fetch data when component mounts
   }, []);
+
+  useEffect(() => {
+    // 4. Update button statuses based on selected employee
+    const employee = attendees.find(emp => emp._id === selectedEmployee);
+    if (employee) {
+      const isCheckedIn = employee.checkIn && !employee.checkOut;
+      setEmployeeStatus({
+        isCheckInEnable: !isCheckedIn,
+        isCheckOutEnable: isCheckedIn
+      });
+    } else {
+      setEmployeeStatus({
+        isCheckInEnable: true,
+        isCheckOutEnable: false
+      });
+    }
+  }, [selectedEmployee, attendees]);
 
   const handleCheckIn = async (id) => {
     if (!id) return;
-    
+
     try {
       const response = await axios.patch(`http://localhost:3000/EmployeeCheckIn/${id}`, {
         checkIn: moment().toISOString()
       });
       console.log('Check In Response:', response.data);
-      fetchEmployees();
-      setIsCheckInEnable(false);
-      setIsCheckOutEnable(true);
+      fetchEmployees(); // Refresh employee data
+      setEmployeeStatus({
+        isCheckInEnable: false,
+        isCheckOutEnable: true
+      });
     } catch (error) {
       console.error('Error checking in:', error);
     }
   };
 
   const handleCheckOut = async (id) => {
-    if(!id) return;
-    
+    if (!id) return;
+
     try {
       const response = await axios.patch(`http://localhost:3000/EmployeeCheckOut/${id}`, {
         checkOut: moment().toISOString()
       });
       console.log("Check Out Response:", response.data);
-      fetchEmployees();
-      setIsCheckInEnable(true);
-      setIsCheckOutEnable(false);
+      fetchEmployees(); // Refresh employee data
+      setEmployeeStatus({
+        isCheckInEnable: true,
+        isCheckOutEnable: false
+      });
     } catch (error) {
       console.error('Error checking out:', error);
     }
-  }
+  };
 
   return (
     <>
@@ -76,7 +101,16 @@ const AttendanceSheet = () => {
                 <Form>
                   <div className="FormSelection flex space-x-7">
                     <div className="mb-4">
-                      <Field as="select" name="employee" className="border p-2 rounded">
+                      <Field
+                        as="select"
+                        name="employee"
+                        className="border p-2 rounded"
+                        value = {selectedEmployee}
+                        onChange={(e) => {
+                          const { value } = e.target;
+                          setSelectedEmployee(value); // 5. Update selected employee
+                        }}
+                      >
                         <option value="">Select an employee</option>
                         {attendees.length > 0 ? (
                           attendees.map((employee) => (
@@ -93,16 +127,16 @@ const AttendanceSheet = () => {
                       <Button
                         variant="contained"
                         sx={{ backgroundColor: "#5218fa", color: "white", height: "40px" }}
-                        onClick={() => handleCheckIn(values.employee)}
-                        disabled={!isCheckInEnable} // Enable/Disable logic for Check In
+                        onClick={() => handleCheckIn(selectedEmployee)}
+                        disabled={!employeeStatus.isCheckInEnable} // 6. Enable/Disable Check In button
                       >
                         Check In
                       </Button>
                       <Button
                         variant="contained"
                         sx={{ backgroundColor: "red", color: "white", height: "40px" }}
-                        onClick={() => handleCheckOut(values.employee)}
-                        disabled={!isCheckOutEnable} // Enable/Disable logic for Check Out
+                        onClick={() => handleCheckOut(selectedEmployee)}
+                        disabled={!employeeStatus.isCheckOutEnable} // 7. Enable/Disable Check Out button
                       >
                         Check Out
                       </Button>
@@ -115,15 +149,15 @@ const AttendanceSheet = () => {
         </div>
       </div>
 
-      <div className="mt-4">
-        <h1 className="text-gray-400">Attendance Sheet</h1>
+      <div className="mt-4 bg-white rounded-md p-4 shadow-md">
+        <h1 className="text-blue-800 p-4 text-3xl font-semibold">Attendance Sheet</h1>
         <table className="w-full border-collapse">
           <thead>
-            <tr>
-              <th className="border p-2">Employee Name</th>
-              <th className="border p-2">Email</th>
-              <th className="border p-2">Check In</th>
-              <th className="border p-2">Check Out</th>
+            <tr className="bg-gray-100">
+              <th className="border p-2 text-left">Employee Name</th>
+              <th className="border p-2 text-left">Email</th>
+              <th className="border p-2 text-left">Check In</th>
+              <th className="border p-2 text-left">Check Out</th>
             </tr>
           </thead>
           <tbody>
@@ -149,3 +183,4 @@ const AttendanceSheet = () => {
 };
 
 export default AttendanceSheet;
+

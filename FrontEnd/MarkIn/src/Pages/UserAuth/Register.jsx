@@ -26,8 +26,10 @@ const Register = () => {
       })
       .then((result) => {
         console.log(result);
-        navigate("/userAuth/Login");
+        // navigate("/userAuth/Login");
+        navigate("/AdminDashBoard")
       })
+
       .catch((err) => console.log(err));
   };
 
