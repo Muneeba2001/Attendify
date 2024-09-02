@@ -3,6 +3,7 @@ import { useFormik, Formik, Field, Form, ErrorMessage } from "formik";
 import registerSchema from "../../schema/form/Register";
 import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const initialValues = {
   name: "",
@@ -27,7 +28,12 @@ const Register = () => {
       .then((result) => {
         console.log(result);
         // navigate("/userAuth/Login");
-        navigate("/AdminDashBoard")
+        toast.success("Register SuccessFully",{
+          autoClose:800
+        })
+        setTimeout(() => {
+          navigate("/AdminDashBoard")
+        }, 800);
       })
 
       .catch((err) => console.log(err));
