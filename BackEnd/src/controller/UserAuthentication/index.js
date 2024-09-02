@@ -1,6 +1,6 @@
 import userModel from "../../model/userModel.js";
 import { hash, compare } from "bcrypt";
-
+import { v4 as uuidv4 } from "uuid";
 const registerController = {
   // Register a new user
   register: async (req, res) => {

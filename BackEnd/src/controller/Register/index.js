@@ -7,10 +7,11 @@ const registerController = {
     try {
       const { name, email, password, phone_number } = req.body;
 
-      console.log(req.body);
+      // Normalize email to lowercase
+      const normalizedEmail = email.toLowerCase();
 
-      // Check if the user already exist
-      const userCheck = await userModel.findOne({ email });
+      // Check if the user already exists
+      const userCheck = await userModel.findOne({ email: normalizedEmail });
       if (userCheck) {
         return res.status(409).json({ message: "User already exists!" });
       }
@@ -21,19 +22,19 @@ const registerController = {
       // Create a new user with hashed password
       const userRegister = await userModel.create({
         name,
-        email,
+        email: normalizedEmail,
         phone_number,
         password: hashedPassword,
       });
-      await userRegister.save();
-      res
-        .status(201)
-        .json({ message: "User registered successfully", userRegister });
+
+      res.status(201).json({ message: "User registered successfully", userRegister });
     } catch (error) {
-      console.error(error);
+      console.error("Error in registration:", error);
       res.status(500).json({ message: "Internal Server Error" });
     }
-  }, // get all register users
+  },
+
+  // Get all registered users
   getAllUser: async (req, res) => {
     try {
       const employees = await userModel.find();
@@ -42,48 +43,55 @@ const registerController = {
       res.status(500).json({ message: error.message });
     }
   },
-  // update register usesrs
+
+  // Update registered users
   update: async (req, res) => {
     try {
-      let { id } = req.params;
-      //   console.log(req.params);
+      const { id } = req.params;
       const payload = req.body;
-      console.log(req.body);
+
       const users = await userModel.findByIdAndUpdate(id, payload, {
         new: true,
-        runValidator: true,
+        runValidators: true,
       });
+
       if (!users) {
-        res.status(404).json({ message: "User not found. " });
+        return res.status(404).json({ message: "User not found." });
       }
-      res.status(200).json({ message: "User: ", users });
+
+      res.status(200).json({ message: "User updated successfully", users });
     } catch (error) {
       res.status(500).json({ message: "Internal Server Error", error });
     }
   },
-  // delete register user
+
+  // Delete registered user
   delete: async (req, res) => {
     try {
       const { id } = req.params;
       const users = await userModel.findByIdAndDelete(id);
+
       if (!users) {
-        res.status(404).json({ message: "User not found. " });
+        return res.status(404).json({ message: "User not found." });
       }
-      res.status(200).json({ message: "User: ", users });
+
+      res.status(200).json({ message: "User deleted successfully", users });
     } catch (error) {
       res.status(500).json({ message: "Internal Server Error", error });
     }
   },
+
   // User login
   login: async (req, res) => {
     try {
       const { email, password } = req.body;
-      console.log("body:", req.body);
+
+      // Normalize email to lowercase
+      const normalizedEmail = email.toLowerCase();
 
       // Find the user by email
-      const userCheck = await userModel.findOne({ email });
+      const userCheck = await userModel.findOne({ email: normalizedEmail });
 
-      console.log("UserCheck", userCheck);
       if (!userCheck) {
         return res.status(404).json({ message: "Invalid Credentials!" });
       }
