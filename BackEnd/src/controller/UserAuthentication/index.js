@@ -137,7 +137,7 @@ const registerController = {
       }
   
       // Update loginTime to the current date and time
-      userCheck.loginTime = new Date();
+      // userCheck.loginTime = new Date();
   
       // Save the updated user info
       await userCheck.save();
@@ -156,6 +156,49 @@ const registerController = {
       }
     }
   },
+  CheckIn: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { checkIn } = req.body;
+  
+      // Update the employee's check-in time
+      const employeeCheckIn = await userModel.findByIdAndUpdate(
+        id,
+        { checkIn: checkIn }, // Make sure this matches the field name in your schema
+        { new: true }
+      );
+  
+      if (!employeeCheckIn) {
+        return res.status(404).json({ Warning: "Not Found!" });
+      }
+  
+      res.status(200).json({ Success: "Employee is successfully Checked In", employeeCheckIn });
+    } catch (error) {
+      console.error(error); // Added error logging for debugging
+      res.status(500).json({ Error: "Internal server Error" });
+    }
+  },
+
+  CheckOut : async (req,res)=> {
+    try {
+      const {id} = req.params;
+      const {checkOut} = req.body;
+      const EmployeeCheckOut = await userModel.findByIdAndUpdate(id,
+        {checkOut : new Date(checkOut)},
+        {new:true}
+      )
+      if(!EmployeeCheckOut)
+      {
+        return res.status(404).json({Warning:"Internal server Error"})
+      }
+      res.status(200).json({Success: "Employee is checkedOut", EmployeeCheckOut});
+      
+    } catch (error) {
+      console.error(error); // Added error logging for debugging
+      res.status(500).json({ Error: "Internal server Error" });
+    }
+  }
+  
   
 };
 

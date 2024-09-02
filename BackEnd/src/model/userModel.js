@@ -19,10 +19,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // loginTime : {
-  //   type:Date,
-    
-  // }
+  checkIn : {
+    type : Date,
+    default : null
+  },
+  checkOut : {
+    type : Date,
+    default : null
+  }
 });
 
 const userModel = mongoose.model("User", userSchema);
