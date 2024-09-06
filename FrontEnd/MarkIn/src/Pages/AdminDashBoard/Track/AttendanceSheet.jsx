@@ -166,8 +166,8 @@ const AttendanceSheet = () => {
                 <tr key={employee._id}>
                   <td className="border p-2">{employee.name}</td>
                   <td className="border p-2">{employee.email}</td>
-                  <td className="border p-2">{employee.checkIn ? moment(employee.checkIn).format(' HH:mm a') : 'Not Updated Yet'}</td>
-                  <td className="border p-2">{employee.checkOut ? moment(employee.checkOut).format(' HH:mm a') : 'Not Updated Yet'}</td>
+                  <td className="border p-2">{employee.checkIn ? moment(employee.checkIn).format('MMMM DD YYYY HH:mm a') : 'Not Updated Yet'}</td>
+                  <td className="border p-2">{employee.checkOut ? moment(employee.checkOut).format('MMMM DD YYYY HH:mm a') : 'Not Updated Yet'}</td>
                 </tr>
               ))
             ) : (

@@ -197,8 +197,53 @@ const registerController = {
       console.error(error); // Added error logging for debugging
       res.status(500).json({ Error: "Internal server Error" });
     }
+  },
+// Attendance count 
+AttendanceCount: async (req, res) => {
+  try {
+    const { duration } = req.params;
+    let startDate, endDate;
+
+    switch (duration) {
+      case 'today': {
+        startDate = new Date(new Date().setHours(0, 0, 0, 0));
+        endDate = new Date(new Date().setHours(23, 59, 59, 999));
+        break;
+      }
+      case 'week': {
+        startDate = new Date();
+        startDate.setDate(startDate.getDate() - startDate.getDay());
+        endDate = new Date();
+        endDate.setDate(startDate.getDate() + 6);
+        break;
+      }
+      case 'month': {
+        startDate = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+        endDate = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0);
+        break;
+      }
+      case 'year': {
+        startDate = new Date(new Date().getFullYear(), 0, 1);
+        endDate = new Date(new Date().getFullYear(), 11, 31);
+        break;
+      }
+      default: {
+        res.status(404).json({ Warning: "Not Found" });
+        return;
+      }
+    }
+
+    const PresentAttendees = await userModel.find({
+      checkIn: { $gte: startDate, $lte: endDate }
+    });
+
+    // const presentCount = PresentAttendees.length;
+    res.status(200).json({ Success: "Attendance count", PresentAttendees });
+  } catch (error) {
+    res.status(500).json({ Error: "Internal server Error" });
   }
-  
+}
+
   
 };
 

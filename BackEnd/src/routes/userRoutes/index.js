@@ -10,5 +10,7 @@ userRouter.delete("/DeleteEmployee/:id", registerController.deleteUser);
 userRouter.post("/Login", registerController.login);
 userRouter.patch("/EmployeeCheckIn/:id",registerController.CheckIn);
 userRouter.patch("/EmployeeCheckOut/:id",registerController.CheckOut);
+//attendance
+userRouter.get("/AttendanceCount/:duration", registerController.AttendanceCount);
 
 export default userRouter;
