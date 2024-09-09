@@ -12,5 +12,6 @@ userRouter.patch("/EmployeeCheckIn/:id",registerController.CheckIn);
 userRouter.patch("/EmployeeCheckOut/:id",registerController.CheckOut);
 //attendance
 userRouter.get("/AttendanceCount/:duration", registerController.AttendanceCount);
-
+//Absent
+userRouter.get("/AbsentCount/:duration", registerController.AbsentCount)
 export default userRouter;

@@ -236,14 +236,71 @@ AttendanceCount: async (req, res) => {
     const PresentAttendees = await userModel.find({
       checkIn: { $gte: startDate, $lte: endDate }
     });
-
-    // const presentCount = PresentAttendees.length;
-    res.status(200).json({ Success: "Attendance count", PresentAttendees });
+    // const AbsentAttendees = await userModel.find({
+    //   checkIn: { $lt: startDate },
+    //   checkOut: { $exists: false }
+    // })
+    const presentCount = PresentAttendees.length;
+    // const absentCount = AbsentAttendees.length;
+    // res.status(200).json({ Success: "Attendance count", PresentAttendees });
+    res.status(200).json({Success: "Attendance Count", presentCount})
   } catch (error) {
     res.status(500).json({ Error: "Internal server Error" });
   }
-}
+},
+AbsentCount : async(req,res)=> {
+  try {
+    
+    const {duration} = req.params;
+  let startDate,endDate;
+  switch (duration) {
+    case 'today': {
+      startDate = new Date(new Date().setHours(0, 0, 0, 0));
+      endDate = new Date(new Date().setHours(23, 59, 59, 999));
+      break;
+    }
+    case 'week': {
+      startDate = new Date();
+      startDate.setDate(startDate.getDate() - startDate.getDay());
+      endDate = new Date();
+      endDate.setDate(startDate.getDate() + 6);
+      break;
+    }
+    case 'month': {
+      startDate = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+      endDate = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0);
+      break;
+    }
+    case 'year': {
+      startDate = new Date(new Date().getFullYear(), 0, 1);
+      endDate = new Date(new Date().getFullYear(), 11, 31);
+      break;
+    }
+    default: {
+      res.status(404).json({ Warning: "Not Found" });
+      return;
+    }
+  }
+  
+  // const AbsentAttendees = await userModel.find({
+  //   checkIn : {$lt : startDate },
+  //   checkOut : {$exists: false}
+  // })
 
+  // const AbsentCount = AbsentAttendees.length;
+  const totalEmployees = await userModel.countDocuments();
+  const presentCount = await userModel.countDocuments({
+    checkIn : {$gte : startDate, $lte : endDate}
+  })
+  const AbsentAttendees = totalEmployees - presentCount;
+  console.log(AbsentAttendees);
+  // const AbsentCount = AbsentAttendees.length;
+  res.status(200).json({Success: "Absent Count", AbsentAttendees})
+  } catch (error) {
+    res.status(500).json({Error: "Internal Server Error"})
+  }
+
+}
   
 };
 
