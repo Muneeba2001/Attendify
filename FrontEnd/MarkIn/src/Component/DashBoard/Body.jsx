@@ -8,7 +8,7 @@ const Body = () => {
   const select = useSelector((state) => state.attendance);
 
   useEffect(() => {
-    dispatch(PresentToday());
+    dispatch(PresentToday())
     dispatch(PresentWeek());
     dispatch(PresentMonth());
     dispatch(PresentYear());

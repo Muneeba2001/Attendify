@@ -1,5 +1,6 @@
 // const initialState = {
 
+import { act } from "react"
 import { AbsentToday } from "../ActionCreator/AttendanceCount"
 
 
@@ -54,7 +55,7 @@ const AttendanceCount = (state = initialState, action) => {
         }
         case 'ABSENT_TODAY': {
             return{
-                ...state, AbsentToday : action.payload
+               ...state, AbsentToday : action.payload
             }
         }
         default:

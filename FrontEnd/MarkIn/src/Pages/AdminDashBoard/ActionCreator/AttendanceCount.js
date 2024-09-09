@@ -14,7 +14,7 @@ export const PresentToday = () => async(dispatch) => {
 // export const PresentWeek = () => ({
 //     type : 'PRESENT_WEEK'
 // })
-export const PresentWeek = () => async (dispatch) => {
+export const PresentWeek = ()=> async (dispatch) => {
     const response = await axios (`http://localhost:3000/AttendanceCount/week`);
     try {
         dispatch({
