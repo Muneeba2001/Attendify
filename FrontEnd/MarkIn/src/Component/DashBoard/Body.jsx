@@ -4,6 +4,21 @@ import { NavLink } from "react-router-dom";
 import AdminDashBoardCrumb from "../BreadCrumbs/AdminDashBoardCrumb";
 
 const Body = () => {
+<<<<<<< Updated upstream
+=======
+  const dispatch = useDispatch();
+  const select = useSelector((state) => state.attendance);
+
+  useEffect(() => {
+    dispatch(PresentToday());
+    dispatch(PresentWeek());
+    dispatch(PresentMonth());
+    dispatch(PresentYear());
+    dispatch(AbsentToday())
+  }, [dispatch]);
+
+  console.log(select)
+>>>>>>> Stashed changes
   return (
     // min-h-screen px-2 -> container
     <div className="container">
