@@ -1,17 +1,15 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Provider } from "react-redux";
 import DefaultLayout from "../../DefaulLayout/DefaultLayout";
 import Manage from "../Manage/Manage";
 import Employee from "../Manage/Employee";
 import Student from "../Manage/Student";
 import DashBoard from "../AdminPage/DashBoard";
 import Track from "../AdminPage/Track";
-
+import { Provider } from "react-redux";
 import Analyze from "../../AdminDashBoard/Analyze/Analyze";
 import Report from "../Analyze/Report";
 import AttendanceSheet from "../Track/AttendanceSheet";
-import { Provider } from "react-redux";
 import reduxStore from "../Central Store/store";
 
 const AdminRoutes = () => {
