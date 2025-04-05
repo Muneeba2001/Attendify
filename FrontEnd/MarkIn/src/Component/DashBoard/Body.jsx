@@ -50,7 +50,7 @@ const Body = () => {
           >
             <Card elevation={3} sx={{ height: card.big ? 250 : 150, borderRadius: 2 }}>
               <CardContent>
-                <Typography variant="h6" color="primary" fontWeight="medium">
+                <Typography variant="h6" color="primary" fontWeight="bold">
                   {card.title}
                 </Typography>
                 <Typography variant="subtitle2" color="textSecondary">
