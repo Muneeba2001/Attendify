@@ -67,3 +67,15 @@ export const AbsentToday = () => async(dispatch) => {
         console.log("error", error)
     }
 }
+
+export const AbsentYear = () => async(dispatch) => {
+    const response = await axios (`http://localhost:3000/AbsentCount/year`);
+    try {
+        dispatch({
+            type: 'ABSENT_YEAR',
+            payload : response.data.AbsentAttendees
+        })
+    } catch (error) {
+        console.log("error", error)
+    }
+}
