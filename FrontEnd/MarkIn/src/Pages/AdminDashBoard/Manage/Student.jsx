@@ -17,19 +17,23 @@ const Student = () => {
   const [popupodel, setpopupodel] = useState(false);
 
   useEffect(() => {
+    console.log("Fetching students...");
     fetchStudent();
   }, []);
 
   const fetchStudent = async () => {
     try {
       const response = await axios.get("http://localhost:3000/student");
-      if (response.data.students) {
+      console.log("Fetched students:", response.data); // Debugging log
+
+      if (response.data && Array.isArray(response.data.students)) {
         setStudents(response.data.students);
       } else {
-        setStudents([]);
+        setStudents([]); // Ensure it’s always an array
       }
     } catch (error) {
-      console.log("Error fetching: ", error);
+      console.log("Error fetching students:", error);
+      setStudents([]); // Prevent undefined state
     }
   };
 
@@ -44,8 +48,10 @@ const Student = () => {
           "http://localhost:3000/student",
           newStudent,
         );
-        setStudents([...students, response.data.students]);
-        console.log("response data:", response.data.students);
+        if (response.data && response.data.student) {
+          // Ensure valid response
+          setStudents([...students, response.data.student]);
+        }
       }
       setNewStudent({
         _id: "",
@@ -64,14 +70,17 @@ const Student = () => {
   const handleEdit = async (id) => {
     try {
       const response = await axios.put(
-        ` http://localhost:3000/student/${id}`,
+        `http://localhost:3000/student/${id}`,
         newStudent,
       );
-      setStudents(
-        students.map((students) =>
-          students._id === id ? response.data.students : students,
+
+      setStudents((prevStudents) =>
+        prevStudents.map((student) =>
+          student._id === id ? response.data : student,
         ),
       );
+      console.log("Updated Student Data:", response.data);
+
       setNewStudent({
         _id: "",
         Student_name: "",
@@ -80,6 +89,7 @@ const Student = () => {
         username: "",
         password: "",
       });
+
       setpopupodel(false);
     } catch (error) {
       console.log("Error in editing: ", error);
@@ -152,40 +162,42 @@ const Student = () => {
               </tr>
             </thead>
             <tbody>
-              {students && students.length > 0 ? (
-                students.map((student, index) => (
-                  <tr key={index}>
-                    <td className="border-b px-4 py-2">{index + 1}</td>
-                    <td className="border-b px-4 py-2">
-                      {student.Student_name}
-                    </td>
-                    <td className="border-b px-4 py-2">{student.course}</td>
-                    <td className="border-b px-4 py-2">{student.email}</td>
-                    <td className="border-b px-4 py-2">{student.username}</td>
-                    <td className="border-b px-4 py-2">{student.password}</td>
-                    <td>
-                      <div className="icons flex space-x-3">
-                        <button>
-                          <FaEdit
-                            title="edit"
-                            onClick={() => {
-                              setNewStudent(student);
-                              setpopupodel(true);
-                            }}
-                            className="text-lg text-blue-700"
-                          />
-                        </button>
-                        <button>
-                          <FaTrash
-                            title="delete"
-                            onClick={() => handleDelete(student._id)}
-                            className="text-lg text-red-900"
-                          />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))
+              {students.length > 0 ? (
+                students
+                  .filter((student) => student) // Filters out any null/undefined values
+                  .map((student, index) => (
+                    <tr key={index}>
+                      <td className="border-b px-4 py-2">{index + 1}</td>
+                      <td className="border-b px-4 py-2">
+                        {student.Student_name}
+                      </td>
+                      <td className="border-b px-4 py-2">{student.course}</td>
+                      <td className="border-b px-4 py-2">{student.email}</td>
+                      <td className="border-b px-4 py-2">{student.username}</td>
+                      <td className="border-b px-4 py-2">{student.password}</td>
+                      <td>
+                        <div className="icons flex space-x-3">
+                          <button>
+                            <FaEdit
+                              title="edit"
+                              onClick={() => {
+                                setNewStudent(student);
+                                setpopupodel(true);
+                              }}
+                              className="text-lg text-blue-700"
+                            />
+                          </button>
+                          <button>
+                            <FaTrash
+                              title="delete"
+                              onClick={() => handleDelete(student._id)}
+                              className="text-lg text-red-900"
+                            />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
               ) : students.length === 0 ? (
                 <tr>
                   <td colSpan="7" className="p-4 text-center">
