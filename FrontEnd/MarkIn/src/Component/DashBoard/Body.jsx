@@ -7,7 +7,7 @@ import {
   PresentWeek, 
   PresentYear,
   AbsentYear
-} from "../../Pages/AdminDashBoard/ActionCreator/AttendanceCount";
+} from "../../Pages/Admin/AdminDashBoard/ActionCreator/AttendanceCount";
 import AdminDashBoardCrumb from "../BreadCrumbs/AdminDashBoardCrumb";
 import { Card, CardContent, Typography, Avatar, Grid, Box } from "@mui/material";
 
