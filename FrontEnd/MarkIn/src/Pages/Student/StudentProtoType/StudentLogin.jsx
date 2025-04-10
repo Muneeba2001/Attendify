@@ -2,7 +2,7 @@ import { Formik, Form, Field } from "formik";
 import React from "react";
 import Button from "@mui/material/Button";
 import { NavLink } from "react-router-dom";
-import Header from "../../Component/Header";
+import Header from "../../../Component/DashBoard/Header";
 
 const StudentLogin = () => {
   return (

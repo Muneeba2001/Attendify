@@ -1,11 +1,10 @@
-import React from 'react'
+import StudentLogin from "../Pages/Student/StudentProtoType/StudentLogin";
+import URLS from "../utilties/URL/URL";
 
-const StudentRoutes = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
-
-export default StudentRoutes
+export const StudentRoutes=[
+  {
+    path : URLS.STUDENT.Login,
+    element : StudentLogin,
+    layout : true
+  },
+]
