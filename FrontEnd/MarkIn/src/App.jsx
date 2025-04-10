@@ -1,16 +1,15 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { AppRoutes, PublicRoutes } from "./Routes/AppRoutes";
+import { PublicRoutes } from "./Routes/AppRoutes";
 import { AdminRoutes } from "./Routes/AdminRoutes";
+import { StudentRoutes } from "./Routes/StudentRoutes";
+import { EmployeeRoutes } from "./Routes/EmployeeRoutes";
 import URLS from "./utilties/URL/URL";
-import './index.css';  // Ensure this is present
+import "./index.css";
 import DefaultLayout from "./Pages/DefaulLayout/DefaultLayout";
 
 function App() {
-  // Assuming AdminRoutes is an array and not a function.
-  const routes = AdminRoutes;
-
   return (
     <>
       <Routes>
@@ -19,30 +18,57 @@ function App() {
           <Route key={index} path={route.path} element={route.element} />
         ))}
 
-        {/* App Routes */}
+        {/* App Routes
         {AppRoutes.map((route, index) => (
           <Route key={index} path={route.path} element={route.element} />
-        ))}
+        ))} */}
 
         {/* Admin Routes */}
-        {routes.map(({ path, element: Element, layout }, index) => {
-          if (layout) {
-            return (
-              <Route
-                key={path + index}
-                path={path}
-                element={
-                  <DefaultLayout>
-                    <Element />
-                  </DefaultLayout>
-                }
-              />
-            );
-          }
-          return (
+        {AdminRoutes.map(({ path, element: Element, layout }, index) => {
+          return layout ? (
+            <Route
+              key={path + index}
+              path={path}
+              element={
+                <DefaultLayout>
+                  <Element />
+                </DefaultLayout>
+              }
+            />
+          ) : (
             <Route key={path + index} path={path} element={<Element />} />
           );
         })}
+
+        {/* Student Routes */}
+        {StudentRoutes.map(({ path, element: Element, layout }, index) => (
+          <Route
+            key={path + index}
+            path={path}
+            element={
+              layout ? (
+                  <Element />
+              ) : (
+                <Element />
+              )
+            }
+          />
+        ))}
+
+        {/* Employee Routes */}
+        {EmployeeRoutes.map(({ path, element: Element, layout }, index) => (
+          <Route
+            key={path + index}
+            path={path}
+            element={
+              layout ? (
+                  <Element />
+              ) : (
+                <Element />
+              )
+            }
+          />
+        ))}
       </Routes>
 
       <ToastContainer position="top-right" />
