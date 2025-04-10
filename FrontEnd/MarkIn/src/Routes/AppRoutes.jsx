@@ -2,7 +2,6 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 // Protected Route Wrapper
 import ProtectedRoute from "./ProtectedRoutes";
-import AdminRoutes from "./AdminRoutes";
 import StudentRoutes from "./StudentRoutes";
 import EmployeeRoutes from "./EmployeeRoutes";
 import LoginPage from "../Pages/UserAuth/Login";
@@ -18,10 +17,10 @@ import ForgetPassword from "../Pages/Employee/EmployeeProtoType/ForgetPassword"
       path: "/employee",
       element: <EmployeeRoutes />,
     },
-    {
-      path: "/Admin",
-      element: <AdminRoutes />,
-    },
+    // {
+    //   path: "/Admin",
+    //   element: <AdminRoutes />,
+    // },
   ];
   
   const PublicRoutes = [
