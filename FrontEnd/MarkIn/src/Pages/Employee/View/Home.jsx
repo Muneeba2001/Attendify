@@ -1,9 +1,12 @@
 import React from "react";
 import Header from "../../../Component/Header";
 import { Button } from "@mui/material";
+import Footer from "../../../Component/DashBoard/Footer";
+import FeatureCards from "../../../Component/Cards/FeatureCards";
 
 const Home = () => {
   return (
+    <div className="w-full bg-white">
     <div className="relative h-screen w-full">
       {/* Header with z-10 so it stays above the image */}
       <div className="relative z-20">
@@ -49,6 +52,9 @@ const Home = () => {
           Start with
         </Button>
       </div>
+      </div>
+      <FeatureCards/>
+      <Footer/>
     </div>
   );
 };
