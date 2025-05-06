@@ -1,5 +1,6 @@
 import React from "react";
 import ForgetPassword from "../Pages/Employee/EmployeeProtoType/ForgetPassword"
+import Home from "../Pages/Employee/View/Home";
 
   const AppRoutes = [
     // {
@@ -17,6 +18,7 @@ import ForgetPassword from "../Pages/Employee/EmployeeProtoType/ForgetPassword"
   ];
   
   const PublicRoutes = [
+    { path: "/", element: <Home/>  },
     // { path: "/", element: <Navigate to="/login" /> },
     // { path: "/login", element: <LoginPage /> },
     // { path: "/register", element: <Register /> },
