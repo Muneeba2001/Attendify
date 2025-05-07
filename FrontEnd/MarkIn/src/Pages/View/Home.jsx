@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Header from "../../../Component/Header";
+import Header from "../../Component/Header";
 import { Button } from "@mui/material";
-import Footer from "../../../Component/DashBoard/Footer";
-import FeatureCards from "../../../Component/Cards/FeatureCards";
+import Footer from "../../Component/DashBoard/Footer";
+import FeatureCards from "../../Component/Cards/FeatureCards";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {

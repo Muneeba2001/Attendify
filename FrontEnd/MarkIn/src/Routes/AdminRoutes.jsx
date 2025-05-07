@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import DefaultLayout from "../Pages/DefaulLayout/DefaultLayout";
 import Manage from "../Pages/Admin/AdminDashBoard/Manage/Manage";
-import Employee from "../Pages/Admin/AdminDashBoard/Manage/Employee";
+import Employee from "../Pages/Admin/AdminDashBoard/Manage/Employee/Employee";
 import Student from "../Pages/Admin/AdminDashBoard/Manage/Student";
 import Track from "../Pages/Admin/AdminDashBoard/Track/AttendanceSheet";
 import Analyze from "../Pages/Admin/AdminDashBoard/Analyze/Analyze";

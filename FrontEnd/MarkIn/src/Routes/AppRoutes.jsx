@@ -1,6 +1,6 @@
 import React from "react";
 import ForgetPassword from "../Pages/Employee/EmployeeProtoType/ForgetPassword"
-import Home from "../Pages/Employee/View/Home";
+import Home from "../Pages/View/Home";
 
   const AppRoutes = [
     // {
