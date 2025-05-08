@@ -1,7 +1,7 @@
 // pages/Student.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import ManageBreadCrumb from "../../../../Component/BreadCrumbs/ManageBreadCrumb";
+import Breadcrumb from "../../../../Component/BreadCrumbs/BreadCrumbs";
 import { Button } from "@mui/material";
 import PopupForm from "../../../../Component/PopupModal/PopupForm";
 import DataTable from "../../../../Component/DataTable/DataTable";
@@ -56,13 +56,16 @@ const Student = () => {
       if (studentData._id) {
         const res = await axios.put(
           `http://localhost:3000/student/${studentData._id}`,
-          studentData
+          studentData,
         );
         setStudents((prev) =>
-          prev.map((s) => (s._id === studentData._id ? res.data : s))
+          prev.map((s) => (s._id === studentData._id ? res.data : s)),
         );
       } else {
-        const res = await axios.post("http://localhost:3000/student", studentData);
+        const res = await axios.post(
+          "http://localhost:3000/student",
+          studentData,
+        );
         setStudents([...students, res.data.student]);
       }
       setPopupOpen(false);
@@ -95,37 +98,41 @@ const Student = () => {
 
   return (
     <div className="container">
-      <h1 className="text-3xl font-bold text-blue-700">Students</h1>
-      <ManageBreadCrumb />
-      <div className="container mx-auto mt-5 bg-white p-4 rounded-lg shadow-md">
-      <div className="flex justify-between items-center mt-4">
-      <h2 className="text-2xl font-bold">Student List</h2>
-        <Button
-          variant="contained"
-          onClick={() => setPopupOpen(true)}
-          sx={{ backgroundColor: "#2962ff" }}
-        >
-          Add Student
-        </Button>
+      <h1 className="my-2 text-3xl font-bold text-blue-800">Student</h1>
+      <Breadcrumb
+        basePath="/AdminDashBoard"
+        labelMap={{ manage: "Manage", student: "Student" }}
+      />
+
+      <div className="container mx-auto mt-5 rounded-lg bg-white p-4 shadow-md">
+        <div className="mt-4 flex items-center justify-between">
+          <h2 className="text-2xl font-bold">Student List</h2>
+          <Button
+            variant="contained"
+            onClick={() => setPopupOpen(true)}
+            sx={{ backgroundColor: "#2962ff" }}
+          >
+            Add Student
+          </Button>
+        </div>
+
+        <DataTable
+          headers={tableHeaders}
+          data={students}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+        />
+
+        <PopupForm
+          title="Student Form"
+          isOpen={popupOpen}
+          fields={studentFields}
+          values={studentData}
+          onChange={handleChange}
+          onSubmit={handleSubmit}
+          onClose={() => setPopupOpen(false)}
+        />
       </div>
-
-      <DataTable
-        headers={tableHeaders}
-        data={students}
-        onEdit={handleEdit}
-        onDelete={handleDelete}
-      />
-
-      <PopupForm
-        title="Student Form"
-        isOpen={popupOpen}
-        fields={studentFields}
-        values={studentData}
-        onChange={handleChange}
-        onSubmit={handleSubmit}
-        onClose={() => setPopupOpen(false)}
-      />
-    </div>
     </div>
   );
 };

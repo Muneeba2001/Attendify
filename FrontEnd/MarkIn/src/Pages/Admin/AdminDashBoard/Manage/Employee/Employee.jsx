@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // ✅ Import this
-import EmployeeBreadCrumb from "../../../../../Component/BreadCrumbs/EmployeeBreadCrumb";
+import { useNavigate } from "react-router-dom"; 
+import Breadcrumb from "../../../../../Component/BreadCrumbs/BreadCrumbs";
 import EditEmployee from "./EditEmployee";
 import { toast } from "react-toastify";
 import { Button } from "@mui/material";
@@ -71,7 +71,10 @@ const Employee = () => {
   return (
     <>
       <h1 className="text-3xl font-bold text-blue-800 my-2">Employee</h1>
-      <EmployeeBreadCrumb />
+      <Breadcrumb
+        basePath="/AdminDashBoard"
+        labelMap={{ manage: "Manage", student: "Employee" }}
+      />
       <div className="container mx-auto mt-5 bg-white p-4 rounded-lg shadow-md">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold">Employee List</h2>
