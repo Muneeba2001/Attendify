@@ -8,7 +8,7 @@ const DefaultLayout = (props) => {
       <Header />
       <div className="flex flex-1">
         <SideBar />
-        <div className="flex-1 p-6">
+        <div className="flex-1">
           {props.children}
         </div>
       </div>

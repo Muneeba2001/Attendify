@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { Button } from '@mui/material';
 import TrackBreadCrumb from '../../../Component/BreadCrumbs/TrackBreadCrumb';
+import DataTable from '../../../components/DataTable'; // Update path as needed
 
 // Mock data representing students and their attendance
 const studentData = [
@@ -9,87 +10,78 @@ const studentData = [
   { name: 'Sara', subject: 'Maths', section: 'A', date: '2024-08-10', status: 'Absent' },
   { name: 'Ahmed', subject: 'English', section: 'B', date: '2024-08-10', status: 'Present' },
   { name: 'Fatima', subject: 'Urdu', section: 'C', date: '2024-08-11', status: 'Present' },
-  // Add more students as needed
 ];
 
 const AttendanceSheet = () => {
   const [filteredData, setFilteredData] = useState([]);
 
   const filterData = (values) => {
-    console.log('Filtering with values:', values); // Debugging
-    // Ensure date format matches between form input and mock data
     const formattedDate = values.date;
-
-    console.log('Formatted date:', formattedDate); // Debugging
     const filtered = studentData.filter(
       (student) =>
         student.subject === values.subject &&
         student.section === values.section &&
         student.date === formattedDate
     );
-
-    console.log('Filtered data:', filtered); // Debugging
     setFilteredData(filtered);
   };
 
+  // Headers for DataTable
+  const headers = [
+    { key: 'name', label: 'Name' },
+    { key: 'subject', label: 'Subject' },
+    { key: 'section', label: 'Section' },
+    { key: 'date', label: 'Date' },
+    { key: 'status', label: 'Status' },
+  ];
+
   return (
     <>
-    <TrackBreadCrumb />
-      {/* selection */}
-      <div className="container bg-white p-6  space-y-4 w-full">
+      <TrackBreadCrumb />
+      <div className="container bg-[#1e1e1e] text-white p-6 space-y-4 w-full">
         <Formik
           initialValues={{ subject: '', section: '', date: '' }}
           onSubmit={(values, { setSubmitting }) => {
-            console.log('Form values:', values); // Debugging
             filterData(values);
-            setSubmitting(false); // Stop submitting
+            setSubmitting(false);
           }}
         >
           {({ isSubmitting }) => (
             <Form className="flex flex-wrap gap-4 items-center">
-              <div className="flex flex-col">
-               
-                <Field
-                  as="select"
-                  name="subject"
-                  id="subject"
-                  className="ml-2 border border-gray-400 rounded-md px-2 py-1 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                >
-                  <option value="" disabled>
-                    Select Subject
-                  </option>
-                  <option value="Maths">Maths</option>
-                  <option value="English">English</option>
-                  <option value="Urdu">Urdu</option>
-                </Field>
-              </div>
+              <Field
+                as="select"
+                name="subject"
+                id="subject"
+                className="ml-2 border border-gray-400 rounded-md px-2 py-1 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              >
+                <option value="" disabled>
+                  Select Subject
+                </option>
+                <option value="Maths">Maths</option>
+                <option value="English">English</option>
+                <option value="Urdu">Urdu</option>
+              </Field>
 
-              <div className="flex flex-col">
-              
-                <Field
-                  as="select"
-                  name="section"
-                  id="section"
-                  className="ml-2 border border-gray-400 rounded-md px-2 py-1 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                >
-                  <option value="" disabled>
-                    Select Section
-                  </option>
-                  <option value="A">A</option>
-                  <option value="B">B</option>
-                  <option value="C">C</option>
-                </Field>
-              </div>
+              <Field
+                as="select"
+                name="section"
+                id="section"
+                className="ml-2 border border-gray-400 rounded-md px-2 py-1 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              >
+                <option value="" disabled>
+                  Select Section
+                </option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </Field>
 
-              <div className="flex flex-col">
-              
-                <Field
-                  type="date"
-                  name="date"
-                  id="date"
-                  className="ml-2 border border-gray-400 rounded-md px-2 py-1 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                />
-              </div>
+              <Field
+                type="date"
+                name="date"
+                id="date"
+                className="ml-2 border border-gray-400 rounded-md px-2 py-1 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              />
 
               <Button
                 type="submit"
@@ -103,34 +95,19 @@ const AttendanceSheet = () => {
             </Form>
           )}
         </Formik>
+
+        {/* Render DataTable */}
+        {filteredData.length > 0 ? (
+          <DataTable
+            headers={headers}
+            data={filteredData}
+            onEdit={() => {}}
+            onDelete={() => {}}
+          />
+        ) : (
+          <p className="text-white mt-4">No data available for the selected criteria.</p>
+        )}
       </div>
-      {/* display */}
-      {filteredData.length > 0 ? (
-        <table className="w-full mt-6 border-collapse border border-gray-200">
-          <thead>
-            <tr>
-              <th className="border border-gray-300 p-2">Name</th>
-              <th className="border border-gray-300 p-2">Subject</th>
-              <th className="border border-gray-300 p-2">Section</th>
-              <th className="border border-gray-300 p-2">Date</th>
-              <th className="border border-gray-300 p-2">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredData.map((student, index) => (
-              <tr key={index}>
-                <td className="border border-gray-300 p-2">{student.name}</td>
-                <td className="border border-gray-300 p-2">{student.subject}</td>
-                <td className="border border-gray-300 p-2">{student.section}</td>
-                <td className="border border-gray-300 p-2">{student.date}</td>
-                <td className="border border-gray-300 p-2">{student.status}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p>No data available for the selected criteria.</p>
-      )}
     </>
   );
 };

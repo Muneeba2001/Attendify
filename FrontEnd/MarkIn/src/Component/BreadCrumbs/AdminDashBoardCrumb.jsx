@@ -25,21 +25,21 @@ const AdminDashBoardCrumb = () => {
                 <React.Fragment key={BreadCrumb.href}>
                     {
                         index>0 && (
-                            <Typography color="text.primary" sx={{mx:1}}>{'/'}</Typography>
+                            <Typography color="text.white" sx={{mx:1}}>{'/'}</Typography>
                         )
                     }
                     {
                         isLast || isActive ? (<Typography
                         key={BreadCrumb.href}
-                        color="text.primary"
-                        sx={{mx:1, fontWeight:isActive? 'bold':'normal'}}
+                        color="text.white"
+                        sx={{mx:1, fontWeight:isActive? 'bold':'light'}}
 
                         >
                             {BreadCrumb.label}
                         </Typography>) : (<Link
                         key={BreadCrumb.href}
                         underline="hover"
-                        color="inherit"
+                        color="white"
                         href={BreadCrumb.href}
                         sx={{ fontWeight: 'normal' }}>
                         </Link>)

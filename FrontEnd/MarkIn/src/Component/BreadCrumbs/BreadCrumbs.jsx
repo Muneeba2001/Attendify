@@ -20,7 +20,7 @@ const Breadcrumb = ({ labelMap = {}, basePath = '' }) => {
     <div aria-label="breadcrumb" className="flex items-center">
       <Link
         underline="hover"
-        color="inherit"
+        color="white"
         href={basePath || '/'}
         onClick={handleClick(basePath || '/')}
         sx={{ fontWeight: 'normal' }}

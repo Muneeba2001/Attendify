@@ -97,20 +97,27 @@ const Student = () => {
   };
 
   return (
-    <div className="container">
-      <h1 className="my-2 text-3xl font-bold text-blue-800">Student</h1>
+    <div className="min-h-screen bg-[#121212] text-white p-6">
+      <h1 className="my-2 text-3xl font-bold">Student</h1>
+
       <Breadcrumb
         basePath="/AdminDashBoard"
         labelMap={{ manage: "Manage", student: "Student" }}
       />
 
-      <div className="container mx-auto mt-5 rounded-lg bg-white p-4 shadow-md">
+      <div className="container mx-auto mt-5 rounded-lg bg-[#1e1e1e] p-4 shadow-md">
         <div className="mt-4 flex items-center justify-between">
-          <h2 className="text-2xl font-bold">Student List</h2>
+          <h2 className="text-2xl font-semibold text-white">Student List</h2>
           <Button
             variant="contained"
             onClick={() => setPopupOpen(true)}
-            sx={{ backgroundColor: "#2962ff" }}
+            sx={{
+              backgroundColor: "#2962ff",
+              color: "#fff",
+              "&:hover": {
+                backgroundColor: "#0039cb",
+              },
+            }}
           >
             Add Student
           </Button>
