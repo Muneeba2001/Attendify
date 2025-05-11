@@ -35,9 +35,9 @@ const Body = () => {
 
   return (
     <div className="container px-10 py-2">
-      <Typography variant="h4" color="primary" fontWeight="bold">
-        Dashboard
-      </Typography>
+      <Typography variant="h4" sx={{ color: '#1e40af', fontWeight: 'bold' }}>
+  Dashboard
+</Typography>
       <AdminDashBoardCrumb />
 
       <Grid container spacing={3} className="py-4">
@@ -50,7 +50,7 @@ const Body = () => {
           >
             <Card elevation={3} sx={{ height: card.big ? 250 : 150, borderRadius: 2 }}>
               <CardContent>
-                <Typography variant="h6" color="primary" fontWeight="bold">
+                <Typography variant="h6" sx={{ color: '#1e40af', fontWeight: 'bold' }}>
                   {card.title}
                 </Typography>
                 <Typography variant="subtitle2" color="textSecondary">
