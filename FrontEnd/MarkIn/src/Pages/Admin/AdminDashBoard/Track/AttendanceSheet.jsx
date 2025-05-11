@@ -84,7 +84,7 @@ const AttendanceSheet = () => {
       <div className="time flex justify-end mb-5 mt-5">
         <h1 className="text-gray-600">{moment().format('MMMM Do YYYY ')}</h1>
       </div>
-      <div className="bg-white w-full p-4 rounded-lg shadow-md">
+      <div className="bg-[#1e1e1e] w-full p-4 rounded-lg shadow-md">
         <div className="attendanceSheet w-full flex space-x-6">
           <div className="heading p-2 flex justify-center">
             <h1 className="text-gray-400">All Employees</h1>
