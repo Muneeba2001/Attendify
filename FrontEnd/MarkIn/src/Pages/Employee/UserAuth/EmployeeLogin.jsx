@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import LoginSchema from "../../../schema/form/Login";
 import { useNavigate, NavLink } from "react-router-dom";
 import Header from "../../../Component/Header";
-import { toast} from "react-toastify";
+import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const initialValues = {
@@ -15,58 +15,37 @@ const initialValues = {
 };
 
 const EmployeeLogin = () => {
-  // Renamed component
   const navigate = useNavigate();
 
-  // const onSubmit = (values) => {
-  //   axios
-  //     .post("http://localhost:3000/Login", {
-  //       email: values.email,
-  //       password: values.password,
-  //     })
-  //     .then((result) => {
-  //       console.log(result);
-  //       navigate("/AdminDashboard");
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
   const onSubmit = async (values) => {
     try {
-        const result = await axios.post("http://localhost:3000/Login", {
-            email: values.email,
-            password: values.password,
-        });
-        toast.success("Login successful!", {
-            // position: "top-right",
-          autoClose:1500
-        });
-        setTimeout(() => {
-          navigate("/AdminDashboard");
-        }, 2000); 
-        
+      const result = await axios.post("http://localhost:3000/Login", {
+        email: values.email,
+        password: values.password,
+      });
+      toast.success("Login successful!", { autoClose: 1500 });
+      setTimeout(() => {
+        navigate("/AdminDashboard");
+      }, 2000);
+    } catch (err) {
+      toast.error("Login failed. Please try again.");
+      console.log(err);
     }
-   
-    catch (err) {
-        toast.error("Login failed. Please try again.", {
-            // position: toast.POSITION.TOP_RIGHT,
-            // position: "top-right"
-        });
-        console.log(err);
-    }
-};
+  };
 
   return (
-    <>
-    <Header/>
-    <div className="container mx-auto flex h-screen items-center justify-center">
-      <div className="grid w-full grid-cols-1 md:grid-cols-2">
+    <div className="bg-[#0f0f0f] min-h-screen">
+      <Header />
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-center px-4 py-8 text-white gap-8">
         {/* Left Column: Text */}
-        <div className="flex flex-col justify-center p-6 md:p-[100px]">
-          <h1 className="text-4xl text-gray-800 md:text-6xl">Attendance</h1>
-          <h1 className="text-4xl text-blue-900 md:text-6xl">
-            for your business
+        <div className="w-full md:w-1/2 flex flex-col justify-center text-center md:text-left p-6 md:p-12">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+            Attendance
           </h1>
-          <p className="mt-6 text-sm text-gray-600 md:mt-8 md:text-base">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-blue-400">
+            for your business
+          </h2>
+          <p className="mt-4 text-sm sm:text-base text-gray-300 max-w-xl mx-auto md:mx-0">
             Efficient attendance management is crucial for maintaining
             productivity and accountability in any business. By accurately
             tracking employee presence, you can ensure streamlined operations
@@ -74,107 +53,90 @@ const EmployeeLogin = () => {
           </p>
         </div>
 
-          {/* Right Column: Form */}
-          <div className="flex items-center justify-center p-6 md:p-12">
-            <div className="w-full max-w-md rounded-sm bg-white p-6 shadow-md md:max-w-lg">
-              <Formik
-                validationSchema={LoginSchema}
-                onSubmit={onSubmit}
-                initialValues={initialValues}
-              >
-                {({ handleSubmit }) => (
-                  <Form
-                    onSubmit={handleSubmit}
-                    className="space-y-4 md:space-y-6"
+        {/* Right Column: Form */}
+        <div className="w-full md:w-1/2 flex items-center justify-center p-4 md:p-8">
+          <div className="w-full max-w-sm sm:max-w-md md:max-w-lg rounded-sm bg-[#1e1e1e] p-6 shadow-md">
+            <Formik
+              validationSchema={LoginSchema}
+              onSubmit={onSubmit}
+              initialValues={initialValues}
+            >
+              {({ handleSubmit }) => (
+                <Form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+                  <div>
+                    <label htmlFor="email" className="mb-2 block text-sm font-medium text-gray-300">
+                      Username
+                    </label>
+                    <Field
+                      type="email"
+                      id="email"
+                      name="email"
+                      className="w-full rounded-sm border border-gray-600 bg-[#1e1e1e] p-2 text-white"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="password" className="mb-2 block text-sm font-medium text-gray-300">
+                      Password
+                    </label>
+                    <Field
+                      id="password"
+                      type="password"
+                      name="password"
+                      className="w-full rounded-sm border border-gray-600 bg-[#1e1e1e] p-2 text-white"
+                    />
+                  </div>
+
+                  <div className="flex items-center">
+                    <Field
+                      type="checkbox"
+                      id="rememberMe"
+                      name="rememberMe"
+                      className="mr-2"
+                    />
+                    <label htmlFor="rememberMe" className="text-sm text-gray-300">
+                      Remember me
+                    </label>
+                  </div>
+
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "#3f51b5",
+                      color: "white",
+                      padding: "10px 20px",
+                      borderRadius: "4px",
+                      "&:hover": {
+                        backgroundColor: "#303f9f"
+                      }
+                    }}
+                    fullWidth
                   >
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="mb-2 block text-sm font-medium text-gray-700"
-                      >
-                        Username
-                      </label>
-                      <Field
-                        type="email"
-                        id="email"
-                        name="email"
-                        className="w-full rounded-sm border border-gray-300 p-2"
-                      />
-                    </div>
+                    Sign in
+                  </Button>
 
-                    <div>
-                      <label
-                        htmlFor="password"
-                        className="mb-2 block text-sm font-medium text-gray-700"
-                      >
-                        Password
-                      </label>
-                      <Field
-                        id="password"
-                        type="password"
-                        name="password"
-                        className="w-full rounded-sm border border-gray-300 p-2"
-                      />
-                    </div>
+                  <div className="mt-4 text-sm text-gray-300">
+                    <NavLink to="/UserAuth/ForgetPassword" className="text-blue-400 hover:underline">
+                      Forget Password?
+                    </NavLink>
+                  </div>
 
-                    <div className="flex items-center">
-                      <Field
-                        type="checkbox"
-                        id="rememberMe"
-                        name="rememberMe"
-                        className="mr-2"
-                      />
-                      <label
-                        htmlFor="rememberMe"
-                        className="text-sm text-gray-700"
-                      >
-                        Remember me
-                      </label>
-                    </div>
-
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      sx={{
-                        backgroundColor: "rgb(63, 81, 181)",
-                        color: "white",
-                        padding: "10px 20px",
-                        borderRadius: "4px",
-                      }}
-                      fullWidth
-                    >
-                      Sign in
-                    </Button>
-
-                    <div className="mt-4 text-sm text-gray-700">
-                      <NavLink
-                        to="/UserAuth/ForgetPassword"
-                        className="text-gray-600"
-                      >
-                        Forget Password?
+                  <div className="mt-2 text-sm text-gray-300">
+                    <p>
+                      Don't have an account?{" "}
+                      <NavLink to="/UserAuth/Register" className="text-cyan-400 hover:underline">
+                        Register Here
                       </NavLink>
-                    </div>
-
-                    <div className="mt-2 text-sm">
-                      <p>
-                        Don't have an account?{" "}
-                        <NavLink
-                          to="/UserAuth/Register"
-                          className="text-cyan-500"
-                        >
-                          Register Here
-                        </NavLink>
-                      </p>
-                    </div>
-                  </Form>
-                )}
-              </Formik>
-            </div>
+                    </p>
+                  </div>
+                </Form>
+              )}
+            </Formik>
           </div>
         </div>
       </div>
-   
-    </>
+    </div>
   );
 };
 

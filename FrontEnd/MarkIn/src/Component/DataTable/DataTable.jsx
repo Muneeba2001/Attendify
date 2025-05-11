@@ -1,8 +1,20 @@
-// components/DataTable.jsx
 import React from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
 const DataTable = ({ headers, data, onEdit, onDelete }) => {
+  // Utility: Map column prop to Tailwind alignment class
+  const getColumnClass = (column) => {
+    switch (column) {
+      case "center":
+        return "text-center";
+      case "right":
+        return "text-right";
+      case "left":
+      default:
+        return "text-left";
+    }
+  };
+
   return (
     <div className="w-full p-4 bg-[#1e1e1e] text-white rounded-md shadow-lg">
       <table className="w-full border-collapse text-left">
@@ -12,7 +24,9 @@ const DataTable = ({ headers, data, onEdit, onDelete }) => {
             {headers.map((header) => (
               <th
                 key={header.key}
-                className="border-b border-gray-600 px-4 py-2"
+                className={`border-b border-gray-600 px-4 py-2 ${getColumnClass(
+                  header.column
+                )}`}
               >
                 {header.label}
               </th>
@@ -33,7 +47,9 @@ const DataTable = ({ headers, data, onEdit, onDelete }) => {
                 {headers.map((header) => (
                   <td
                     key={header.key}
-                    className="border-b border-gray-700 px-4 py-2"
+                    className={`border-b border-gray-700 px-4 py-2 ${getColumnClass(
+                      header.column
+                    )}`}
                   >
                     {row[header.key]}
                   </td>
