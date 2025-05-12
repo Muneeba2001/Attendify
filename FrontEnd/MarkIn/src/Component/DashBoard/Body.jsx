@@ -1,40 +1,109 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  AbsentToday,
-  PresentMonth,
-  PresentToday,
-  PresentWeek,
-  PresentYear,
-  AbsentYear,
+  setTotalEmployees,
+  setTotalStudents,
+  setTotalAttendance,
+  setEmployeesPresent,
+  setEmployeesAbsent,
+  setStudentsAbsent,
+  setStudentsPresent,
 } from "../../Pages/Admin/AdminDashBoard/ActionCreator/AttendanceCount";
 import AdminDashBoardCrumb from "../BreadCrumbs/AdminDashBoardCrumb";
-import { Card, CardContent, Typography, Avatar, Grid, Box, ToggleButton, ToggleButtonGroup } from "@mui/material";
-import { AccessTime, People, EventAvailable, Schedule, ExitToApp } from "@mui/icons-material";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Avatar,
+  Grid,
+  Box,
+  ToggleButton,
+  ToggleButtonGroup,
+} from "@mui/material";
+import { AccessTime, People } from "@mui/icons-material";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 const Body = () => {
   const dispatch = useDispatch();
   const select = useSelector((state) => state.attendance);
+  dispatch(setTotalEmployees());
+  dispatch(setTotalStudents());
+  dispatch(setTotalAttendance());
+  dispatch(setEmployeesPresent());
+  dispatch(setEmployeesAbsent());
+  dispatch(setStudentsPresent());
+  dispatch(setStudentsAbsent());
+
+  const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
-    dispatch(PresentToday());
-    dispatch(PresentWeek());
-    dispatch(PresentMonth());
-    dispatch(PresentYear());
-    dispatch(AbsentYear());
-    dispatch(AbsentToday());
-  }, [dispatch]);
+    const interval = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000); // Update every second
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
 
   const cardData = [
-    { title: "Total Employees", value: 452, icon: <People />, diff: "+2 new employees added" },
-    { title: "On Time", value: 360, icon: <EventAvailable />, diff: "-10% Less than yesterday" },
-    { title: "Late Arrival", value: 62, icon: <Schedule />, diff: "+5% Increase than yesterday" },
-    { title: "Early Departures", value: 6, icon: <ExitToApp />, diff: "-10% Less than yesterday" },
+    {
+      title: "Total Employees",
+      value: select.totalEmployees,
+      icon: <People />,
+      diff: "+2 new employees added",
+    },
+    {
+      title: "Total Students",
+      value: select.totalStudents,
+      icon: <People />,
+      diff: "+2 new students added",
+    },
+    {
+      title: "Total Attendance Today",
+      value: select.totalAttendance,
+      icon: <AccessTime sx={{ color: "#00bcd4" }} />,
+      diff: "students and employees",
+    },
+    {
+      title: "Employees Present",
+      value: select.employeesPresent,
+      icon: <CheckCircleOutlineIcon sx={{ color: "green" }} />,
+      diff: "-10% Less than yesterday",
+    },
+    {
+      title: "Employees Absent",
+      value: select.employeesAbsent,
+      icon: <HighlightOffIcon sx={{ color: "red" }} />,
+      diff: "+5% Increase than yesterday",
+    },
+    {
+      title: "Students Present",
+      value: select.studentsPresent,
+      icon: <CheckCircleOutlineIcon sx={{ color: "green" }} />,
+      diff: "-10% Less than yesterday",
+    },
+    {
+      title: "Students Absent",
+      value: select.studentsAbsent,
+      icon: <HighlightOffIcon sx={{ color: "red" }} />,
+      diff: "+5% Increase than yesterday",
+    },
   ];
 
   return (
-    <Box sx={{ backgroundColor: "#0f0f0f", minHeight: "100vh", color: "#fff", px: 6, py: 4 }}>
-      <Typography variant="h5" sx={{ fontWeight: "bold", color: "#fff", mb: 2 }}>
+    <Box
+      sx={{
+        backgroundColor: "#0f0f0f",
+        minHeight: "100vh",
+        color: "#fff",
+        px: 6,
+        py: 4,
+      }}
+    >
+      <Typography
+        variant="h5"
+        sx={{ fontWeight: "bold", color: "#fff", mb: 2 }}
+      >
         Dashboard
       </Typography>
       <AdminDashBoardCrumb />
@@ -53,7 +122,7 @@ const Body = () => {
               Today: {new Date().toLocaleDateString("en-UK")}
             </Typography>
             <Box mt={2}>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded text-sm">
+              <button className="rounded bg-blue-600 px-4 py-2 text-sm text-white hover:bg-blue-700">
                 Advanced Configuration
               </button>
             </Box>
@@ -85,16 +154,31 @@ const Body = () => {
         {/* Attendance Comparison Chart */}
         <Grid item xs={12}>
           <Card sx={{ backgroundColor: "#1e1e1e", color: "#fff", p: 2 }}>
-            <Box display="flex" justifyContent="space-between" alignItems="center">
-              <Typography variant="subtitle1">Attendance Comparison Chart</Typography>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+            >
+              <Typography variant="subtitle1">
+                Attendance Comparison Chart
+              </Typography>
               <ToggleButtonGroup color="primary" exclusive>
-                <ToggleButton value="daily" sx={{ color: "#fff", borderColor: "#555" }}>
+                <ToggleButton
+                  value="daily"
+                  sx={{ color: "#fff", borderColor: "#555" }}
+                >
                   Daily
                 </ToggleButton>
-                <ToggleButton value="weekly" sx={{ color: "#fff", borderColor: "#555" }}>
+                <ToggleButton
+                  value="weekly"
+                  sx={{ color: "#fff", borderColor: "#555" }}
+                >
                   Weekly
                 </ToggleButton>
-                <ToggleButton value="monthly" sx={{ color: "#fff", borderColor: "#555" }}>
+                <ToggleButton
+                  value="monthly"
+                  sx={{ color: "#fff", borderColor: "#555" }}
+                >
                   Monthly
                 </ToggleButton>
               </ToggleButtonGroup>

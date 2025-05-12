@@ -1,67 +1,36 @@
-// const initialState = {
+import { act } from "react";
 
-import { act } from "react"
-import { AbsentToday } from "../ActionCreator/AttendanceCount"
-
-
-
-
-// }
-
-// const AttendanceCount = async(state = initialState, action) => {
-//     switch(action.type) {
-//         case 'PRESENT_TODAY' : {
-//             try {
-//                 const today = await axios.get(`http://localhost:3000/${today}`)
-//             } catch (error) {
-//                 console.log("ERROR")
-//             }
-//         }
-//     }
-// }
-
-
-// export default AttendanceCount
 
 const initialState = {
-    PresentToday : 0,
-    PresentWeek : 0,
-    PresentMonth : 0,
-    PresentYear : 0,
-    AbsentToday : 0,
-}
+  totalEmployees: 0,
+  totalStudents: 0,
+  totalAttendance: 0,
+  employeesPresent: 0,
+  employeesAbsent: 0,
+  studentsPresent: 0,
+  studentsAbsent: 0,
+};
 
 const AttendanceCount = (state = initialState, action) => {
-    switch (action.type) {
-        case 'PRESENT_TODAY' : {
-           return{
-            ...state, PresentToday: action.payload
-           }
-        }
-        case 'PRESENT_WEEK' : {
-        return{
-            ...state, PresentWeek : action.payload
-        }
-        }
-        case 'PRESENT_MONTH' : {
-            return {
-                ...state, PresentMonth : action.payload
-            }
-        }
-        case 'PRESENT_YEAR' : {
-            return {
-                ...state, PresentYear : action.payload
-            }
-        }
-        case 'ABSENT_TODAY': {
-            return{
-               ...state, AbsentToday : action.payload
-            }
-        }
-        default:
-            return state
-    }
-   
-}
+  switch (action.type) {
+    case "SET_TOTAL_EMPLOYEES":
+      return { ...state, totalEmployees: action.payload };
+    case "SET_TOTAL_STUDENTS":
+      return { ...state, totalStudents: action.payload };
+      case "SET_TOTAL_ATTENDANCE":
+      return { ...state, totalAttendance: action.payload };
+    case "SET_EMPLOYEES_PRESENT":
+      return { ...state, employeesPresent: action.payload };
+    case "SET_EMPLOYEES_ABSENT":
+      return { ...state, employeesAbsent: action.payload };
+    case "SET_STUDENTS_PRESENT":
+      return { ...state, studentsPresent: action.payload };
+    case "SET_STUDENTS_ABSENT":
+      return { ...state, studentsAbsent: action.payload };
 
-export default AttendanceCount
+    default:
+      return state;
+  }
+};
+
+export default AttendanceCount;

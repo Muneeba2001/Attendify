@@ -22,14 +22,17 @@ const SideBar = () => {
   return (
     <div className="flex min-h-full w-20 flex-col bg-[#1e1e1e] p-4 shadow-lg">
       <nav className="flex flex-col items-center space-y-8">
-        {/* Attendance Sheet */}
-        <NavLink to="/AdminDashBoard/Track/AttendanceSheet" title="Attendance Sheet">
-          <HiOutlineClipboardList className={iconClasses} />
-        </NavLink>
-
         {/* Dashboard */}
         <NavLink to="/AdminDashBoard" title="Dashboard">
           <FaChartBar className={iconClasses} />
+        </NavLink>
+
+        {/* Attendance Sheet */}
+        <NavLink
+          to="/AdminDashBoard/Track/AttendanceSheet"
+          title="Attendance Sheet"
+        >
+          <HiOutlineClipboardList className={iconClasses} />
         </NavLink>
 
         {/* Report */}
@@ -44,7 +47,8 @@ const SideBar = () => {
 
         {/* Manage Employee */}
         <NavLink to="/AdminDashBoard/Manage/Employee" title="Employee">
-          <FaUserTie className={iconClasses} /> {/* Updated to FaUserTie for Employee */}
+          <FaUserTie className={iconClasses} />{" "}
+          {/* Updated to FaUserTie for Employee */}
         </NavLink>
 
         {/* Logout */}
