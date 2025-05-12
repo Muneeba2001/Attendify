@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setTotalEmployees,
@@ -34,6 +34,16 @@ const Body = () => {
   dispatch(setEmployeesAbsent());
   dispatch(setStudentsPresent());
   dispatch(setStudentsAbsent());
+
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000); // Update every second
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
 
   const cardData = [
     {
