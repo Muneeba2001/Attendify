@@ -5,7 +5,7 @@ import {
   FaChartBar,
   FaUserGraduate,
   FaSignOutAlt,
-  FaUserTie, // New icon for employee
+  FaUserTie,
 } from "react-icons/fa";
 import { HiOutlineClipboardList } from "react-icons/hi";
 
@@ -22,39 +22,67 @@ const SideBar = () => {
   return (
     <div className="flex min-h-full w-20 flex-col bg-[#1e1e1e] p-4 shadow-lg">
       <nav className="flex flex-col items-center space-y-8">
+
         {/* Dashboard */}
-        <NavLink to="/AdminDashBoard" title="Dashboard">
-          <FaChartBar className={iconClasses} />
-        </NavLink>
+        <div className="relative group">
+          <NavLink to="/AdminDashBoard">
+            <FaChartBar className={iconClasses} />
+          </NavLink>
+          <span className="absolute left-12 top-1/2 -translate-y-1/2 whitespace-nowrap rounded bg-gray-800 px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+            Dashboard
+          </span>
+        </div>
 
         {/* Attendance Sheet */}
-        <NavLink
-          to="/AdminDashBoard/Track/AttendanceSheet"
-          title="Attendance Sheet"
-        >
-          <HiOutlineClipboardList className={iconClasses} />
-        </NavLink>
+        <div className="relative group">
+          <NavLink to="/AdminDashBoard/Track/AttendanceSheet">
+            <HiOutlineClipboardList className={iconClasses} />
+          </NavLink>
+          <span className="absolute left-12 top-1/2 -translate-y-1/2 whitespace-nowrap rounded bg-gray-800 px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+            Attendance Sheet
+          </span>
+        </div>
 
         {/* Report */}
-        <NavLink to="/AdminDashBoard/Analyze/Report" title="Report">
-          <FaRegFileAlt className={iconClasses} />
-        </NavLink>
+        <div className="relative group">
+          <NavLink to="/AdminDashBoard/Analyze/Report">
+            <FaRegFileAlt className={iconClasses} />
+          </NavLink>
+          <span className="absolute left-12 top-1/2 -translate-y-1/2 whitespace-nowrap rounded bg-gray-800 px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+            Report
+          </span>
+        </div>
 
         {/* Manage Student */}
-        <NavLink to="/AdminDashBoard/Manage/Student" title="Student">
-          <FaUserGraduate className={iconClasses} />
-        </NavLink>
+        <div className="relative group">
+          <NavLink to="/AdminDashBoard/Manage/Student">
+            <FaUserGraduate className={iconClasses} />
+          </NavLink>
+          <span className="absolute left-12 top-1/2 -translate-y-1/2 whitespace-nowrap rounded bg-gray-800 px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+            Student
+          </span>
+        </div>
 
         {/* Manage Employee */}
-        <NavLink to="/AdminDashBoard/Manage/Employee" title="Employee">
-          <FaUserTie className={iconClasses} />{" "}
-          {/* Updated to FaUserTie for Employee */}
-        </NavLink>
+        <div className="relative group">
+          <NavLink to="/AdminDashBoard/Manage/Employee">
+            <FaUserTie className={iconClasses} />
+          </NavLink>
+          <span className="absolute left-12 top-1/2 -translate-y-1/2 whitespace-nowrap rounded bg-gray-800 px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+            Employee
+          </span>
+        </div>
 
         {/* Logout */}
-        <button onClick={handleLogout} title="Logout">
-          <FaSignOutAlt className={iconClasses} />
-        </button>
+        <div className="relative group">
+          <button onClick={handleLogout}>
+            <FaSignOutAlt className={iconClasses} />
+          </button>
+          <span className="absolute left-12 top-1/2 -translate-y-1/2 whitespace-nowrap rounded bg-gray-800 px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+            Logout
+          </span>
+        </div>
+
       </nav>
     </div>
   );

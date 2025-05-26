@@ -25,7 +25,15 @@ const studentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  checkIn: {
+    type: Date,
+    default: null,
+  },
+  lastAttendanceDate: {
+    type: String,
+    default: null,
+  },
 });
 
-const studentModel = mongoose.model("student", studentSchema);
+const studentModel = mongoose.model("Student", studentSchema);
 export default studentModel;
