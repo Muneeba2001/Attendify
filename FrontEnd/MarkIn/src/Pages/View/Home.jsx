@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "../../Component/Header";
+import { NavLink } from "react-router-dom";
 import { Button } from "@mui/material";
 import Footer from "../../Component/DashBoard/Footer";
 import FeatureCards from "../../Component/Cards/FeatureCards";
@@ -38,7 +38,13 @@ const Home = () => {
     <div className="w-full bg-white">
       <div className="relative h-screen w-full">
         <div className="relative z-20">
-          <Header />
+           <div className="">
+                <nav className="relative z-10 flex justify-between items-center rounded-sm bg-white  text-blue-800 p-2 pl-10 shadow-lg">
+                  <h1 className="text-2xl font-bold">
+                           <NavLink to="/">Attendify</NavLink>
+                         </h1>
+                </nav>
+              </div>
         </div>
 
         <img

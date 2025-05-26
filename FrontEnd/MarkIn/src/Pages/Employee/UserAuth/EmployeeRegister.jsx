@@ -104,10 +104,10 @@ const EmployeeRegister = () => {
                   );
                 })}
 
-                <div className="checkbox mt-4 flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                {/* <div className="checkbox mt-4 flex items-center gap-2 text-gray-600 dark:text-gray-300">
                   <Field type="checkbox" name="keep_signin" id="keep_signin" />
                   <label htmlFor="keep_signin">Keep me signed in</label>
-                </div>
+                </div> */}
 
                 <div className="btn mt-6 flex flex-col items-center">
                   <button
@@ -116,7 +116,7 @@ const EmployeeRegister = () => {
                   >
                     Register
                   </button>
-                  <p className="mt-4 text-gray-700 dark:text-gray-300">
+                  {/* <p className="mt-4 text-gray-700 dark:text-gray-300">
                     Already have an account?{" "}
                     <NavLink
                       to="/UserAuth/Login"
@@ -124,7 +124,7 @@ const EmployeeRegister = () => {
                     >
                       Please LogIn
                     </NavLink>
-                  </p>
+                  </p> */}
                 </div>
               </Form>
             </div>
